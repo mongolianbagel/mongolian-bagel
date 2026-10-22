@@ -18,11 +18,12 @@
 :root {
   --bg-dark: #1a1512;
   --bg-light: #2c241e;
-  --accent: #d4af37; /* ゴールド */
+  --accent: #d4af37;
   --text-main: #f4ece2;
   --text-muted: #a89b8d;
   --font-body: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   --font-heading: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  --border-color: #332a23;
 }
 *{box-sizing:border-box; margin:0; padding:0;}
 html{scroll-behavior:smooth;}
@@ -42,6 +43,8 @@ img{display:block; max-width:100%;}
 .hamburger span{display:block; width:30px; height:2px; background:var(--text-main); margin:6px 0; transition:0.3s;}
 .nav{display:flex; gap:30px; align-items:center; font-size:13px; font-weight:bold; letter-spacing:0.05em;}
 .nav a:hover{color:var(--accent);}
+.nav .langswitch{font-size:11px; border:1px solid var(--text-muted); border-radius:20px; padding:6px 12px;}
+.nav .langswitch:hover{border-color:var(--accent); color:var(--accent);}
 .nav .shop-btn{background:var(--accent); color:var(--bg-dark); padding:10px 20px; border-radius:30px; transition:0.3s;}
 .nav .shop-btn:hover{background:#fff; color:var(--bg-dark);}
 
@@ -76,6 +79,18 @@ img{display:block; max-width:100%;}
 .product-card .info{padding:20px; text-align:center;}
 .product-card h3{font-size:18px; margin-bottom:8px;}
 .product-card .price{color:var(--accent); font-size:16px; font-weight:bold;}
+.fav-btn{position:absolute; top:15px; right:15px; background:rgba(0,0,0,0.5); border:none; width:36px; height:36px; border-radius:50%; color:var(--text-main); font-size:18px; cursor:pointer; z-index:10; transition:0.3s;}
+.fav-btn:hover, .fav-btn.active{color:red; background:rgba(255,255,255,0.9);}
+
+/* ストーリー */
+.story-box{background:var(--bg-light); padding:50px; border-radius:12px; max-width:800px; margin:0 auto; text-align:center;}
+.story-box p{line-height:2.2; color:var(--text-muted); font-size:15px;}
+
+/* 本社情報 */
+.hq-box{background:var(--bg-light); padding:40px; border-radius:12px; max-width:800px; margin:40px auto 0;}
+.hq-table{width:100%; border-collapse:collapse; font-size:14px;}
+.hq-table th, .hq-table td{border-bottom:1px solid var(--border-color); padding:15px; text-align:left;}
+.hq-table th{color:var(--accent); width:30%; white-space:nowrap;}
 
 /* 店舗検索 */
 .search-container{max-width:800px; margin:0 auto 40px; display:flex; gap:10px;}
@@ -83,20 +98,48 @@ img{display:block; max-width:100%;}
 .search-container input::placeholder{color:var(--text-muted);}
 .search-container button{padding:15px 30px; border-radius:30px; border:none; background:var(--accent); color:var(--bg-dark); font-weight:bold; cursor:pointer;}
 .region-tabs{display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:40px;}
-.region-tabs button{background:transparent; border:1px solid var(--text-muted); color:var(--text-muted); padding:8px 20px; border-radius:20px; cursor:pointer; transition:0.3s;}
+.region-tabs button{background:transparent; border:1px solid var(--text-muted); color:var(--text-muted); padding:8px 20px; border-radius:20px; cursor:pointer; transition:0.3s; font-family:inherit;}
 .region-tabs button.active, .region-tabs button:hover{background:var(--accent); color:var(--bg-dark); border-color:var(--accent);}
 .store-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;}
 .store-card{background:var(--bg-light); padding:20px; border-radius:8px; border-left:4px solid var(--accent);}
-.store-card h4{color:var(--accent); margin-bottom:5px;}
+.store-card h4{color:var(--accent); margin-bottom:5px; font-size:15px;}
 .store-card p{font-size:12px; color:var(--text-muted); line-height:1.6;}
 
+/* お知らせ */
+.news-list{max-width:800px; margin:0 auto; border-top:1px solid var(--border-color);}
+.news-item{display:grid; grid-template-columns:120px 80px 1fr; gap:20px; padding:20px 10px; border-bottom:1px solid var(--border-color); align-items:center; transition:0.3s;}
+.news-item:hover{background:var(--bg-light);}
+.news-item time{font-size:12px; color:var(--text-muted);}
+.news-item .tag{font-size:10px; color:var(--accent); border:1px solid var(--accent); padding:3px 6px; border-radius:4px; text-align:center; white-space:nowrap;}
+.news-item strong{font-size:14px; font-weight:normal;}
+
+/* こだわり */
+.commit-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:30px;}
+.commit-card{background:var(--bg-light); padding:30px; border-radius:12px; text-align:center;}
+.commit-card h3{color:var(--accent); margin-bottom:15px; font-family:var(--font-heading);}
+.commit-card p{font-size:13px; line-height:1.9; color:var(--text-muted);}
+
+/* お問い合わせ */
+.contact-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:30px; max-width:1000px; margin:0 auto;}
+.contact-card{background:var(--bg-light); padding:30px; border-radius:12px; border-top:3px solid var(--accent);}
+.contact-card h3{color:var(--accent); margin-bottom:15px; font-size:18px;}
+.contact-card p{font-size:13px; color:var(--text-muted); line-height:1.8; margin-bottom:15px;}
+.contact-card dl{font-size:13px; line-height:1.8;}
+.contact-card dt{color:var(--accent); font-weight:bold; margin-top:10px; font-size:11px;}
+.contact-card dd{margin:0;}
+
+/* FAQ */
+.faq details{border-bottom:1px solid var(--border-color); padding:20px 10px;}
+.faq summary{cursor:pointer; font-weight:bold; color:var(--accent); font-size:15px;}
+.faq p{margin-top:15px; font-size:13px; line-height:1.8; color:var(--text-muted);}
+
 /* フッター */
-.footer{background:#0d0b09; padding:60px 0 20px; border-top:1px solid #332a23;}
+.footer{background:#0d0b09; padding:60px 0 20px; border-top:1px solid var(--border-color);}
 .footer-inner{display:flex; justify-content:space-between; flex-wrap:wrap; gap:40px; margin-bottom:40px;}
 .footer-col h4{color:var(--accent); margin-bottom:15px;}
 .footer-col p, .footer-col a{display:block; color:var(--text-muted); font-size:13px; line-height:2; transition:0.3s;}
 .footer-col a:hover{color:var(--accent);}
-.copyright{text-align:center; color:var(--text-muted); font-size:11px; border-top:1px solid #332a23; padding-top:20px;}
+.copyright{text-align:center; color:var(--text-muted); font-size:11px; border-top:1px solid var(--border-color); padding-top:20px;}
 
 /* フェードインアニメーション */
 .fade-in{opacity:0; transform:translateY(30px); transition:opacity 0.8s, transform 0.8s;}
@@ -110,11 +153,7 @@ img{display:block; max-width:100%;}
 .modal-text{padding:40px; width:50%; display:flex; flex-direction:column; justify-content:center;}
 .modal-text h2{color:var(--accent); font-size:28px; margin-bottom:15px;}
 .modal-text p{color:var(--text-muted); line-height:1.8; margin-bottom:20px;}
-.modal-close{position:absolute; top:15px; right:15px; background:none; border:none; color:var(--text-main); font-size:24px; cursor:pointer;}
-
-/* お気に入りボタン */
-.fav-btn{position:absolute; top:15px; right:15px; background:rgba(0,0,0,0.5); border:none; width:36px; height:36px; border-radius:50%; color:var(--text-main); font-size:18px; cursor:pointer; z-index:10; transition:0.3s;}
-.fav-btn:hover, .fav-btn.active{color:red; background:rgba(255,255,255,0.9);}
+.modal-close{position:absolute; top:15px; right:15px; background:none; border:none; color:var(--text-main); font-size:24px; cursor:pointer; z-index:10;}
 
 /* スマホ用 */
 @media (max-width: 800px) {
@@ -123,11 +162,15 @@ img{display:block; max-width:100%;}
   .nav.open{right:0;}
   .hero h1{font-size:36px;}
   .grid-4{grid-template-columns:repeat(2, 1fr); gap:15px;}
+  .commit-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
   .store-grid{grid-template-columns:1fr;}
   .search-container{flex-direction:column;}
   .modal-content{flex-direction:column;}
   .modal-content img, .modal-text{width:100%;}
   .modal-content img{height:200px;}
+  .news-item{grid-template-columns:1fr; gap:5px;}
+  .story-box, .hq-box{padding:25px;}
 }
 </style>
 </head>
@@ -142,9 +185,11 @@ img{display:block; max-width:100%;}
     <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
     <nav class="nav" id="nav">
       <a href="#menu">商品</a>
-      <a href="#locations">店舗検索</a>
       <a href="#story">ブランド</a>
+      <a href="#locations">店舗検索</a>
+      <a href="#news">ニュース</a>
       <a href="#contact">お問い合わせ</a>
+      <a href="mongolian_bagel-mn.html" class="langswitch">Монгол хэл ↗</a>
       <a href="shop.html" class="shop-btn">オンラインショップ ↗</a>
     </nav>
   </div>
@@ -164,6 +209,7 @@ img{display:block; max-width:100%;}
   </div>
 </section>
 
+<!-- 商品一覧 -->
 <section class="wrap section" id="menu">
   <div class="section-title fade-in">
     <h2>OUR PRODUCTS</h2>
@@ -174,6 +220,45 @@ img{display:block; max-width:100%;}
   </div>
 </section>
 
+<!-- ブランドストーリー -->
+<section class="wrap section" id="story">
+  <div class="section-title fade-in">
+    <h2>OUR PHILOSOPHY</h2>
+    <p>パンの可能性は、大草原級。</p>
+  </div>
+  <div class="story-box fade-in">
+    <p>毎朝、生地の発酵状態を確かめながら、もちっとした食感と香ばしさを追求。定番のおいしさも、思わず笑顔になる意外な組み合わせも。素材の持ち味を大切に、毎日食べたくなるベーグルをお届けします。</p>
+    <div style="margin-top:30px; font-size:20px; font-family:var(--font-heading); color:var(--accent);">ᠮᠣᠩᠭᠣᠯ<br><span style="font-size:12px; font-family:var(--font-body); letter-spacing:.2em;">BOLD BITES, HAPPY DAYS</span></div>
+  </div>
+</section>
+
+<!-- モンゴル本社 -->
+<section class="wrap section" id="global">
+  <div class="section-title fade-in">
+    <h2>OUR ROOTS</h2>
+    <p>ルーツはモンゴル。おいしさは、世界へ。</p>
+  </div>
+  <div class="story-box fade-in" style="text-align:left;">
+    <p>モンゴル・ウランバートルに本社を置くベーカリーブランド。1998年に遊牧文化の「分かち合う食卓」から着想を得て誕生しました。大草原の雄大さと自由な発想を大切に、日本全国の街へベーグルのおいしさを届けています。</p>
+    <p style="margin-top:15px; font-size:13px;">1998年、ウランバートルの小さな工房からスタート。伝統的な食文化と世界のベーカリーを組み合わせ、独自のベーグルを生み出してきました。</p>
+    <p style="margin-top:20px; font-weight:bold; color:var(--accent); border-left:3px solid var(--accent); padding-left:15px;">本社はモンゴル・ウランバートルにのみ置いています。日本国内に本社機能はありません。</p>
+  </div>
+
+  <div class="hq-box fade-in">
+    <h3 style="color:var(--accent); margin-bottom:20px; font-family:var(--font-heading);">本社情報（Head Office）</h3>
+    <table class="hq-table">
+      <tr><th>本社所在地</th><td>モンゴル国 ウランバートル（Ulaanbaatar, Mongolia）</td></tr>
+      <tr><th>ブランド</th><td>Mongolian Bagel</td></tr>
+      <tr><th>代表者</th><td>バトバヤル・テムーレン（Batbayar Təmülən）</td></tr>
+      <tr><th>創業</th><td>1998年</td></tr>
+      <tr><th>代表電話</th><td><a href="tel:07085151938" style="color:var(--accent); font-weight:bold;">070-8515-1938</a></td></tr>
+      <tr><th>事業内容</th><td>ベーカリー事業（ベーグル製造・販売）、海外店舗展開</td></tr>
+      <tr><th>日本国内の拠点</th><td>本社機能はモンゴルにのみ所在。日本国内は店舗運営のみで、本社は置いていません。</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 店舗検索 -->
 <section class="wrap section" id="locations">
   <div class="section-title fade-in">
     <h2>FIND YOUR STORE</h2>
@@ -202,18 +287,107 @@ img{display:block; max-width:100%;}
   </div>
 </section>
 
-<section class="wrap section" id="story">
+<!-- ニュース・お知らせ -->
+<section class="wrap section" id="news">
   <div class="section-title fade-in">
-    <h2>OUR ROOTS</h2>
-    <p>モンゴル・ウランバートルから、世界へ。</p>
+    <h2>LATEST UPDATES</h2>
+    <p>ブランドからのお知らせをお届けします。</p>
   </div>
-  <div style="background:var(--bg-light); padding:40px; border-radius:12px; max-width:800px; margin:0 auto;" class="fade-in">
-    <p style="line-height:2; color:var(--text-muted);">
-      1998年、モンゴル・ウランバートルの小さな工房からスタートした「モンゴリアンベーグル」。<br>
-      遊牧文化の「分かち合う食卓」から着想を得て、大草原の雄大さと自由な発想を大切にしています。<br><br>
-      本社はモンゴル・ウランバートルにのみ置いており、日本国内の各店舗はすべて直営店です。<br>
-      代表：バトバヤル・テムーレン（Batbayar Təmülən）
-    </p>
+  <div class="news-list fade-in">
+    <div class="news-item">
+      <time>2026.10.15</time><span class="tag">PRODUCT</span><strong>新商品「チンギスパン」「バトゥパン」を追加しました。</strong>
+    </div>
+    <div class="news-item">
+      <time>2026.09.15</time><span class="tag">SHOP</span><strong>島根県に出店し、全国47都道府県への展開が完了しました。</strong>
+    </div>
+    <div class="news-item">
+      <time>2026.09.01</time><span class="tag">BRAND</span><strong>モンゴル・ウランバートルに本社を置くベーグルブランドについて。</strong>
+    </div>
+  </div>
+</section>
+
+<!-- こだわり（3つの特徴） -->
+<section class="wrap section">
+  <div class="section-title fade-in">
+    <h2>OUR COMMITMENT</h2>
+    <p>モンゴリアンベーグルの3つのこだわり。</p>
+  </div>
+  <div class="commit-grid fade-in">
+    <div class="commit-card">
+      <h3>モチモチの食感</h3>
+      <p>毎朝、生地の発酵状態を確かめ、独自の配合で焼き上げるベーグルは、外はカリッと、中はモチモチ。</p>
+    </div>
+    <div class="commit-card">
+      <h3>大胆な具材</h3>
+      <p>エビフライ、ジンギスカン、チャチャルガンのジャム。モンゴルの伝統と遊び心を組み合わせた独創的な味わい。</p>
+    </div>
+    <div class="commit-card">
+      <h3>素材へのこだわり</h3>
+      <p>小麦粉の選定から焼き上げまで、すべての工程で妥協しない。毎日食べても飽きない、力強いおいしさを追求します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- お問い合わせ -->
+<section class="wrap section" id="contact">
+  <div class="section-title fade-in">
+    <h2>CONTACT</h2>
+    <p>ブランドに関するお問い合わせは、下記の窓口までお願いいたします。</p>
+  </div>
+  <div class="contact-grid fade-in">
+    <div class="contact-card">
+      <h3>モンゴル本社</h3>
+      <p>ブランド運営・海外展開に関するお問い合わせ。</p>
+      <dl>
+        <dt>代表者</dt><dd>バトバヤル・テムーレン</dd>
+        <dt>所在地</dt><dd>Ulaanbaatar, Mongolia</dd>
+        <dt>TEL</dt><dd>070-8515-1938</dd>
+        <dt>EMAIL</dt><dd>info@mongolianbagel.mn</dd>
+      </dl>
+    </div>
+    <div class="contact-card">
+      <h3>日本国内 ブランド窓口</h3>
+      <p>日本国内のブランド取材・商品・オンラインショップに関するお問い合わせ。</p>
+      <dl>
+        <dt>EMAIL</dt><dd>contact@mongolianbagel.jp</dd>
+        <dt>受付時間</dt><dd>平日 10:00–17:00</dd>
+        <dt>備考</dt><dd>本社機能はモンゴルにあります。</dd>
+      </dl>
+    </div>
+    <div class="contact-card">
+      <h3>店舗へのお問い合わせ</h3>
+      <p>各店舗の営業時間・商品の在庫・ご予約は各店舗へ直接ご連絡ください。</p>
+      <dl>
+        <dt>店舗一覧</dt><dd><a href="#locations" style="color:var(--accent);">全国47都道府県の店舗</a></dd>
+        <dt>備考</dt><dd>店舗個別の電話番号は各店舗へ。</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- よくある質問 -->
+<section class="wrap section faq" id="faq">
+  <div class="section-title fade-in">
+    <h2>FAQ</h2>
+    <p>よくある質問</p>
+  </div>
+  <div class="fade-in" style="max-width:800px; margin:0 auto;">
+    <details>
+      <summary>フビライパンはどの店舗で買えますか？</summary>
+      <p>エビフライをパンに挟んだ看板商品「フビライパン」は、全国47都道府県の直営店でお買い求めいただけます。販売時間は店舗により異なりますので、各店舗へお問い合わせください。</p>
+    </details>
+    <details>
+      <summary>チンギスパン、バトゥパンとは？</summary>
+      <p>「チンギスパン」はジンギスカンをパンに挟んだ食べ応えのある一品。「バトゥパン」はチャチャルガンのジャムを塗った甘酸っぱいスイーツ系です。</p>
+    </details>
+    <details>
+      <summary>本社はどこにありますか？</summary>
+      <p>本社はモンゴル・ウランバートルにのみ置いています。日本国内に本社機能はありません。日本国内の各店舗はモンゴル本社の直営店です。</p>
+    </details>
+    <details>
+      <summary>アレルギー情報はどこで確認できますか？</summary>
+      <p>原材料・アレルゲン情報は、商品ごとに店頭およびオンラインショップでご確認いただけます。</p>
+    </details>
   </div>
 </section>
 
@@ -224,6 +398,7 @@ img{display:block; max-width:100%;}
         <h4>MONGOLIAN BAGEL</h4>
         <p>モンゴル発のベーカリーブランド。</p>
         <p>Head Office: Ulaanbaatar, Mongolia</p>
+        <p>CEO: Batbayar Təmülən</p>
       </div>
       <div class="footer-col">
         <h4>LINKS</h4>
@@ -232,11 +407,13 @@ img{display:block; max-width:100%;}
         <a href="shop.html">オンラインショップ</a>
         <a href="legal.html">特定商取引法</a>
         <a href="orders.html">管理者用</a>
+        <a href="mongolian_bagel-mn.html">Монгол хэл</a>
       </div>
       <div class="footer-col">
         <h4>CONTACT</h4>
         <p>TEL: 070-8515-1938</p>
         <p>Email: info@mongolianbagel.mn</p>
+        <p style="font-size:11px; margin-top:10px;">※日本国内に本社機能はありません。</p>
       </div>
     </div>
     <p class="copyright">© 1998–2026 MONGOLIAN BAGEL. All rights reserved.</p>
@@ -257,7 +434,7 @@ img{display:block; max-width:100%;}
 </div>
 
 <script>
-// ヘッダーのスクロールアニメーション
+// ヘッダーのスクロール
 window.addEventListener('scroll', () => {
   document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
 });
@@ -290,14 +467,14 @@ PRODUCTS.forEach(p => {
   `;
 });
 
-// お気に入り機能
+// お気に入り
 function toggleFav(e, btn) {
   e.stopPropagation();
   btn.classList.toggle('active');
   btn.innerHTML = btn.classList.contains('active') ? '♥' : '♡';
 }
 
-// モーダル表示
+// モーダル
 function openModal(id) {
   const p = PRODUCTS.find(item => item.id === id);
   if(!p) return;
@@ -307,19 +484,25 @@ function openModal(id) {
   document.getElementById('productModal').classList.add('open');
 }
 
-// 店舗データ
+// 店舗データ（47都道府県の一部をハイライト）
 const STORES = [
   { region: "hokkaido", pref: "北海道", name: "札幌ステラプレイス店", area: "札幌市中央区北5条西2丁目", time: "10:00〜21:00" },
   { region: "tohoku", pref: "青森県", name: "弘前駅前店", area: "弘前市駅前町9-20", time: "10:00〜19:00" },
+  { region: "tohoku", pref: "岩手県", name: "盛岡フェザン店", area: "盛岡市盛岡駅前通1-44", time: "10:00〜20:00" },
   { region: "tohoku", pref: "宮城県", name: "仙台エスパル店", area: "仙台市青葉区中央1-1-1", time: "10:00〜21:00" },
+  { region: "kanto", pref: "茨城県", name: "水戸エクセル店", area: "水戸市宮町1-1-1", time: "10:00〜20:00" },
   { region: "kanto", pref: "東京都", name: "丸の内オアゾ店", area: "千代田区丸の内1-6-4", time: "8:00〜21:00" },
   { region: "kanto", pref: "神奈川県", name: "横浜ジョイナス店", area: "横浜市西区南幸1-5-1", time: "10:00〜21:00" },
+  { region: "chubu", pref: "新潟県", name: "新潟伊勢丹店", area: "新潟市中央区八千代1-6-1", time: "10:00〜19:00" },
   { region: "chubu", pref: "石川県", name: "アル・プラザ鹿島店", area: "鹿島郡中能登町井田に部50番地", time: "9:00〜20:00" },
   { region: "chubu", pref: "愛知県", name: "名古屋タカシマヤ店", area: "名古屋市中村区名駅1-1-4", time: "10:00〜20:00" },
+  { region: "kinki", pref: "京都府", name: "京都ポルタ店", area: "京都市下京区東塩小路町902", time: "10:00〜20:00" },
   { region: "kinki", pref: "大阪府", name: "大阪ルクア店", area: "大阪市北区梅田3-1-3", time: "10:00〜21:00" },
   { region: "chugoku", pref: "島根県", name: "松江スターバックス併設店", area: "松江市朝日町490-6", time: "8:00〜21:00" },
-  { region: "kyushu", pref: "福岡県", name: "天神地下街店", area: "福岡市中央区天神2丁目", time: "10:00〜20:00" }
-  // 実際は47都道府県分のデータを入れる
+  { region: "chugoku", pref: "広島県", name: "広島シャレオ店", area: "広島市中区基町6-78", time: "10:00〜20:00" },
+  { region: "shikoku", pref: "香川県", name: "高松丸亀町商店街店", area: "高松市丸亀町8-23", time: "10:00〜20:00" },
+  { region: "kyushu", pref: "福岡県", name: "天神地下街店", area: "福岡市中央区天神2丁目", time: "10:00〜20:00" },
+  { region: "kyushu", pref: "沖縄県", name: "那覇国際通り店", area: "那覇市牧志3-2-10", time: "10:00〜21:00" }
 ];
 
 const storeGrid = document.getElementById('storeGrid');
@@ -354,7 +537,7 @@ document.getElementById('shopSearch').addEventListener('keyup', (e) => {
   });
 });
 
-// スクロールフェードイン
+// フェードイン
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if(entry.isIntersecting) entry.target.classList.add('visible');
