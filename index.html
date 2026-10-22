@@ -6,14 +6,12 @@
 <meta name="theme-color" content="#1a1512">
 <title>モンゴリアンベーグル｜モンゴル発・全国47都道府県のベーグル</title>
 <meta name="description" content="モンゴル・ウランバートルに本社を置くベーカリーブランド、モンゴリアンベーグル。フビライパン、チンギスパン、バトゥパンと、全国47都道府県の店舗情報をご紹介します。">
-<!-- OGP設定 -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="モンゴリアンベーグル｜モンゴル発・全国47都道府県のベーグル">
 <meta property="og:description" content="エビフライをパンに挟んだ「フビライパン」など、モンゴル発のベーカリーブランド。全国47都道府県で展開中。">
 <meta property="og:url" content="https://mongolianbagel.github.io/mongolian-bagel/">
 <meta property="og:image" content="https://mongolianbagel.github.io/mongolian-bagel/fubilai.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<!-- ファビコン（羊） -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d4af37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M16.5 8c1.5 0 2.5 1.5 2.5 3.5s-1 3.5-2.5 3.5c-1 0-2-.5-2.5-1.5H10c-.5 1-1.5 1.5-2.5 1.5C6 15 5 13.5 5 11.5S6 8 7.5 8c1 0 2 .5 2.5 1.5h4c.5-1 1.5-1.5 2.5-1.5z'/><path d='M7 9.5c-1.5-.5-2.5-1.5-2-3s2-1.5 2.5 0'/><path d='M17 9.5c1.5-.5 2.5-1.5 2-3s-2-1.5-2.5 0'/></svg>">
 <style>
 :root {
@@ -42,7 +40,7 @@ img{display:block; max-width:100%;}
 .logo small{display:block; font-size:9px; letter-spacing:0.2em; color:var(--accent); margin-top:2px;}
 .hamburger{display:none; cursor:pointer; background:none; border:none;}
 .hamburger span{display:block; width:30px; height:2px; background:var(--text-main); margin:6px 0; transition:0.3s;}
-.nav{display:flex; gap:30px; align-items:center; font-size:13px; font-weight:bold; letter-spacing:0.05em;}
+.nav{display:flex; gap:20px; align-items:center; font-size:13px; font-weight:bold; letter-spacing:0.05em;}
 .nav a:hover{color:var(--accent);}
 .nav .langswitch{font-size:11px; border:1px solid var(--text-muted); border-radius:20px; padding:6px 12px;}
 .nav .langswitch:hover{border-color:var(--accent); color:var(--accent);}
@@ -149,7 +147,7 @@ img{display:block; max-width:100%;}
 .modal.open{opacity:1; pointer-events:auto;}
 .modal-content{background:var(--bg-light); border-radius:12px; width:min(800px, 90%); display:flex; overflow:hidden; position:relative; max-height:90vh;}
 .modal-content img{width:50%; object-fit:cover;}
-.modal-text{padding:40px; width:50%; display:flex; flex-direction:column; justify-content:center;}
+.modal-text{padding:40px; width:50%; display:flex; flex-direction:column; justify-content:center; overflow:auto;}
 .modal-text h2{color:var(--accent); font-size:28px; margin-bottom:15px;}
 .modal-text p{color:var(--text-muted); line-height:1.8; margin-bottom:20px;}
 .modal-close{position:absolute; top:15px; right:15px; background:none; border:none; color:var(--text-main); font-size:24px; cursor:pointer; z-index:10;}
@@ -187,7 +185,7 @@ img{display:block; max-width:100%;}
       <a href="#story">ブランド</a>
       <a href="#locations">店舗検索</a>
       <a href="#news">ニュース</a>
-      <a href="#faq">FAQ</a>
+      <a href="wishlist.html">お気に入り</a>
       <a href="#contact">お問い合わせ</a>
       <a href="mongolian_bagel-mn.html" class="langswitch">Монгол хэл ↗</a>
       <a href="shop.html" class="shop-btn">オンラインショップ ↗</a>
@@ -209,7 +207,7 @@ img{display:block; max-width:100%;}
   </div>
 </section>
 
-<!-- メニュー（商品一覧） -->
+<!-- 商品一覧 -->
 <section class="wrap section" id="menu">
   <div class="section-title fade-in">
     <h2>OUR PRODUCTS</h2>
@@ -254,7 +252,7 @@ img{display:block; max-width:100%;}
   </div>
 </section>
 
-<!-- モンゴル本社（グローバル） -->
+<!-- モンゴル本社 -->
 <section class="wrap section" id="global">
   <div class="section-title fade-in">
     <h2>OUR ROOTS</h2>
@@ -280,7 +278,7 @@ img{display:block; max-width:100%;}
   </div>
 </section>
 
-<!-- 全国の店舗（47都道府県完全網羅） -->
+<!-- 全国の店舗 -->
 <section class="wrap section" id="locations">
   <div class="section-title fade-in">
     <h2>FIND YOUR STORE</h2>
@@ -309,31 +307,14 @@ img{display:block; max-width:100%;}
   </div>
 </section>
 
-<!-- ニュース・お知らせ -->
+<!-- ニュース -->
 <section class="wrap section" id="news">
   <div class="section-title fade-in">
     <h2>LATEST UPDATES</h2>
     <p>ブランドからのお知らせをお届けします。</p>
   </div>
-  <div class="news-list fade-in">
-    <div class="news-item">
-      <time>2026.10.15</time><span class="tag">PRODUCT</span><strong>新商品「チンギスパン」「バトゥパン」を追加しました。</strong>
-    </div>
-    <div class="news-item">
-      <time>2026.09.15</time><span class="tag">SHOP</span><strong>島根県に出店し、全国47都道府県への展開が完了しました。</strong>
-    </div>
-    <div class="news-item">
-      <time>2026.09.01</time><span class="tag">BRAND</span><strong>モンゴル・ウランバートルに本社を置くベーグルブランドについて。</strong>
-    </div>
-  </div>
-</section>
-
-<!-- オンラインショップ案内 -->
-<section class="wrap section" id="online" style="background:var(--bg-light); border-radius:12px; padding:50px; text-align:center;">
-  <div class="fade-in">
-    <h2 style="color:var(--accent); font-family:var(--font-heading); font-size:32px; margin-bottom:15px;">MONGOLIAN BAGEL ONLINE</h2>
-    <p style="color:var(--text-muted); margin-bottom:30px;">おうちでも、ベーグル時間。人気のベーグルをご自宅や大切な人のもとへ。</p>
-    <a href="shop.html" class="hero-btn">オンラインショップへ ↗</a>
+  <div class="news-list fade-in" id="newsList">
+    <!-- JSで描画 -->
   </div>
 </section>
 
@@ -360,7 +341,7 @@ img{display:block; max-width:100%;}
       <dl>
         <dt>EMAIL</dt><dd>contact@mongolianbagel.jp</dd>
         <dt>受付時間</dt><dd>平日 10:00–17:00</dd>
-        <dt>備考</dt><dd>本社機能はモンゴルにあります。日本国内に本社はありません。</dd>
+        <dt>備考</dt><dd>本社機能はモンゴルにあります。</dd>
       </dl>
     </div>
     <div class="contact-card">
@@ -368,13 +349,13 @@ img{display:block; max-width:100%;}
       <p>各店舗の営業時間・商品の在庫・ご予約は各店舗へ直接ご連絡ください。</p>
       <dl>
         <dt>店舗一覧</dt><dd><a href="#locations" style="color:var(--accent);">全国47都道府県の店舗</a></dd>
-        <dt>備考</dt><dd>店舗個別の電話番号は各店舗へお問い合わせください。</dd>
+        <dt>備考</dt><dd>店舗個別の電話番号は各店舗へ。</dd>
       </dl>
     </div>
   </div>
 </section>
 
-<!-- よくある質問 -->
+<!-- FAQ -->
 <section class="wrap section faq" id="faq">
   <div class="section-title fade-in">
     <h2>FAQ</h2>
@@ -387,7 +368,7 @@ img{display:block; max-width:100%;}
     </details>
     <details>
       <summary>チンギスパン、バトゥパンとは？</summary>
-      <p>「チンギスパン」はジンギスカンをパンに挟んだ食べ応えのある一品。「バトゥパン」はチャチャルガンのジャムを塗った甘酸っぱいスイーツ系です。いずれも全国の直営店で販売しています。</p>
+      <p>「チンギスパン」はジンギスカンをパンに挟んだ食べ応えのある一品。「バトゥパン」はチャチャルガンのジャムを塗った甘酸っぱいスイーツ系です。</p>
     </details>
     <details>
       <summary>本社はどこにありますか？</summary>
@@ -414,8 +395,9 @@ img{display:block; max-width:100%;}
         <a href="#menu">商品一覧</a>
         <a href="#locations">店舗検索</a>
         <a href="shop.html">オンラインショップ</a>
+        <a href="wishlist.html">お気に入り</a>
         <a href="legal.html">特定商取引法</a>
-        <a href="orders.html">管理者用</a>
+        <a href="admin.html">管理者用</a>
         <a href="mongolian_bagel-mn.html">Монгол хэл</a>
       </div>
       <div class="footer-col">
@@ -443,30 +425,57 @@ img{display:block; max-width:100%;}
 </div>
 
 <script>
-// ヘッダーのスクロール
-window.addEventListener('scroll', () => {
-  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
-});
-
-// ハンバーガーメニュー
-document.getElementById('hamburger').addEventListener('click', () => {
-  document.getElementById('nav').classList.toggle('open');
-});
-
-// 商品データ
-const PRODUCTS = [
-  { id: "fubilai", name: "フビライパン", price: 480, img: "fubilai.jpg", desc: "エビフライをパンに挟んだ看板商品。サクサクのエビフライと、もちもちのベーグル生地の組み合わせ。" },
-  { id: "chingis", name: "チンギスパン", price: 580, img: "chingis.jpg", desc: "ジンギスカンをパンに挟んだ、食べ応え十分の一品。モンゴルの伝統的な味わいをパンで楽しめます。" },
-  { id: "batu", name: "バトゥパン", price: 380, img: "batu.jpg", desc: "チャチャルガンのジャムを塗った、甘酸っぱいスイーツ系パン。朝食にもおやつにもぴったり。" },
-  { id: "plain", name: "プレーンベーグル", price: 220, img: "batu.jpg", desc: "小麦の風味を楽しむ定番。毎朝食べたい、シンプルで力強い味わい。" }
+// 商品データの読み込み（管理画面のデータを優先）
+const DEFAULT_PRODUCTS = [
+  { id: "fubilai", name: "フビライパン", price: 480, img: "fubilai.jpg", desc: "エビフライをパンに挟んだ看板商品。" },
+  { id: "chingis", name: "チンギスパン", price: 580, img: "chingis.jpg", desc: "ジンギスカンをパンに挟んだ一品。" },
+  { id: "batu", name: "バトゥパン", price: 380, img: "batu.jpg", desc: "チャチャルガンのジャムを塗ったスイーツ系。" },
+  { id: "plain", name: "プレーンベーグル", price: 220, img: "batu.jpg", desc: "小麦の風味を楽しむ定番。" }
 ];
+let PRODUCTS = [];
+try {
+  const stored = localStorage.getItem('mb_products');
+  PRODUCTS = stored ? JSON.parse(stored) : DEFAULT_PRODUCTS;
+  if(!stored) localStorage.setItem('mb_products', JSON.stringify(DEFAULT_PRODUCTS));
+} catch(e) { PRODUCTS = DEFAULT_PRODUCTS; }
+
+// お知らせデータの読み込み
+const DEFAULT_NEWS = [
+  { date: "2026.10.15", tag: "PRODUCT", title: "新商品「チンギスパン」「バトゥパン」を追加しました。" },
+  { date: "2026.09.15", tag: "SHOP", title: "島根県に出店し、全国47都道府県への展開が完了しました。" }
+];
+let NEWS = [];
+try {
+  const storedNews = localStorage.getItem('mb_news');
+  NEWS = storedNews ? JSON.parse(storedNews) : DEFAULT_NEWS;
+} catch(e) { NEWS = DEFAULT_NEWS; }
+
+// お気に入り
+function toggleFav(e, btn) {
+  e.stopPropagation();
+  const card = btn.closest('.product-card');
+  const id = card.getAttribute('data-id');
+  let wishlist = JSON.parse(localStorage.getItem('mb_wishlist')) || [];
+  if(wishlist.includes(id)) {
+    wishlist = wishlist.filter(x => x !== id);
+    btn.classList.remove('active');
+    btn.innerHTML = '♡';
+  } else {
+    wishlist.push(id);
+    btn.classList.add('active');
+    btn.innerHTML = '♥';
+  }
+  localStorage.setItem('mb_wishlist', JSON.stringify(wishlist));
+}
 
 // 商品描画
 const grid = document.getElementById('productGrid');
 PRODUCTS.forEach(p => {
+  const wishlist = JSON.parse(localStorage.getItem('mb_wishlist')) || [];
+  const isFav = wishlist.includes(p.id);
   grid.innerHTML += `
-    <div class="product-card fade-in" onclick="openModal('${p.id}')">
-      <button class="fav-btn" onclick="toggleFav(event, this)">♡</button>
+    <div class="product-card fade-in" data-id="${p.id}" onclick="openModal('${p.id}')">
+      <button class="fav-btn ${isFav ? 'active' : ''}" onclick="toggleFav(event, this)">${isFav ? '♥' : '♡'}</button>
       <img src="${p.img}" alt="${p.name}">
       <div class="info">
         <h3>${p.name}</h3>
@@ -476,12 +485,15 @@ PRODUCTS.forEach(p => {
   `;
 });
 
-// お気に入り
-function toggleFav(e, btn) {
-  e.stopPropagation();
-  btn.classList.toggle('active');
-  btn.innerHTML = btn.classList.contains('active') ? '♥' : '♡';
-}
+// お知らせ描画
+const newsList = document.getElementById('newsList');
+NEWS.forEach(n => {
+  newsList.innerHTML += `
+    <div class="news-item">
+      <time>${n.date}</time><span class="tag">${n.tag}</span><strong>${n.title}</strong>
+    </div>
+  `;
+});
 
 // モーダル
 function openModal(id) {
@@ -489,13 +501,12 @@ function openModal(id) {
   if(!p) return;
   document.getElementById('modalImg').src = p.img;
   document.getElementById('modalTitle').textContent = p.name;
-  document.getElementById('modalDesc').textContent = p.desc;
+  document.getElementById('modalDesc').textContent = p.desc || '';
   document.getElementById('productModal').classList.add('open');
 }
 
-// ★ 47都道府県すべての店舗データ
+// 店舗データ（47都道府県）
 const STORES = [
-  // 北海道・東北
   { region: "hokkaido", pref: "北海道", name: "札幌ステラプレイス店", area: "札幌市中央区北5条西2丁目", time: "10:00〜21:00" },
   { region: "tohoku", pref: "青森県", name: "弘前駅前店", area: "弘前市駅前町9-20", time: "10:00〜19:00" },
   { region: "tohoku", pref: "岩手県", name: "盛岡フェザン店", area: "盛岡市盛岡駅前通1-44", time: "10:00〜20:00" },
@@ -503,7 +514,6 @@ const STORES = [
   { region: "tohoku", pref: "秋田県", name: "秋田トピコ店", area: "秋田市中通7-1-2", time: "10:00〜19:00" },
   { region: "tohoku", pref: "山形県", name: "山形エスパル店", area: "山形市香澄町1-1-1", time: "10:00〜20:00" },
   { region: "tohoku", pref: "福島県", name: "郡山駅前店", area: "郡山市駅前1-1-1", time: "10:00〜20:00" },
-  // 関東
   { region: "kanto", pref: "茨城県", name: "水戸エクセル店", area: "水戸市宮町1-1-1", time: "10:00〜20:00" },
   { region: "kanto", pref: "栃木県", name: "宇都宮パセオ店", area: "宇都宮市川向町1-23", time: "10:00〜20:00" },
   { region: "kanto", pref: "群馬県", name: "高崎駅ビル店", area: "高崎市八島町222", time: "10:00〜20:00" },
@@ -511,7 +521,6 @@ const STORES = [
   { region: "kanto", pref: "千葉県", name: "千葉駅ペリエ店", area: "千葉市中央区新千葉1-1-1", time: "10:00〜21:00" },
   { region: "kanto", pref: "東京都", name: "丸の内オアゾ店", area: "千代田区丸の内1-6-4", time: "8:00〜21:00" },
   { region: "kanto", pref: "神奈川県", name: "横浜ジョイナス店", area: "横浜市西区南幸1-5-1", time: "10:00〜21:00" },
-  // 中部
   { region: "chubu", pref: "新潟県", name: "新潟伊勢丹店", area: "新潟市中央区八千代1-6-1", time: "10:00〜19:00" },
   { region: "chubu", pref: "富山県", name: "富山マルート店", area: "富山市明輪町1-231", time: "10:00〜20:00" },
   { region: "chubu", pref: "石川県", name: "アル・プラザ鹿島店", area: "鹿島郡中能登町井田に部50番地", time: "9:00〜20:00" },
@@ -521,7 +530,6 @@ const STORES = [
   { region: "chubu", pref: "岐阜県", name: "岐阜アクティブG店", area: "岐阜市橋本町1-10-23", time: "10:00〜20:00" },
   { region: "chubu", pref: "静岡県", name: "静岡パルシェ店", area: "静岡市葵区黒金町49", time: "10:00〜20:00" },
   { region: "chubu", pref: "愛知県", name: "名古屋タカシマヤ店", area: "名古屋市中村区名駅1-1-4", time: "10:00〜20:00" },
-  // 近畿
   { region: "kinki", pref: "三重県", name: "津チャム店", area: "津市羽所町700", time: "10:00〜20:00" },
   { region: "kinki", pref: "滋賀県", name: "草津エイスクエア店", area: "草津市西渋川1-23-1", time: "10:00〜20:00" },
   { region: "kinki", pref: "京都府", name: "京都ポルタ店", area: "京都市下京区東塩小路町902", time: "10:00〜20:00" },
@@ -529,18 +537,15 @@ const STORES = [
   { region: "kinki", pref: "兵庫県", name: "神戸さんちか店", area: "神戸市中央区三宮町1-10-1", time: "10:00〜20:00" },
   { region: "kinki", pref: "奈良県", name: "近鉄奈良駅前店", area: "奈良市東向中町29", time: "10:00〜19:00" },
   { region: "kinki", pref: "和歌山県", name: "和歌山ミオ店", area: "和歌山市友田町5-46", time: "10:00〜20:00" },
-  // 中国
   { region: "chugoku", pref: "鳥取県", name: "鳥取駅前店", area: "鳥取市東品治町111-1", time: "10:00〜19:00" },
   { region: "chugoku", pref: "島根県", name: "松江スターバックス併設店", area: "松江市朝日町490-6", time: "8:00〜21:00" },
   { region: "chugoku", pref: "岡山県", name: "岡山一番街店", area: "岡山市北区駅前町1-1-1", time: "10:00〜20:00" },
   { region: "chugoku", pref: "広島県", name: "広島シャレオ店", area: "広島市中区基町6-78", time: "10:00〜20:00" },
   { region: "chugoku", pref: "山口県", name: "山口駅前店", area: "山口市惣太夫町2-1", time: "10:00〜19:00" },
-  // 四国
   { region: "shikoku", pref: "徳島県", name: "徳島クレメント店", area: "徳島市寺島本町西1-61", time: "10:00〜20:00" },
   { region: "shikoku", pref: "香川県", name: "高松丸亀町商店街店", area: "高松市丸亀町8-23", time: "10:00〜20:00" },
   { region: "shikoku", pref: "愛媛県", name: "松山大街道店", area: "松山市大街道3-2-1", time: "10:00〜20:00" },
   { region: "shikoku", pref: "高知県", name: "高知ひろめ市場前店", area: "高知市帯屋町2-3-1", time: "10:00〜20:00" },
-  // 九州・沖縄
   { region: "kyushu", pref: "福岡県", name: "天神地下街店", area: "福岡市中央区天神2丁目", time: "10:00〜20:00" },
   { region: "kyushu", pref: "佐賀県", name: "佐賀駅ビル店", area: "佐賀市駅前中央1-11-20", time: "10:00〜20:00" },
   { region: "kyushu", pref: "長崎県", name: "長崎浜町アーケード店", area: "長崎市浜町7-8", time: "10:00〜20:00" },
@@ -581,6 +586,16 @@ document.getElementById('shopSearch').addEventListener('keyup', (e) => {
     const match = card.textContent.toLowerCase().includes(val);
     card.style.display = match ? 'block' : 'none';
   });
+});
+
+// ヘッダーのスクロール
+window.addEventListener('scroll', () => {
+  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// ハンバーガーメニュー
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('nav').classList.toggle('open');
 });
 
 // フェードイン
