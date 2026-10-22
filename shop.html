@@ -6,12 +6,6 @@
 <meta name="theme-color" content="#f8f2e8">
 <title>オンラインショップ｜モンゴリアンベーグル</title>
 <meta name="description" content="モンゴリアンベーグルのオンラインショップ。フビライパンやチンギスパン、バトゥパンなど定番商品や季節限定セットをご自宅へお届けします。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="オンラインショップ｜モンゴリアンベーグル">
-<meta property="og:description" content="フビライパンやチンギスパンなど、モンゴル発のベーカリーブランドの商品をお届けします。">
-<meta property="og:url" content="https://mongolianbagel.github.io/mongolian-bagel/shop.html">
-<meta property="og:image" content="https://mongolianbagel.github.io/mongolian-bagel/fubilai.jpg">
-<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2376251f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M16.5 8c1.5 0 2.5 1.5 2.5 3.5s-1 3.5-2.5 3.5c-1 0-2-.5-2.5-1.5H10c-.5 1-1.5 1.5-2.5 1.5C6 15 5 13.5 5 11.5S6 8 7.5 8c1 0 2 .5 2.5 1.5h4c.5-1 1.5-1.5 2.5-1.5z'/><path d='M7 9.5c-1.5-.5-2.5-1.5-2-3s2-1.5 2.5 0'/><path d='M17 9.5c1.5-.5 2.5-1.5 2-3s-2-1.5-2.5 0'/></svg>">
 <style>
 :root{--site-primary:#76251f;--site-secondary:#e8d3b5;--site-background:#f8f2e8;--site-on-background:#34251e;--site-font-body:"Yu Gothic","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;--site-font-heading:"Yu Mincho","Hiragino Mincho ProN",serif;--line:#e4d5c0;--muted:#77695b}
@@ -42,7 +36,7 @@
 .filters button{cursor:pointer;border:1px solid #d9c7af;background:#fffaf2;color:var(--site-primary);border-radius:20px;padding:8px 14px;font-size:11px;font-weight:700;font-family:inherit}
 .filters button.is-active{background:var(--site-primary);color:#fff6e9;border-color:var(--site-primary)}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.product{background:#fffaf2;border:1px solid var(--line);display:flex;flex-direction:column;transition:.15s}
+.product{background:#fffaf2;border:1px solid var(--line);display:flex;flex-direction:column;transition:.15s;cursor:pointer;}
 .product:hover{transform:translateY(-3px);box-shadow:0 10px 22px #76251f14;border-color:var(--site-primary)}
 .product .thumb{position:relative;aspect-ratio:1.15;overflow:hidden;background:#e9d6b8}
 .product .thumb img{width:100%;height:100%;object-fit:cover}
@@ -58,6 +52,13 @@
 .product .add.is-added{background:var(--site-primary);color:#fff6e9}
 .product.is-hidden{display:none}
 .img-note{font-size:9px;color:#9e7255;margin-top:4px}
+
+/* 送料無料プログレスバー */
+.free-ship-bar{background:#e9d6b8;height:6px;width:100%;border-radius:3px;margin-top:10px;overflow:hidden}
+.free-ship-fill{background:var(--site-primary);height:100%;width:0%;transition:width .3s}
+.free-ship-text{font-size:10px;text-align:center;margin-top:5px;color:var(--site-primary);font-weight:bold}
+
+/* カートドロワー */
 .overlay{position:fixed;inset:0;background:#2a1a12aa;backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:.25s;z-index:40}
 .overlay.open{opacity:1;pointer-events:auto}
 .drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:#fffaf2;z-index:50;transform:translateX(105%);transition:transform .3s cubic-bezier(.22,.9,.3,1);display:flex;flex-direction:column;box-shadow:-10px 0 30px #2a1a1233}
@@ -82,41 +83,52 @@
 .ship-note{font-size:10px;color:var(--muted);margin:8px 0 14px}
 .checkout{cursor:pointer;width:100%;border:0;background:var(--site-primary);color:#fff6e9;border-radius:30px;padding:15px;font-size:13px;font-weight:800;font-family:inherit}
 .checkout:hover{background:#5c1b17}
-.modal{position:fixed;inset:0;z-index:60;display:none;place-items:center;padding:20px}
+
+/* 商品詳細モーダル */
+.modal{position:fixed;inset:0;z-index:60;display:none;place-items:center;padding:20px;background:#2a1a12aa;backdrop-filter:blur(2px);}
 .modal.open{display:grid}
-.modal-card{background:#fffaf2;border:1px solid var(--line);width:min(520px,100%);max-height:90vh;overflow:auto;padding:26px;position:relative}
-.modal-card h2{font:500 24px var(--site-font-heading);color:var(--site-primary);margin:0 0 6px}
-.modal-card p.lead{font-size:12px;color:var(--muted);line-height:1.8;margin:0 0 16px}
+.modal-card{background:#fffaf2;border:1px solid var(--line);width:min(800px,100%);max-height:90vh;overflow:auto;position:relative;display:grid;grid-template-columns:1fr 1fr;}
+.modal-card .modal-img{background:#e9d6b8;width:100%;height:100%;object-fit:cover;min-height:300px;}
+.modal-card .modal-body{padding:30px;display:flex;flex-direction:column;}
+.modal-card h2{font:500 28px var(--site-font-heading);color:var(--site-primary);margin:0 0 10px;}
+.modal-card .modal-price{font:700 24px Georgia,serif;color:var(--site-primary);margin-bottom:16px;}
+.modal-card p{font-size:13px;line-height:1.9;color:var(--muted);margin:0 0 20px;}
+.modal-card .modal-options{margin-bottom:20px;}
+.modal-card .modal-options label{display:block;font-size:12px;font-weight:bold;margin-bottom:8px;color:var(--site-primary);}
+.modal-card .modal-options select{width:100%;padding:10px;border:1px solid var(--line);border-radius:4px;font-family:inherit;font-size:13px;}
+.modal-close{position:absolute;top:15px;right:15px;cursor:pointer;background:#fff;border:1px solid var(--line);border-radius:50%;width:32px;height:32px;display:grid;place-items:center;font-size:18px;color:var(--site-primary);z-index:10;}
+
+/* 注文フォーム */
+.form-group{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 .field{margin-bottom:14px}
 .field label{display:block;font-size:11px;font-weight:700;color:var(--site-primary);margin-bottom:5px}
-.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);background:#fffdf9;padding:11px 12px;font-size:13px;font-family:inherit;color:var(--site-on-background)}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);background:#fffdf9;padding:11px 12px;font-size:13px;font-family:inherit;}
 .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid #76251f33;border-color:var(--site-primary)}
 .field .req{color:#a92e28;font-size:9px;margin-left:4px}
 .form-total{display:flex;justify-content:space-between;font-size:14px;font-weight:800;border-top:1px dashed var(--line);padding-top:12px;margin:6px 0 16px}
 .form-total b{font:700 22px Georgia,serif;color:var(--site-primary)}
 .form-note{font-size:10px;color:var(--muted);line-height:1.7;margin-top:12px}
+
 .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:#34251e;color:#fff6e9;padding:12px 20px;font-size:12px;border-radius:30px;opacity:0;pointer-events:none;transition:.25s;z-index:70;box-shadow:0 10px 24px #00000033}
 .toast.show{opacity:1;transform:translate(-50%,0)}
-.admin-link{font-size:11px;color:var(--muted);text-decoration:underline;margin-top:20px;display:inline-block}
-.admin-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:20px;background:#fffaf2;}
-.admin-table th,.admin-table td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top;}
-.admin-table th{background:#f3e7d5;color:var(--site-primary);}
-.admin-table tr:hover{background:#faf5ec;}
+
 .footer{background:var(--site-primary);color:#fff3e5;padding:30px 0 24px;margin-top:40px}
 .footinner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:11px}
 .footinner .logo{color:#fff3e5}
 .footinner .logo-symbol{border-color:#fff3e5;background:transparent}
 .footlinks{display:flex;gap:18px;flex-wrap:wrap}
 .copyright{font-size:10px;opacity:.85;width:100%;border-top:1px solid #ffffff33;padding-top:12px;margin-top:8px}
-@media(max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
+
 @media(max-width:800px){
 .grid{grid-template-columns:repeat(2,1fr)}
 .nav{flex-wrap:wrap;width:100%;justify-content:space-between;gap:9px;font-size:11px}
 .wrap{width:min(100% - 32px,600px)}
 .header{flex-wrap:wrap}
 .shop-hero{padding:42px 0}
+.modal-card{grid-template-columns:1fr;}
+.modal-card .modal-img{height:200px;min-height:auto;}
+.form-group{grid-template-columns:1fr;}
 }
-@media(max-width:480px){.grid{grid-template-columns:1fr 1fr;gap:10px}.product h3{font-size:14px}.product .price{font-size:16px}.drawer{width:100%}}
 </style>
 </head>
 <body>
@@ -127,12 +139,11 @@
   <nav class="nav">
     <a href="index.html">ホーム</a>
     <a href="#products">商品一覧</a>
-    <a href="#guide">ご利用ガイド</a>
-    <a href="#faq">FAQ</a>
-    <a href="orders.html" class="admin-link" style="margin:0;border:1px solid var(--line);padding:6px 10px;border-radius:20px;text-decoration:none;">管理者用</a>
+    <a href="legal.html" style="font-size:10px;">特定商取引法</a>
     <button class="cartbtn" id="openCart" type="button">🛒 カート <span class="count" id="cartCount">0</span></button>
   </nav>
 </header>
+
 <section class="shop-hero">
   <div class="wrap">
     <div class="eyebrow">MONGOLIAN BAGEL ONLINE SHOP</div>
@@ -140,171 +151,175 @@
     <p>焼きたてのベーグルを冷凍便で全国へ。エビフライをパンに挟んだ看板商品「フビライパン」、ジンギスカンを挟んだ「チンギスパン」、チャチャルガンのジャムを塗った「バトゥパン」をお選びいただけます。</p>
   </div>
 </section>
+
 <section class="wrap section" id="products">
   <div class="section-title">
     <div class="eyebrow">ALL PRODUCTS</div>
     <h2>商品一覧</h2>
-    <p>すべて冷凍便でお届けします。解凍後、トースターで軽く温めると焼きたての食感がよみがえります。<br><span style="font-size:10px">※画像はイメージです。</span></p>
+    <p>画像をクリックすると詳細が見られます。解凍後、トースターで軽く温めると焼きたての食感がよみがえります。</p>
   </div>
+  
   <div class="filters" id="filters">
     <button class="is-active" data-filter="all">すべて</button>
     <button data-filter="signature">看板商品</button>
     <button data-filter="classic">定番ベーグル</button>
     <button data-filter="sweet">甘い系</button>
-    <button data-filter="set">セット・ギフト</button>
   </div>
   <div class="grid" id="productGrid">
-    <article class="product" data-category="signature" data-id="fubilai" data-name="フビライパン" data-price="480">
-      <div class="thumb"><span class="tag">看板商品</span><img src="fubilai.jpg" alt="フビライパン"></div>
-      <div class="body">
-        <h3>フビライパン</h3>
-        <p class="desc">エビフライをパンに挟んだ看板商品。サクサクのエビフライと、もちもちのベーグル生地の組み合わせ。</p>
-        <div class="price-row"><div><span class="price">¥480</span><span class="unit">／1個</span></div><button class="add" type="button">カートに追加</button></div>
-        <div class="img-note">※画像はイメージです</div>
-      </div>
-    </article>
-    <article class="product" data-category="signature" data-id="chingis" data-name="チンギスパン" data-price="580">
-      <div class="thumb"><span class="tag">新商品</span><img src="chingis.jpg" alt="チンギスパン"></div>
-      <div class="body">
-        <h3>チンギスパン</h3>
-        <p class="desc">ジンギスカンをパンに挟んだ、食べ応え十分の一品。モンゴルの伝統的な味わいをパンで楽しめます。</p>
-        <div class="price-row"><div><span class="price">¥580</span><span class="unit">／1個</span></div><button class="add" type="button">カートに追加</button></div>
-        <div class="img-note">※画像はイメージです</div>
-      </div>
-    </article>
-    <article class="product" data-category="sweet" data-id="batu" data-name="バトゥパン" data-price="380">
-      <div class="thumb"><span class="tag">新商品</span><img src="batu.jpg" alt="バトゥパン"></div>
-      <div class="body">
-        <h3>バトゥパン</h3>
-        <p class="desc">チャチャルガンのジャムを塗った、甘酸っぱいスイーツ系パン。朝食にもおやつにもぴったり。</p>
-        <div class="price-row"><div><span class="price">¥380</span><span class="unit">／1個</span></div><button class="add" type="button">カートに追加</button></div>
-        <div class="img-note">※画像はイメージです</div>
-      </div>
-    </article>
-    <article class="product" data-category="classic" data-id="plain" data-name="プレーンベーグル" data-price="220">
-      <div class="thumb"><img src="https://images.unsplash.com/photo-1585478259715-876acc5be8eb?q=80&w=800&auto=format&fit=crop" alt="プレーンベーグル"></div>
-      <div class="body">
-        <h3>プレーンベーグル</h3>
-        <p class="desc">小麦の風味を楽しむ定番。毎朝食べたい、シンプルで力強い味わい。</p>
-        <div class="price-row"><div><span class="price">¥220</span><span class="unit">／1個</span></div><button class="add" type="button">カートに追加</button></div>
-        <div class="img-note">※画像はイメージです</div>
-      </div>
-    </article>
-    <article class="product" data-category="classic" data-id="sesame" data-name="ごまベーグル" data-price="240">
-      <div class="thumb"><img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?q=80&w=800&auto=format&fit=crop" alt="ごまベーグル"></div>
-      <div class="body">
-        <h3>ごまベーグル</h3>
-        <p class="desc">香ばしいごまをたっぷり。焼くと香りが広がる、食事にも合うベーグル。</p>
-        <div class="price-row"><div><span class="price">¥240</span><span class="unit">／1個</span></div><button class="add" type="button">カートに追加</button></div>
-        <div class="img-note">※画像はイメージです</div>
-      </div>
-    </article>
-    <article class="product" data-category="set" data-id="assort" data-name="定番ベーグル詰め合わせ 6個" data-price="1280">
-      <div class="thumb"><img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=800&auto=format&fit=crop" alt="定番ベーグル詰め合わせ"></div>
-      <div class="body">
-        <h3>定番ベーグル詰め合わせ 6個</h3>
-        <p class="desc">プレーン・ごま・ブルーベリーなど定番を6個詰め合わせ。初めての方にも。</p>
-        <div class="price-row"><div><span class="price">¥1,280</span><span class="unit">／6個</span></div><button class="add" type="button">カートに追加</button></div>
-        <div class="img-note">※画像はイメージです</div>
-      </div>
-    </article>
-    <article class="product" data-category="set" data-id="gift" data-name="ギフトボックス 8個入" data-price="2480">
-      <div class="thumb"><span class="tag">ギフト</span><img src="https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?q=80&w=800&auto=format&fit=crop" alt="ギフトボックス"></div>
-      <div class="body">
-        <h3>ギフトボックス 8個入</h3>
-        <p class="desc">大切な人への贈り物に。定番と季節のベーグルを8個詰め合わせたギフトボックス。</p>
-        <div class="price-row"><div><span class="price">¥2,480</span><span class="unit">／8個</span></div><button class="add" type="button">カートに追加</button></div>
-        <div class="img-note">※画像はイメージです</div>
-      </div>
-    </article>
+    <!-- 商品データはJSで生成します -->
   </div>
 </section>
-<section class="wrap section" id="guide">
-  <div class="section-title"><div class="eyebrow">SHOPPING GUIDE</div><h2>ご利用ガイド</h2><p>ご注文からお届けまで。</p></div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px" class="guide-grid">
-    <div style="background:#fffaf2;border:1px solid var(--line);padding:22px"><h3 style="font:500 19px var(--site-font-heading);color:var(--site-primary);margin:0 0 6px">送料</h3><p style="font-size:12px;line-height:1.9;color:var(--muted);margin:0">全国一律 ¥800（クール便）。¥5,000以上のお買い上げで送料無料。沖縄・離島は別途追加送料がかかる場合があります。</p></div>
-    <div style="background:#fffaf2;border:1px solid var(--line);padding:22px"><h3 style="font:500 19px var(--site-font-heading);color:var(--site-primary);margin:0 0 6px">お届け</h3><p style="font-size:12px;line-height:1.9;color:var(--muted);margin:0">ご注文確認後、3〜5営業日以内に冷凍便で発送します。到着後は冷凍庫で保存し、解凍後はお早めにお召し上がりください。</p></div>
-    <div style="background:#fffaf2;border:1px solid var(--line);padding:22px"><h3 style="font:500 19px var(--site-font-heading);color:var(--site-primary);margin:0 0 6px">お支払い</h3><p style="font-size:12px;line-height:1.9;color:var(--muted);margin:0">クレジットカード、コンビニ決済、代金引換に対応（予定）。※本サイトはサンプルです。</p></div>
-  </div>
-</section>
-<section class="wrap section faq" id="faq" style="border-top:1px solid var(--line)">
-  <div class="section-title"><div class="eyebrow">FAQ</div><h2>よくある質問</h2></div>
-  <details><summary>フビライパンは通販で買えますか？</summary><p>はい。オンラインショップで単品・3個セットをご用意しています。冷凍便で全国へお届けします。</p></details>
-  <details><summary>送料はいくらですか？</summary><p>全国一律 ¥800（クール便）。¥5,000以上のお買い上げで送料無料です。沖縄・離島は別途追加送料がかかる場合があります。</p></details>
-  <details><summary>賞味期限・保存方法は？</summary><p>冷凍で約30日。解凍後は冷蔵で2〜3日以内にお召し上がりください。トースターで軽く温めると焼きたての食感がよみがえります。</p></details>
-  <details><summary>本社はどこですか？</summary><p>本社はモンゴル・ウランバートルにのみ置いています。日本国内に本社機能はありません。オンラインショップの運営は日本国内のブランド窓口が担当しています。</p></details>
-</section>
+
 <footer class="footer"><div class="wrap footinner">
   <a class="logo" href="index.html"><span class="logo-symbol"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--site-primary);display:block;"><path d="M16.5 8c1.5 0 2.5 1.5 2.5 3.5s-1 3.5-2.5 3.5c-1 0-2-.5-2.5-1.5H10c-.5 1-1.5 1.5-2.5 1.5C6 15 5 13.5 5 11.5S6 8 7.5 8c1 0 2 .5 2.5 1.5h4c.5-1 1.5-1.5 2.5-1.5z"/><path d="M7 9.5c-1.5-.5-2.5-1.5-2-3s2-1.5 2.5 0"/><path d="M17 9.5c1.5-.5 2.5-1.5 2-3s-2-1.5-2.5 0"/><circle cx="9.5" cy="11.5" r="0.5" fill="currentColor" stroke="none"/><circle cx="14.5" cy="11.5" r="0.5" fill="currentColor" stroke="none"/><path d="M11.5 13.5h1"/></svg></span><span>モンゴリアンベーグル<small>MONGOLIAN BAGEL</small></span></a>
-  <div class="footlinks"><a href="index.html">ホーム</a><a href="shop.html">オンラインショップ</a><a href="index.html#contact">お問い合わせ</a><a href="mongolian_bagel-mn.html">Монгол хэл</a></div>
+  <div class="footlinks"><a href="index.html">ホーム</a><a href="shop.html">オンラインショップ</a><a href="legal.html">特定商取引法</a><a href="orders.html">管理者用</a></div>
   <span class="copyright">© 1998–2026 MONGOLIAN BAGEL · Head Office: Ulaanbaatar, Mongolia</span>
 </div></footer>
+
+<!-- カートドロワー -->
 <div class="overlay" id="overlay"></div>
 <aside class="drawer" id="drawer" aria-label="ショッピングカート">
   <div class="drawer-head"><h2>カート</h2><button class="drawer-close" id="closeCart" type="button" aria-label="閉じる">×</button></div>
   <div class="drawer-body" id="cartBody"></div>
   <div class="drawer-foot">
-    <div class="sum-row"><span>小計</span><span id="subtotal">¥0</span></div>
+    <div class="free-ship-text" id="freeShipText">あと ¥5,000 で送料無料！</div>
+    <div class="free-ship-bar"><div class="free-ship-fill" id="freeShipFill"></div></div>
+    <div class="sum-row" style="margin-top:15px;"><span>小計</span><span id="subtotal">¥0</span></div>
     <div class="sum-row"><span>送料</span><span id="shipping">¥0</span></div>
     <div class="sum-row total"><span>合計</span><b id="total">¥0</b></div>
-    <p class="ship-note">¥5,000以上のお買い上げで送料無料。表示は税込価格です。</p>
+    <p class="ship-note">表示は税込価格です。</p>
     <button class="checkout" id="checkoutBtn" type="button">レジへ進む</button>
   </div>
 </aside>
-<div class="modal" id="checkoutModal">
+
+<!-- 商品詳細モーダル -->
+<div class="modal" id="productModal">
   <div class="modal-card">
-    <h2>ご注文手続き</h2>
-    <p class="lead">必要事項をご入力のうえ「注文を確定する」を押してください。※本サイトはサンプルのため、実際の決済は発生しません。</p>
-    <form id="checkoutForm">
-      <div class="field"><label for="f-name">お名前<span class="req">必須</span></label><input id="f-name" name="name" required autocomplete="name"></div>
-      <div class="field"><label for="f-email">メールアドレス<span class="req">必須</span></label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
-      <div class="field"><label for="f-tel">電話番号<span class="req">必須</span></label><input id="f-tel" name="tel" type="tel" required autocomplete="tel"></div>
-      <div class="field"><label for="f-zip">郵便番号<span class="req">必須</span></label><input id="f-zip" name="zip" required autocomplete="postal-code" placeholder="123-4567"></div>
-      <div class="field"><label for="f-addr">住所<span class="req">必須</span></label><textarea id="f-addr" name="address" rows="2" required autocomplete="street-address"></textarea></div>
-      <div class="field"><label for="f-pay">お支払い方法</label><select id="f-pay" name="pay"><option>クレジットカード</option><option>コンビニ決済</option><option>代金引換</option></select></div>
-      <div class="form-total"><span>合計</span><b id="modalTotal">¥0</b></div>
-      <button class="checkout" type="submit">注文を確定する</button>
-      <p class="form-note">※本フォームはデモです。入力内容はお使いのブラウザに保存されます。</p>
-    </form>
+    <button class="modal-close" id="closeProductModal">×</button>
+    <img src="" alt="" class="modal-img" id="modalImg">
+    <div class="modal-body">
+      <h2 id="modalTitle"></h2>
+      <div class="modal-price" id="modalPrice"></div>
+      <p id="modalDesc"></p>
+      <div class="modal-options">
+        <label for="modalBuyType">購入方法を選択</label>
+        <select id="modalBuyType">
+          <option value="single">通常購入（1回のみ）</option>
+          <option value="sub">定期購入（毎月自動配送・10%OFF）</option>
+        </select>
+      </div>
+      <button class="checkout" id="modalAddToCart" style="margin-top:auto;">カートに追加する</button>
+    </div>
   </div>
 </div>
+
+<!-- 注文フォーム -->
+<div class="modal" id="checkoutModal">
+  <div class="modal-card" style="grid-template-columns:1fr;">
+    <button class="modal-close" id="closeCheckoutModal">×</button>
+    <div style="padding:30px;">
+      <h2>ご注文手続き</h2>
+      <p style="font-size:12px; margin-bottom:20px;">※本サイトはサンプルのため、実際の決済は発生しません。</p>
+      <form id="checkoutForm">
+        <div class="form-group">
+          <div class="field"><label>お名前<span class="req">必須</span></label><input id="f-name" required></div>
+          <div class="field"><label>メールアドレス<span class="req">必須</span></label><input id="f-email" type="email" required></div>
+        </div>
+        <div class="form-group">
+          <div class="field"><label>電話番号<span class="req">必須</span></label><input id="f-tel" type="tel" required></div>
+          <div class="field"><label>郵便番号<span class="req">必須</span></label><input id="f-zip" required placeholder="123-4567"></div>
+        </div>
+        <div class="field"><label>住所<span class="req">必須</span></label><textarea id="f-addr" rows="2" required></textarea></div>
+        
+        <h3 style="font-size:14px;color:var(--site-primary);margin-top:20px;">ギフト・オプション</h3>
+        <div class="form-group">
+          <div class="field"><label>のし・包装</label><select id="f-gift"><option>なし</option><option>熨斗あり（無料）</option><option>包装紙あり（無料）</option></select></div>
+          <div class="field"><label>メッセージカード</label><input id="f-msg" placeholder="ご自由に入力ください"></div>
+        </div>
+        
+        <div class="field"><label>お支払い方法</label><select id="f-pay"><option>クレジットカード</option><option>コンビニ決済</option><option>代金引換</option></select></div>
+        
+        <div class="form-total"><span>合計</span><b id="modalTotal">¥0</b></div>
+        <button class="checkout" type="submit">注文を確定する</button>
+      </form>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
+
 <script>
 (function(){
   "use strict";
-  var STORAGE_KEY = "mongolian-bagel-cart-v1";
-  var ORDERS_KEY = "mongolian-bagel-orders-v1";
-  var SHIPPING_FEE = 800;
-  var FREE_SHIPPING_THRESHOLD = 5000;
+  
+  // 商品データ
+  const PRODUCTS = [
+    { id: "fubilai", cat: "signature", name: "フビライパン", price: 480, img: "fubilai.jpg", tag: "看板商品", desc: "エビフライをパンに挟んだ看板商品。サクサクのエビフライと、もちもちのベーグル生地の組み合わせ。" },
+    { id: "chingis", cat: "signature", name: "チンギスパン", price: 580, img: "chingis.jpg", tag: "新商品", desc: "ジンギスカンをパンに挟んだ、食べ応え十分の一品。モンゴルの伝統的な味わいをパンで楽しめます。" },
+    { id: "batu", cat: "sweet", name: "バトゥパン", price: 380, img: "batu.jpg", tag: "新商品", desc: "チャチャルガンのジャムを塗った、甘酸っぱいスイーツ系パン。朝食にもおやつにもぴったり。" },
+    { id: "plain", cat: "classic", name: "プレーンベーグル", price: 220, img: "https://images.unsplash.com/photo-1585478259715-876acc5be8eb?q=80&w=800&auto=format&fit=crop", tag: "", desc: "小麦の風味を楽しむ定番。毎朝食べたい、シンプルで力強い味わい。" }
+  ];
 
-  var cart = loadCart();
-  var overlay = document.getElementById("overlay");
-  var drawer = document.getElementById("drawer");
-  var cartBody = document.getElementById("cartBody");
-  var cartCount = document.getElementById("cartCount");
-  var subtotalEl = document.getElementById("subtotal");
-  var shippingEl = document.getElementById("shipping");
-  var totalEl = document.getElementById("total");
-  var modalTotal = document.getElementById("modalTotal");
-  var toast = document.getElementById("toast");
+  const STORAGE_KEY = "mongolian-bagel-cart-v2";
+  const ORDERS_KEY = "mongolian-bagel-orders-v1";
+  const SHIPPING_FEE = 800;
+  const FREE_SHIPPING_THRESHOLD = 5000;
 
+  let cart = loadCart();
+
+  // 要素取得
+  const grid = document.getElementById("productGrid");
+  const cartBody = document.getElementById("cartBody");
+  const cartCount = document.getElementById("cartCount");
+  const subtotalEl = document.getElementById("subtotal");
+  const shippingEl = document.getElementById("shipping");
+  const totalEl = document.getElementById("total");
+  const modalTotal = document.getElementById("modalTotal");
+  const freeShipFill = document.getElementById("freeShipFill");
+  const freeShipText = document.getElementById("freeShipText");
+
+  // 描画
+  function renderProducts() {
+    grid.innerHTML = PRODUCTS.map(p => `
+      <article class="product" data-id="${p.id}" data-cat="${p.cat}">
+        <div class="thumb">
+          ${p.tag ? `<span class="tag">${p.tag}</span>` : ''}
+          <img src="${p.img}" alt="${p.name}">
+        </div>
+        <div class="body">
+          <h3>${p.name}</h3>
+          <p class="desc">${p.desc.substring(0,30)}...</p>
+          <div class="price-row">
+            <div><span class="price">¥${p.price}</span><span class="unit">／1個</span></div>
+            <button class="add" type="button" data-id="${p.id}">カートに追加</button>
+          </div>
+          <div class="img-note">※画像はイメージです</div>
+        </div>
+      </article>
+    `).join("");
+  }
+
+  // 関数群
   function yen(n){ return "¥" + n.toLocaleString("ja-JP"); }
   function loadCart(){ try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e){ return {}; } }
   function saveCart(){ try { localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); } catch(e){} }
-  function getProduct(id){ return document.querySelector('.product[data-id="' + id + '"]'); }
+  
+  function getProduct(id) { return PRODUCTS.find(p => p.id === id); }
 
-  function addToCart(id){
-    var el = getProduct(id);
-    if(!el) return;
-    cart[id] = (cart[id] || 0) + 1;
+  function addToCart(id, isSub = false) {
+    const p = getProduct(id);
+    if(!p) return;
+    
+    // 定期購入なら価格を10%OFFに（見た目上）
+    const actualId = isSub ? id + "_sub" : id;
+    
+    cart[actualId] = (cart[actualId] || 0) + 1;
     saveCart();
     renderCart();
-    showToast(el.dataset.name + " をカートに追加しました");
-    var btn = el.querySelector(".add");
-    if(btn){ btn.classList.add("is-added"); btn.textContent = "追加しました ✓"; setTimeout(function(){ btn.classList.remove("is-added"); btn.textContent = "カートに追加"; }, 1200); }
+    showToast(p.name + (isSub ? " (定期)" : "") + " を追加しました");
   }
 
-  function changeQty(id, delta){
+  function changeQty(id, delta) {
     if(!cart[id]) return;
     cart[id] += delta;
     if(cart[id] <= 0) delete cart[id];
@@ -312,150 +327,195 @@
     renderCart();
   }
 
-  function removeItem(id){
-    delete cart[id];
-    saveCart();
-    renderCart();
-  }
+  function removeItem(id) { delete cart[id]; saveCart(); renderCart(); }
 
-  function computeTotals(){
-    var subtotal = 0;
-    Object.keys(cart).forEach(function(id){
-      var el = getProduct(id);
-      if(!el) return;
-      subtotal += parseInt(el.dataset.price, 10) * cart[id];
+  function computeTotals() {
+    let subtotal = 0;
+    Object.keys(cart).forEach(key => {
+      const baseId = key.replace("_sub", "");
+      const p = getProduct(baseId);
+      if(!p) return;
+      const price = key.includes("_sub") ? Math.floor(p.price * 0.9) : p.price;
+      subtotal += price * cart[key];
     });
-    var shipping = subtotal === 0 ? 0 : (subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_FEE);
-    return { subtotal: subtotal, shipping: shipping, total: subtotal + shipping };
+    const shipping = subtotal === 0 ? 0 : (subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_FEE);
+    return { subtotal, shipping, total: subtotal + shipping };
   }
 
-  function renderCart(){
-    var ids = Object.keys(cart);
-    var count = 0;
-    ids.forEach(function(id){ count += cart[id]; });
+  function renderCart() {
+    const keys = Object.keys(cart);
+    let count = 0;
+    keys.forEach(k => count += cart[k]);
     cartCount.textContent = count;
 
-    if(ids.length === 0){
-      cartBody.innerHTML = '<div class="cart-empty">カートは空です。<br>お好きなベーグルを選んでください。</div>';
+    if(keys.length === 0) {
+      cartBody.innerHTML = '<div class="cart-empty">カートは空です。</div>';
     } else {
-      var html = "";
-      ids.forEach(function(id){
-        var el = getProduct(id);
-        if(!el) return;
-        var price = parseInt(el.dataset.price, 10);
-        var qty = cart[id];
-        var name = el.dataset.name;
-        var img = el.querySelector(".thumb img").getAttribute("src");
-        html += '<div class="cart-line">' +
-          '<img src="' + img + '" alt="' + name + '">' +
-          '<div><h4>' + name + '</h4>' +
-            '<div class="lineprice">' + yen(price * qty) + '</div>' +
-            '<div class="qty">' +
-              '<button type="button" data-action="dec" data-id="' + id + '" aria-label="減らす">−</button>' +
-              '<span>' + qty + '</span>' +
-              '<button type="button" data-action="inc" data-id="' + id + '" aria-label="増やす">＋</button>' +
-            '</div>' +
-            '<button class="remove" type="button" data-action="remove" data-id="' + id + '">削除</button>' +
-          '</div>' +
-        '</div>';
-      });
-      cartBody.innerHTML = html;
+      cartBody.innerHTML = keys.map(key => {
+        const isSub = key.includes("_sub");
+        const baseId = key.replace("_sub", "");
+        const p = getProduct(baseId);
+        const price = isSub ? Math.floor(p.price * 0.9) : p.price;
+        return `
+          <div class="cart-line">
+            <img src="${p.img}" alt="${p.name}">
+            <div>
+              <h4>${p.name} ${isSub ? '<span style="font-size:10px;color:#a65e28;border:1px solid #a65e28;padding:2px 4px;border-radius:4px;margin-left:4px;">定期</span>' : ''}</h4>
+              <div class="lineprice">${yen(price * cart[key])}</div>
+              <div class="qty">
+                <button type="button" data-action="dec" data-id="${key}">−</button>
+                <span>${cart[key]}</span>
+                <button type="button" data-action="inc" data-id="${key}">＋</button>
+              </div>
+              <button class="remove" data-action="remove" data-id="${key}">削除</button>
+            </div>
+          </div>
+        `;
+      }).join("");
     }
 
-    var t = computeTotals();
+    const t = computeTotals();
     subtotalEl.textContent = yen(t.subtotal);
     shippingEl.textContent = t.subtotal === 0 ? "—" : (t.shipping === 0 ? "無料" : yen(t.shipping));
     totalEl.textContent = yen(t.total);
     modalTotal.textContent = yen(t.total);
+
+    // 送料無料バー
+    const remaining = FREE_SHIPPING_THRESHOLD - t.subtotal;
+    if(t.subtotal === 0) {
+      freeShipText.textContent = "あと ¥5,000 で送料無料！";
+      freeShipFill.style.width = "0%";
+    } else if(remaining > 0) {
+      freeShipText.textContent = `あと ${yen(remaining)} で送料無料！`;
+      const pct = (t.subtotal / FREE_SHIPPING_THRESHOLD) * 100;
+      freeShipFill.style.width = pct + "%";
+    } else {
+      freeShipText.textContent = "送料無料になりました！";
+      freeShipFill.style.width = "100%";
+    }
   }
 
-  function openDrawer(){ overlay.classList.add("open"); drawer.classList.add("open"); }
-  function closeDrawer(){ overlay.classList.remove("open"); drawer.classList.remove("open"); }
+  // カート開閉
+  function openDrawer(){ document.getElementById("overlay").classList.add("open"); document.getElementById("drawer").classList.add("open"); }
+  function closeDrawer(){ document.getElementById("overlay").classList.remove("open"); document.getElementById("drawer").classList.remove("open"); }
 
-  function showToast(msg){
-    toast.textContent = msg;
-    toast.classList.add("show");
-    clearTimeout(showToast._t);
-    showToast._t = setTimeout(function(){ toast.classList.remove("show"); }, 1800);
+  // トースト
+  let toastTimer;
+  function showToast(msg) {
+    const t = document.getElementById("toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove("show"), 2000);
   }
 
-  document.getElementById("productGrid").addEventListener("click", function(e){
-    var btn = e.target.closest(".add");
-    if(!btn) return;
-    var card = btn.closest(".product");
-    addToCart(card.dataset.id);
+  // 初期化・イベント登録
+  renderProducts();
+  renderCart();
+
+  // カートに追加（一覧から）
+  grid.addEventListener("click", e => {
+    if(e.target.closest(".add")) {
+      e.stopPropagation();
+      addToCart(e.target.dataset.id);
+    } else if(e.target.closest(".product")) {
+      // 商品詳細モーダルを開く
+      const id = e.target.closest(".product").dataset.id;
+      openProductModal(id);
+    }
   });
 
-  cartBody.addEventListener("click", function(e){
-    var btn = e.target.closest("[data-action]");
+  // カート内操作
+  cartBody.addEventListener("click", e => {
+    const btn = e.target.closest("[data-action]");
     if(!btn) return;
-    var id = btn.dataset.id;
-    var action = btn.dataset.action;
-    if(action === "inc") changeQty(id, 1);
-    else if(action === "dec") changeQty(id, -1);
-    else if(action === "remove") removeItem(id);
+    if(btn.dataset.action === "inc") changeQty(btn.dataset.id, 1);
+    if(btn.dataset.action === "dec") changeQty(btn.dataset.id, -1);
+    if(btn.dataset.action === "remove") removeItem(btn.dataset.id);
   });
 
-  document.getElementById("openCart").addEventListener("click", openDrawer);
-  document.getElementById("closeCart").addEventListener("click", closeDrawer);
-  overlay.addEventListener("click", closeDrawer);
+  document.getElementById("openCart").onclick = openDrawer;
+  document.getElementById("closeCart").onclick = closeDrawer;
+  document.getElementById("overlay").onclick = closeDrawer;
 
-  document.getElementById("filters").addEventListener("click", function(e){
-    var btn = e.target.closest("button");
-    if(!btn) return;
-    var filter = btn.dataset.filter;
-    this.querySelectorAll("button").forEach(function(b){ b.classList.toggle("is-active", b === btn); });
-    document.querySelectorAll(".product").forEach(function(p){
-      var show = filter === "all" || p.dataset.category === filter;
-      p.classList.toggle("is-hidden", !show);
+  // フィルター
+  document.getElementById("filters").addEventListener("click", e => {
+    if(e.target.tagName !== "BUTTON") return;
+    document.querySelectorAll("#filters button").forEach(b => b.classList.remove("is-active"));
+    e.target.classList.add("is-active");
+    const f = e.target.dataset.filter;
+    document.querySelectorAll(".product").forEach(p => {
+      p.classList.toggle("is-hidden", f !== "all" && p.dataset.cat !== f);
     });
   });
 
-  var checkoutModal = document.getElementById("checkoutModal");
-  document.getElementById("checkoutBtn").addEventListener("click", function(){
-    var t = computeTotals();
-    if(t.subtotal === 0){ showToast("カートが空です"); return; }
-    modalTotal.textContent = yen(t.total);
-    checkoutModal.classList.add("open");
-  });
-  checkoutModal.addEventListener("click", function(e){ if(e.target === checkoutModal) checkoutModal.classList.remove("open"); });
+  // 商品詳細モーダル
+  let currentModalId = null;
+  function openProductModal(id) {
+    const p = getProduct(id);
+    if(!p) return;
+    currentModalId = id;
+    document.getElementById("modalImg").src = p.img;
+    document.getElementById("modalTitle").textContent = p.name;
+    document.getElementById("modalPrice").textContent = yen(p.price);
+    document.getElementById("modalDesc").textContent = p.desc;
+    document.getElementById("modalBuyType").value = "single";
+    document.getElementById("productModal").classList.add("open");
+  }
+  document.getElementById("closeProductModal").onclick = () => document.getElementById("productModal").classList.remove("open");
+  document.getElementById("modalAddToCart").onclick = () => {
+    const isSub = document.getElementById("modalBuyType").value === "sub";
+    addToCart(currentModalId, isSub);
+    document.getElementById("productModal").classList.remove("open");
+  };
 
-  document.getElementById("checkoutForm").addEventListener("submit", function(e){
+  // レジ
+  document.getElementById("checkoutBtn").onclick = () => {
+    if(computeTotals().subtotal === 0) { showToast("カートが空です"); return; }
+    document.getElementById("checkoutModal").classList.add("open");
+  };
+  document.getElementById("closeCheckoutModal").onclick = () => document.getElementById("checkoutModal").classList.remove("open");
+
+  document.getElementById("checkoutForm").onsubmit = e => {
     e.preventDefault();
-    var t = computeTotals();
-    var name = document.getElementById("f-name").value.trim();
-    var email = document.getElementById("f-email").value.trim();
-    var tel = document.getElementById("f-tel").value.trim();
-    var zip = document.getElementById("f-zip").value.trim();
-    var addr = document.getElementById("f-addr").value.trim();
-    var pay = document.getElementById("f-pay").value;
-
-    var orderData = {
+    const t = computeTotals();
+    
+    // 注文データの保存
+    const orderData = {
       id: 'ORD-' + Date.now(),
       date: new Date().toLocaleString('ja-JP'),
-      name: name, email: email, tel: tel, zip: zip, address: addr, pay: pay,
-      items: [], total: t.total
+      name: document.getElementById("f-name").value,
+      email: document.getElementById("f-email").value,
+      tel: document.getElementById("f-tel").value,
+      zip: document.getElementById("f-zip").value,
+      address: document.getElementById("f-addr").value,
+      pay: document.getElementById("f-pay").value,
+      gift: document.getElementById("f-gift").value,
+      msg: document.getElementById("f-msg").value,
+      items: [],
+      total: t.total
     };
-    Object.keys(cart).forEach(function(id){
-      var el = getProduct(id);
-      if(el) { orderData.items.push({ name: el.dataset.name, qty: cart[id], price: parseInt(el.dataset.price, 10) }); }
+    
+    Object.keys(cart).forEach(key => {
+      const isSub = key.includes("_sub");
+      const p = getProduct(key.replace("_sub", ""));
+      if(p) orderData.items.push({ name: p.name + (isSub ? " (定期)" : ""), qty: cart[key], price: isSub ? Math.floor(p.price * 0.9) : p.price });
     });
 
-    var orders = [];
+    let orders = [];
     try { orders = JSON.parse(localStorage.getItem(ORDERS_KEY)) || []; } catch(err){}
     orders.push(orderData);
     localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
 
-    showToast(name + " 様、ご注文ありがとうございました");
-    checkoutModal.classList.remove("open");
+    showToast("ご注文ありがとうございました（デモ）");
+    document.getElementById("checkoutModal").classList.remove("open");
     cart = {};
     saveCart();
     renderCart();
     closeDrawer();
-    this.reset();
-  });
-
-  renderCart();
+    e.target.reset();
+  };
 })();
 </script>
-</body></html>
+</body>
+</html>
