@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1a1512">
 <title>管理者ダッシュボード｜モンゴリアンベーグル</title>
 <style>
 :root { --bg-dark: #1a1512; --bg-light: #2c241e; --accent: #d4af37; --text-main: #f4ece2; --text-muted: #a89b8d; --border: #332a23; }
@@ -26,18 +27,24 @@ th{color:var(--accent);}
 .btn-del{background:transparent; color:red; border:1px solid red; padding:5px 10px; border-radius:15px; cursor:pointer; font-size:11px;}
 #loginScreen{display:flex; flex-direction:column; align-items:center; justify-content:center; height:80vh;}
 #loginScreen input{padding:12px; width:300px; margin-bottom:15px; border-radius:6px; border:1px solid var(--border); background:transparent; color:#fff;}
-#editModal{position:fixed; inset:0; background:rgba(0,0,0,0.8); display:none; align-items:center; justify-content:center; z-index:100;}
-#editModal .modal-box{background:var(--bg-light); padding:30px; border-radius:10px; width:500px; max-width:90%;}
+#editModal, #newsEditModal{position:fixed; inset:0; background:rgba(0,0,0,0.8); display:none; align-items:center; justify-content:center; z-index:100;}
+.modal-box{background:var(--bg-light); padding:30px; border-radius:10px; width:500px; max-width:90%;}
+@media (max-width: 600px) {
+  .form-group { grid-template-columns: 1fr; }
+  .header { flex-direction: column; gap: 15px; }
+}
 </style>
 </head>
 <body>
 <div class="wrap">
+  <!-- ログイン画面 -->
   <div id="loginScreen">
     <h2 style="color:var(--accent); margin-bottom:20px;">管理者ログイン</h2>
     <input type="password" id="adminPass" placeholder="パスワード">
     <button class="btn" id="loginBtn">ログイン</button>
   </div>
 
+  <!-- メイン画面 -->
   <div id="mainScreen" style="display:none;">
     <div class="header">
       <h1>管理画面</h1>
@@ -53,8 +60,8 @@ th{color:var(--accent);}
     <div class="panel">
       <h2>新商品の追加</h2>
       <div class="form-group">
-        <div class="field"><label>商品名</label><input id="p-name"></div>
-        <div class="field"><label>価格</label><input id="p-price" type="number"></div>
+        <div class="field"><label>商品名 (必須)</label><input id="p-name"></div>
+        <div class="field"><label>価格 (半角数字)</label><input id="p-price" type="number"></div>
       </div>
       <div class="form-group">
         <div class="field"><label>画像URL (例: fubilai.jpg)</label><input id="p-img"></div>
@@ -64,7 +71,7 @@ th{color:var(--accent);}
       <button class="btn" onclick="addProduct()">商品を追加する</button>
     </div>
 
-    <!-- 商品一覧（編集削除） -->
+    <!-- 商品一覧 -->
     <div class="panel">
       <h2>現在の商品一覧</h2>
       <table>
@@ -73,35 +80,57 @@ th{color:var(--accent);}
       </table>
     </div>
 
+    <!-- お知らせ追加 -->
+    <div class="panel">
+      <h2>お知らせの追加</h2>
+      <div class="form-group">
+        <div class="field"><label>日付 (例: 2026.11.01)</label><input id="n-date"></div>
+        <div class="field"><label>タグ (例: NEWS)</label><input id="n-tag"></div>
+      </div>
+      <div class="field"><label>タイトル</label><input id="n-title"></div>
+      <button class="btn" onclick="addNews()">お知らせを追加する</button>
+    </div>
+
+    <!-- お知らせ一覧 -->
+    <div class="panel">
+      <h2>お知らせ一覧</h2>
+      <table>
+        <thead><tr><th>日付</th><th>タグ</th><th>タイトル</th><th>操作</th></tr></thead>
+        <tbody id="newsListTable"></tbody>
+      </table>
+    </div>
+
     <!-- レビュー管理 -->
     <div class="panel">
       <h2>お客様レビューの管理</h2>
       <div id="reviewList"></div>
     </div>
-
-    <!-- お知らせ追加 -->
-    <div class="panel">
-      <h2>お知らせの追加</h2>
-      <div class="form-group">
-        <div class="field"><label>日付</label><input id="n-date"></div>
-        <div class="field"><label>タグ</label><input id="n-tag"></div>
-      </div>
-      <div class="field"><label>タイトル</label><input id="n-title"></div>
-      <button class="btn" onclick="addNews()">お知らせを追加する</button>
-    </div>
   </div>
 </div>
 
-<!-- 編集モーダル -->
+<!-- 商品編集モーダル -->
 <div id="editModal">
   <div class="modal-box">
     <h2 style="color:var(--accent); margin-bottom:15px;">商品を編集</h2>
     <input type="hidden" id="edit-id">
-    <div class="field" style="margin-bottom:10px;"><label>商品名</label><input id="edit-name" style="width:100%; padding:10px; background:transparent; border:1px solid var(--border); color:#fff;"></div>
-    <div class="field" style="margin-bottom:10px;"><label>価格</label><input id="edit-price" type="number" style="width:100%; padding:10px; background:transparent; border:1px solid var(--border); color:#fff;"></div>
-    <div class="field" style="margin-bottom:20px;"><label>説明</label><textarea id="edit-desc" rows="3" style="width:100%; padding:10px; background:transparent; border:1px solid var(--border); color:#fff;"></textarea></div>
+    <div class="field" style="margin-bottom:10px;"><label>商品名</label><input id="edit-name"></div>
+    <div class="field" style="margin-bottom:10px;"><label>価格</label><input id="edit-price" type="number"></div>
+    <div class="field" style="margin-bottom:20px;"><label>説明</label><textarea id="edit-desc" rows="3"></textarea></div>
     <button class="btn" onclick="saveEdit()">保存する</button>
     <button class="btn" style="background:transparent; color:var(--text-muted); border:1px solid var(--border); margin-left:10px;" onclick="document.getElementById('editModal').style.display='none'">キャンセル</button>
+  </div>
+</div>
+
+<!-- お知らせ編集モーダル -->
+<div id="newsEditModal">
+  <div class="modal-box">
+    <h2 style="color:var(--accent); margin-bottom:15px;">お知らせを編集</h2>
+    <input type="hidden" id="news-edit-index">
+    <div class="field" style="margin-bottom:10px;"><label>日付</label><input id="news-edit-date"></div>
+    <div class="field" style="margin-bottom:10px;"><label>タグ</label><input id="news-edit-tag"></div>
+    <div class="field" style="margin-bottom:20px;"><label>タイトル</label><textarea id="news-edit-title" rows="2"></textarea></div>
+    <button class="btn" onclick="saveNewsEdit()">保存する</button>
+    <button class="btn" style="background:transparent; color:var(--text-muted); border:1px solid var(--border); margin-left:10px;" onclick="document.getElementById('newsEditModal').style.display='none'">キャンセル</button>
   </div>
 </div>
 
@@ -113,7 +142,12 @@ const DEFAULT_PRODUCTS = [
   { id: "batu", name: "バトゥパン", price: 380, img: "batu.jpg", tag: "新商品", desc: "チャチャルガンのジャムを塗ったスイーツ系。" },
   { id: "plain", name: "プレーンベーグル", price: 220, img: "batu.jpg", tag: "", desc: "小麦の風味を楽しむ定番。" }
 ];
+const DEFAULT_NEWS = [
+  { date: "2026.10.15", tag: "PRODUCT", title: "新商品「チンギスパン」「バトゥパン」を追加しました。" },
+  { date: "2026.09.15", tag: "SHOP", title: "島根県に出店し、全国47都道府県への展開が完了しました。" }
+];
 
+// ログイン
 if(sessionStorage.getItem('adminAuth') === 'true') {
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('mainScreen').style.display = 'block';
@@ -125,16 +159,34 @@ document.getElementById('loginBtn').onclick = () => {
     document.getElementById('loginScreen').style.display = 'none';
     document.getElementById('mainScreen').style.display = 'block';
     render();
-  } else { alert('パスワードが違います'); }
+  } else {
+    alert('パスワードが違います');
+  }
 };
-function logout() { sessionStorage.removeItem('adminAuth'); location.reload(); }
+function logout() {
+  sessionStorage.removeItem('adminAuth');
+  location.reload();
+}
 
+// データ取得
 function getProducts() {
   let data = localStorage.getItem('mb_products');
-  if(!data) { localStorage.setItem('mb_products', JSON.stringify(DEFAULT_PRODUCTS)); return DEFAULT_PRODUCTS; }
+  if(!data) {
+    localStorage.setItem('mb_products', JSON.stringify(DEFAULT_PRODUCTS));
+    return DEFAULT_PRODUCTS;
+  }
+  return JSON.parse(data);
+}
+function getNews() {
+  let data = localStorage.getItem('mb_news');
+  if(!data) {
+    localStorage.setItem('mb_news', JSON.stringify(DEFAULT_NEWS));
+    return DEFAULT_NEWS;
+  }
   return JSON.parse(data);
 }
 
+// 描画
 function render() {
   const pList = document.getElementById('productList');
   pList.innerHTML = getProducts().map(p => `
@@ -149,7 +201,6 @@ function render() {
     </tr>
   `).join('');
 
-  // レビュー表示
   const reviews = JSON.parse(localStorage.getItem('mb_reviews')) || {};
   const rList = document.getElementById('reviewList');
   let rHtml = '';
@@ -164,14 +215,32 @@ function render() {
     });
   });
   rList.innerHTML = rHtml || '<p style="color:var(--text-muted);">まだレビューはありません。</p>';
+
+  const nList = document.getElementById('newsListTable');
+  const news = getNews();
+  if(nList) {
+    nList.innerHTML = news.map((n, index) => `
+      <tr>
+        <td>${n.date}</td>
+        <td>${n.tag}</td>
+        <td>${n.title}</td>
+        <td>
+          <button class="btn-edit" onclick="openNewsEdit(${index})">編集</button>
+          <button class="btn-del" onclick="deleteNews(${index})">削除</button>
+        </td>
+      </tr>
+    `).join('');
+  }
 }
 
+// 商品追加
 function addProduct() {
   const name = document.getElementById('p-name').value;
   const price = document.getElementById('p-price').value;
   const img = document.getElementById('p-img').value;
   const tag = document.getElementById('p-tag').value;
   const desc = document.getElementById('p-desc').value;
+  
   if(!name || !price) return alert("商品名と価格は必須です");
 
   const products = getProducts();
@@ -191,6 +260,7 @@ function addProduct() {
   alert("商品を追加しました！");
 }
 
+// 商品削除
 function deleteProduct(id) {
   if(!confirm("本当に削除しますか？")) return;
   let products = getProducts().filter(p => p.id !== id);
@@ -198,7 +268,7 @@ function deleteProduct(id) {
   render();
 }
 
-// ★ 商品編集
+// 商品編集
 function openEdit(id) {
   const p = getProducts().find(x => x.id === id);
   document.getElementById('edit-id').value = p.id;
@@ -227,23 +297,60 @@ function saveEdit() {
   }
 }
 
-// お知らせ
+// お知らせ追加
 function addNews() {
   const date = document.getElementById('n-date').value;
   const tag = document.getElementById('n-tag').value;
   const title = document.getElementById('n-title').value;
   if(!date || !title) return alert("日付とタイトルは必須です");
 
-  let news = JSON.parse(localStorage.getItem('mb_news')) || [];
+  let news = getNews();
   news.unshift({ date: date, tag: tag || "NEWS", title: title });
   localStorage.setItem('mb_news', JSON.stringify(news));
   
   document.getElementById('n-date').value = '';
   document.getElementById('n-tag').value = '';
   document.getElementById('n-title').value = '';
+  render();
   alert("お知らせを追加しました！");
 }
 
+// お知らせ編集
+function openNewsEdit(index) {
+  const news = getNews();
+  const n = news[index];
+  document.getElementById('news-edit-index').value = index;
+  document.getElementById('news-edit-date').value = n.date;
+  document.getElementById('news-edit-tag').value = n.tag;
+  document.getElementById('news-edit-title').value = n.title;
+  document.getElementById('newsEditModal').style.display = 'flex';
+}
+
+function saveNewsEdit() {
+  const index = document.getElementById('news-edit-index').value;
+  const date = document.getElementById('news-edit-date').value;
+  const tag = document.getElementById('news-edit-tag').value;
+  const title = document.getElementById('news-edit-title').value;
+
+  let news = getNews();
+  news[index] = { date: date, tag: tag, title: title };
+  localStorage.setItem('mb_news', JSON.stringify(news));
+  
+  document.getElementById('newsEditModal').style.display = 'none';
+  render();
+  alert("お知らせを更新しました！");
+}
+
+// お知らせ削除
+function deleteNews(index) {
+  if(!confirm("本当に削除しますか？")) return;
+  let news = getNews();
+  news.splice(index, 1);
+  localStorage.setItem('mb_news', JSON.stringify(news));
+  render();
+}
+
+// レビュー削除
 function deleteReview(pid, index) {
   if(!confirm("このレビューを削除しますか？")) return;
   let reviews = JSON.parse(localStorage.getItem('mb_reviews')) || {};
