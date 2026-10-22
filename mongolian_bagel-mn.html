@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="mn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f8f2e8">
+<title>Монголиан Бэйгл｜Монголын анхны бэйгл брэнд</title>
+<meta name="description" content="Улаанбаатар хотод төвтэй Монголиан Бэйгл брэнд. Алдарт Шримптэй Фубилай бүтээгдэхүүн болон Монгол дахь салбаруудын мэдээлэл.">
+<style>
+:root{--site-primary:#76251f;--site-secondary:#e8d3b5;--site-background:#f8f2e8;--site-on-primary:#fff8ef;--site-on-secondary:#34251e;--site-on-background:#34251e;--site-font-body:"Yu Gothic","Hiragino Kaku Gothic ProN",Meiryo,"Noto Sans Mongolian",sans-serif;--site-font-heading:"Yu Mincho","Hiragino Mincho ProN",serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--site-background);color:var(--site-on-background);font-family:var(--site-font-body)}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}.root{background:var(--site-background);min-height:100vh}.wrap{width:min(1200px,100% - 48px);margin:auto}
+.topnote{background:var(--site-primary);color:#fff6e9;text-align:center;font-size:11px;letter-spacing:.08em;padding:9px 12px}
+.breadcrumb{font-size:11px;color:#8a7a68;padding:10px 0;border-bottom:1px solid #e6d9c6;background:#fffaf2}
+.breadcrumb a{text-decoration:underline;text-underline-offset:2px}
+.header{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:17px 0}
+.logo{display:flex;align-items:center;gap:12px;color:var(--site-primary);font-weight:900;font-size:clamp(17px,2vw,25px);letter-spacing:.02em}
+.logo-symbol{border:2px solid var(--site-primary);border-radius:50%;width:44px;height:44px;display:grid;place-items:center;font-size:24px}
+.logo small{display:block;font:700 9px Georgia,serif;letter-spacing:.2em;margin-top:2px}
+.nav{display:flex;gap:clamp(10px,2vw,24px);align-items:center;font-size:12px;font-weight:700}
+.nav a:hover{color:#a64a38}
+.nav .langswitch{font-size:11px;font-weight:700;border:1px solid var(--site-primary);border-radius:20px;padding:7px 12px;color:var(--site-primary)}
+.nav .langswitch:hover{background:var(--site-primary);color:#fff6e9}
+.nav .shopbtn{background:var(--site-primary);color:#fff6e9;border-radius:30px;padding:12px 18px}
+
+.hero{position:relative;min-height:470px;display:grid;grid-template-columns:.82fr 1.18fr;background:#50301f;overflow:hidden;color:#fff8ee}
+.hero-copy{padding:52px 0 48px max(30px,calc((100vw - 1200px)/2));align-self:center;position:relative;z-index:3}
+.eyebrow{font-size:10px;font-weight:800;letter-spacing:.22em;color:#b75a43}
+.hero .eyebrow{color:#f1c17d}
+.hero h1{font-family:var(--site-font-heading);font-size:clamp(34px,4.8vw,60px);line-height:1.3;margin:20px 0 12px;letter-spacing:.02em}
+.hero p{font-family:var(--site-font-heading);font-size:14px;line-height:2;margin:0;max-width:390px}
+.hero-copy>*{position:relative}
+.brush{display:inline-block;background:#a92e28;padding:8px 14px;transform:rotate(-4deg);font-size:12px;font-weight:800;margin-top:20px}
+.hero-price{position:absolute;right:5%;bottom:22px;width:120px;height:120px;border:2px solid #fff2dd;outline:1px solid #fff2dd;outline-offset:4px;border-radius:50%;display:grid;place-content:center;text-align:center;color:#76251f;background:#fff8ed;font-weight:900;transform:rotate(8deg);z-index:4}
+.hero-price small{font-size:9px}.hero-price strong{font-family:Georgia,serif;font-size:20px}
+.hero-visual{position:absolute;inset:0 0 0 38%;z-index:1;overflow:hidden;background:#50301f}
+.hero-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#50301f 0%,#50301fcf 22%,#50301f20 46%,transparent 66%);z-index:3;pointer-events:none}
+.hero-slide{position:absolute;inset:0;opacity:0;animation:slideCycle 18s linear infinite;will-change:opacity}
+.hero-slide .zoom-layer{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.08);will-change:transform}
+.hero-slide.s1 .zoom-layer{background-image:url(https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=1600&auto=format&fit=crop)}
+.hero-slide.s2 .zoom-layer{background-image:url(https://images.unsplash.com/photo-1585445490387-f47934b73b54?q=80&w=1600&auto=format&fit=crop)}
+.hero-slide.s3 .zoom-layer{background-image:url(https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1600&auto=format&fit=crop)}
+.hero-slide.s1{animation-delay:0s}
+.hero-slide.s2{animation-delay:6s}
+.hero-slide.s3{animation-delay:12s}
+.hero-slide.s1 .zoom-layer,.hero-slide.s2 .zoom-layer,.hero-slide.s3 .zoom-layer{animation:zoomIn 18s ease-in-out infinite}
+@keyframes slideCycle{0%{opacity:0}2%{opacity:1}28%{opacity:1}33%{opacity:0}100%{opacity:0}}
+@keyframes zoomIn{0%{transform:scale(1.08)}33%{transform:scale(1.18)}66%{transform:scale(1.12)}100%{transform:scale(1.08)}}
+.hero-visual::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:
+radial-gradient(2px 2px at 18% 70%,#fff8e7cc,transparent 60%),
+radial-gradient(2px 2px at 32% 40%,#f6e3c0cc,transparent 60%),
+radial-gradient(1.5px 1.5px at 52% 62%,#fff8e7aa,transparent 60%),
+radial-gradient(2px 2px at 68% 30%,#f6e3c0bb,transparent 60%),
+radial-gradient(1.5px 1.5px at 78% 74%,#fff8e7aa,transparent 60%),
+radial-gradient(2px 2px at 88% 48%,#f6e3c0bb,transparent 60%);
+animation:crumbs 18s linear infinite;opacity:.9}
+@keyframes crumbs{0%{transform:translate3d(0,-8px,0)}50%{transform:translate3d(-10px,10px,0)}100%{transform:translate3d(0,-8px,0)}}
+
+.strip{border-bottom:1px solid #ddcbb1;border-top:1px solid #ddcbb1;color:var(--site-primary);text-align:center;padding:13px 10px;font:italic 12px Georgia,serif;letter-spacing:.18em}
+.section{padding:66px 0}
+.section-title{text-align:center;margin-bottom:30px}
+.section-title h2{font:500 clamp(27px,3.7vw,40px) var(--site-font-heading);margin:9px 0 8px}
+.section-title p{font-size:12px;color:#74675a;line-height:1.9}
+.columns{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:22px;align-items:stretch}
+.shop-photo{position:relative;min-height:300px;background:#dfc7a5;overflow:hidden}
+.shop-photo img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover}
+.photo-caption{position:absolute;bottom:0;left:0;right:0;background:#321e19df;color:#fff5e8;padding:14px;font-size:12px;line-height:1.8}
+.menu-panel,.commit-panel{padding:8px 0}
+.panel-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #d7c5ad;padding-bottom:12px;margin-bottom:15px}
+.panel-head h3{font:500 24px var(--site-font-heading);margin:0;color:var(--site-primary)}
+.panel-head span{font-size:10px;color:#786b5c}
+.mini-menu{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.item img{width:100%;aspect-ratio:1.35;object-fit:cover;background:#e9d6b8;border-radius:2px}
+.item h4{font-size:12px;margin:8px 0 4px}.item p{font-size:11px;color:#75685b;margin:0 0 4px}.item strong{font-family:Georgia,serif;color:var(--site-primary);font-size:15px}
+.commit-panel{border-left:1px solid #e1d3c1;padding-left:22px}
+.commit-panel h3{font:500 22px var(--site-font-heading);line-height:1.55}
+.commit-panel p{font-size:12px;line-height:2;color:#6f6256}
+.commit-img{width:100%;height:110px;object-fit:cover;margin-top:18px}
+.outline-btn{display:inline-block;border:1px solid var(--site-primary);color:var(--site-primary);border-radius:24px;padding:10px 16px;font-size:11px;font-weight:700;margin-top:8px}
+.story{background:#ead9bf}
+.story-inner{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.story h2{font:500 clamp(28px,4vw,42px)/1.5 var(--site-font-heading);margin:12px 0}
+.story p{font-size:13px;line-height:2.1;color:#665446}
+.story-mark{font-family:Georgia,serif;color:#9e7255;font-size:clamp(48px,8vw,96px);text-align:center}
+.global{background:#fffaf2}
+.global-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
+.global-copy h2{font:500 clamp(28px,4vw,42px)/1.5 var(--site-font-heading);margin:12px 0}
+.global-copy p{font-size:13px;line-height:2;color:#6f6256}
+.global-art{min-height:280px;background:radial-gradient(circle at 50% 45%,#f7dfb1,#d6b58b 72%);display:grid;place-items:center;position:relative;overflow:hidden}
+.global-art:before,.global-art:after{content:"";position:absolute;border:1px solid #9b6e4c55;border-radius:50%;width:280px;height:280px}
+.global-art:after{width:220px;height:320px}
+.globe{font-size:105px;filter:drop-shadow(0 10px 8px #5e321b30)}
+.global-caption{position:absolute;bottom:15px;left:15px;right:15px;background:#fff8eddf;padding:12px;text-align:center}
+.global-caption strong,.global-caption span{display:block}
+.global-caption strong{font:700 12px Georgia,serif;letter-spacing:.18em;color:var(--site-primary)}
+.global-caption span{font-size:11px;margin-top:4px}
+.hq-box{background:#fffaf2;border:1px solid #e4d5c0;padding:30px;margin-top:26px}
+.hq-box h3{font:500 22px var(--site-font-heading);color:var(--site-primary);margin:0 0 12px}
+.hq-table{width:100%;border-collapse:collapse;font-size:12px}
+.hq-table th,.hq-table td{border:1px solid #e4d5c0;padding:9px 12px;text-align:left;vertical-align:top}
+.hq-table th{background:#f3e7d5;color:var(--site-primary);font-weight:700;white-space:nowrap;width:170px}
+.hq-table td{background:#fffdf9}
+.hq-note{font-size:11px;color:#776b60;line-height:1.8;margin-top:12px}
+.loc-stat{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin:-10px auto 26px;font-size:12px;color:#6f6256}
+.loc-stat b{display:block;font:700 26px Georgia,serif;color:var(--site-primary);line-height:1.1;text-align:center}
+.loc-stat span{display:block;text-align:center;letter-spacing:.06em}
+.region-tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:26px}
+.region-tabs button{cursor:pointer;border:1px solid #d9c7af;background:#fffaf2;color:var(--site-primary);border-radius:20px;padding:8px 14px;font-size:11px;font-weight:700;font-family:inherit}
+.region-tabs button.is-active{background:var(--site-primary);color:#fff6e9;border-color:var(--site-primary)}
+.region-tabs button:hover{border-color:var(--site-primary)}
+.pref-region{margin-bottom:34px}
+.pref-region>h3{font:500 23px var(--site-font-heading);color:var(--site-primary);border-bottom:2px solid var(--site-primary);padding-bottom:8px;margin:0 0 16px;display:flex;align-items:baseline;gap:12px}
+.pref-region>h3 span{font:700 10px Georgia,serif;letter-spacing:.2em;color:#a65b43}
+.pref-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.pref-card{background:#fffaf2;border:1px solid #e4d5c0;padding:14px 15px;display:flex;flex-direction:column;gap:4px;transition:.15s}
+.pref-card:hover{border-color:var(--site-primary);transform:translateY(-2px);box-shadow:0 6px 14px #76251f14}
+.pref-card .pref-name{font-size:11px;color:#a65b43;font-weight:800;letter-spacing:.04em}
+.pref-card .shop-name{font:500 15px/1.4 var(--site-font-heading);color:var(--site-on-background)}
+.pref-card .shop-area{font-size:11px;color:#77695b}
+.pref-card .badge{align-self:flex-start;background:#efe1cc;color:#77513a;font-size:9px;font-weight:700;padding:3px 7px;margin-top:4px;letter-spacing:.04em}
+.pref-card a{margin-top:auto;color:var(--site-primary);font-size:10px;font-weight:700;border-top:1px solid #e3d3bd;padding-top:8px;margin-top:8px}
+.pref-region.is-hidden{display:none}
+.contact{background:#fffaf2;border:1px solid #e4d5c0;padding:34px;margin-top:8px}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.contact-card{border:1px solid #e4d5c0;background:#fffdf9;padding:20px;display:flex;flex-direction:column;gap:6px}
+.contact-card h3{font:500 19px var(--site-font-heading);color:var(--site-primary);margin:0 0 4px}
+.contact-card .role{font-size:10px;font-weight:800;letter-spacing:.14em;color:#a65b43}
+.contact-card p{font-size:12px;line-height:1.9;color:#6f6256;margin:6px 0 0}
+.contact-card dl{margin:8px 0 0;font-size:12px;line-height:1.9}
+.contact-card dt{color:var(--site-primary);font-weight:700;font-size:11px;margin-top:8px}
+.contact-card dd{margin:0;color:#4a3b30}
+.contact-card a.inline-link{color:var(--site-primary);text-decoration:underline;text-underline-offset:2px}
+.sns-row{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.sns-row a{display:inline-flex;align-items:center;gap:6px;border:1px solid #d9c7af;border-radius:20px;padding:7px 12px;font-size:11px;color:var(--site-primary);background:#fffaf2}
+.sns-row a:hover{background:#f3e7d5}
+.contact-note{font-size:11px;color:#776b60;line-height:1.9;margin-top:18px;border-top:1px solid #e4d5c0;padding-top:14px}
+.news{background:#efe2cf}
+.news-list{max-width:900px;margin:auto;border-top:1px solid #d4bea0}
+.news-list a{display:grid;grid-template-columns:100px 90px 1fr 20px;align-items:center;gap:14px;padding:18px 5px;border-bottom:1px solid #d4bea0}
+.news-list time{font-size:11px;color:#76675a}
+.news-tag{font-size:9px;font-weight:bold;color:var(--site-primary);letter-spacing:.1em}
+.news-list strong{font-size:12px}
+.faq details{border-top:1px solid #d9c7af;padding:17px 4px}
+.faq details:last-child{border-bottom:1px solid #d9c7af}
+.faq summary{cursor:pointer;font-size:13px;font-weight:bold;color:var(--site-primary)}
+.faq details p{font-size:12px;line-height:1.9;color:#6f6256;padding:8px 0 0}
+.footer{background:var(--site-primary);color:#fff3e5;padding:34px 0 26px}
+.footinner{display:flex;align-items:flex-start;justify-content:space-between;gap:28px;flex-wrap:wrap}
+.footinner .logo{color:#fff3e5}.footinner .logo-symbol{border-color:#fff3e5}
+.footlinks{display:flex;gap:20px;font-size:11px;flex-wrap:wrap}
+.footcontact{font-size:11px;line-height:1.9;opacity:.92}
+.footcontact a{text-decoration:underline;text-underline-offset:2px}
+.copyright{font-size:10px;opacity:.8;width:100%;border-top:1px solid #ffffff33;padding-top:14px;margin-top:18px}
+@media(max-width:1000px){.pref-grid{grid-template-columns:repeat(3,1fr)}.contact-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:800px){
+.global-grid{grid-template-columns:1fr;gap:20px}
+.columns{grid-template-columns:1fr}
+.nav{flex-wrap:wrap;width:100%;justify-content:space-between;gap:9px;font-size:11px}
+.wrap{width:min(100% - 32px,600px)}
+.header{flex-wrap:wrap}
+.hero{min-height:540px;display:block}
+.hero-visual{inset:0}
+.hero-visual::after{background:linear-gradient(90deg,#3c2419d9 0%,#3c241960 55%,#3c241910 100%)}
+.hero-copy{padding:60px 25px 100px}
+.hero-price{width:96px;height:96px;right:22px;bottom:20px}.hero-price strong{font-size:17px}
+.commit-panel{border-left:0;border-top:1px solid #e1d3c1;padding:20px 0 0}
+.section{padding:48px 0}
+.story-inner{gap:20px}.story-mark{order:2}
+.pref-grid{grid-template-columns:repeat(2,1fr)}
+.contact{padding:20px}
+.contact-grid{grid-template-columns:1fr}
+.footinner{flex-wrap:wrap}.footlinks{flex-wrap:wrap}
+}
+@media(max-width:480px){.pref-grid{grid-template-columns:1fr}.news-list a{grid-template-columns:1fr 1fr}.news-list strong{grid-column:1/4}.footlinks{gap:10px}.loc-stat{gap:18px}}
+@media (prefers-reduced-motion: reduce){
+  .hero-slide{animation:none}.hero-slide.s1{opacity:1}.hero-slide.s2,.hero-slide.s3{display:none}
+  .hero-slide .zoom-layer{animation:none}.hero-visual::before{animation:none}html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body><div class="root">
+<div class="topnote">Шинэхэн бэйгл, зоригтой амт.｜Улаанбаатар төвтэй｜ <a href="index.html" hreflang="ja" lang="ja" style="text-decoration:underline">日本語</a></div>
+<div class="breadcrumb"><div class="wrap">Нүүр ＞ Монголиан Бэйгл</div></div>
+<header class="wrap header"><a class="logo" href="index.html"><span class="logo-symbol">🥯</span><span>Монголиан Бэйгл<small>MONGOLIAN BAGEL</small></span></a><nav class="nav"><a href="index.html">Нүүр</a><a href="#menu">Бүтээгдэхүүн</a><a href="#story">Брэнд</a><a href="#global">Төв оффис</a><a href="#locations">Салбарууд</a><a href="#news">Мэдээ</a><a href="#contact">Холбоо барих</a><a href="#faq">Асуулт</a><a class="langswitch" href="index.html" hreflang="ja" lang="ja">日本語 ↗</a><a class="shopbtn" href="shop.html">Онлайн дэлгүүр ↗</a></nav></header>
+<main id="home">
+<section class="hero">
+  <div class="hero-visual" aria-hidden="true">
+    <div class="hero-slide s1"><div class="zoom-layer"></div></div>
+    <div class="hero-slide s2"><div class="zoom-layer"></div></div>
+    <div class="hero-slide s3"><div class="zoom-layer"></div></div>
+  </div>
+  <div class="wrap hero-copy">
+    <div class="eyebrow">A BOLD BAGEL EXPERIENCE</div>
+    <h1>Дэлхийг аялах мэт<br>бэйгл амт.</h1>
+    <p>Манай брэндийн онцлох бүтээгдэхүүн<br><span style="font-size:1.15em;font-weight:bold">Шримптэй Фубилай</span><br>Шаржигнасан шримпыг талханд хийсэн, Монголиан Бэйглийн бахархалт амттан.</p>
+    <span class="brush">Нэг амсаад, дасахад хэцүү!</span>
+  </div>
+  <div class="hero-price"><small>ОНЦЛОХ</small><span>Шримптэй Фубилай</span><strong>₮12,800</strong></div>
+</section>
+<div class="strip">BAGELS WITH A LITTLE ADVENTURE　 •　 FRESHLY BAKED DAILY　 •　</div>
+<section class="wrap section" id="menu"><div class="columns">
+<div class="shop-photo"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1200&auto=format&fit=crop" alt="Монголиан Бэйгл дэлгүүрийн зураг"><span class="photo-caption">⌖　Улаанбаатар хотод<br>Шинэхэн бэйглээ хүргэж байна.</span></div>
+<div class="menu-panel"><div class="panel-head"><h3>Меню</h3><span>OUR FAVORITES　›</span></div><div class="mini-menu">
+<article class="item"><img src="https://images.unsplash.com/photo-1585445490387-f47934b73b54?q=80&w=800&auto=format&fit=crop" alt="Шримптэй Фубилай"><h4>Шримптэй Фубилай</h4><p>Шримпыг талханд хийсэн онцлох</p><strong>₮12,800</strong></article>
+<article class="item"><img src="https://images.unsplash.com/photo-1585478259715-876acc5be8eb?q=80&w=800&auto=format&fit=crop" alt="Энгийн бэйгл"><h4>Энгийн бэйгл</h4><p>Улаан буудайн амт</p><strong>₮5,800</strong></article>
+<article class="item"><img src="https://images.unsplash.com/photo-1598373182133-52452f7691ef?q=80&w=800&auto=format&fit=crop" alt="Нэрсэн бэйгл"><h4>Нэрсэн бэйгл</h4><p>Амтат, исгэлэн амт</p><strong>₮6,800</strong></article>
+<article class="item"><img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?q=80&w=800&auto=format&fit=crop" alt="Гүнжидийн бэйгл"><h4>Гүнжидийн бэйгл</h4><p>Үнэртэй, шаржигнасан</p><strong>₮6,200</strong></article>
+</div></div>
+<div class="commit-panel"><div class="panel-head"><h3>Манай зарчим</h3><span>OUR STORY</span></div><h3>Монголын тал нутгийн адил<br>хүчтэй, зөөлөн амт.</h3><p>Сайн чанарын орцтой, чанга бариу бэйгл. Дээр нь зоригтой орцыг хослуулж, хүмүүст эрч хүч өгдөг бэйгл мэргэжлийн дэлгүүр. Шримпыг талханд хийсэн «Шримптэй Фубилай» бол зөвхөн энд л байх онцгой амттан.</p><a class="outline-btn" href="#story">Дэлгэрэнгүй　›</a><img class="commit-img" src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=1000&auto=format&fit=crop" alt="Бэйглүүд"></div>
+</div></section>
+<section class="story section" id="story"><div class="wrap story-inner"><div><div class="eyebrow">OUR PHILOSOPHY</div><h2>Талхны боломж<br>тал нутгийн хэмжээнд.</h2><p>Өдөр бүр зуурмагийн исэлтийг шалгаж, чанга бариу амт, шаржигнасан үнэрийг эрэлхийлдэг. Сонгодог амт, гэнэтийн хослол — аль аль нь. Орцын онцлогийг хадгалж, өдөр бүр идэхэд дуртай бэйглийг хүргэж байна.</p></div><div class="story-mark">ᠮᠣᠩᠭᠣᠯ<br><span style="font:12px sans-serif;letter-spacing:.2em">BOLD BITES, HAPPY DAYS</span></div></div></section>
+<section class="global section" id="global"><div class="wrap global-grid">
+<div class="global-copy"><div class="eyebrow">OUR ROOTS · MONGOLIA</div><h2>Манай үндэс — Монгол.<br>Амт нь дэлхий даяар.</h2><p>Улаанбаатар хотод төвтэй Монголиан Бэйгл брэнд. 1998 онд нүүдэлчдийн «хуваалцсан хүнс»-ний уламжлалаас санаа авч үүссэн. Тал нутгийн уудам, чөлөөт сэтгэлгээг эрхэмлэн, Япон улсын 47 аймагт бэйглийн амтыг хүргэж байна.</p><p>1998 онд Улаанбаатарын жижиг цехээс эхэлсэн. Уламжлалт хүнсний соёл, дэлхийн бэйкериг хослуулж, өөрийн бэйглийг бүтээсэн.</p><p style="font-size:12px;color:#76251f;font-weight:700;border-left:3px solid #76251f;padding-left:12px">Төв оффис нь зөвхөн Монгол улс, Улаанбаатар хотод байрладаг. Япон улсад төв оффис байхгүй.</p><a class="outline-btn" href="#locations">Салбаруудыг харах　›</a></div>
+<div class="global-art"><div class="globe">🌏</div><div class="global-caption"><strong>HEAD OFFICE · ULAANBAATAR</strong><span>Төв оффис Монголд. Салбарууд Японы 47 аймагт.</span></div></div>
+</div>
+<div class="hq-box">
+<h3>Төв оффисын мэдээлэл（Head Office）</h3>
+<table class="hq-table">
+<tr><th>Байршил</th><td>Монгол улс, Улаанбаатар хот（Ulaanbaatar, Mongolia）</td></tr>
+<tr><th>Брэнд</th><td>Mongolian Bagel</td></tr>
+<tr><th>Үүсгэн байгуулагдсан</th><td>1998 он</td></tr>
+<tr><th>Үйл ажиллагаа</th><td>Бэйкери（бэйгл үйлдвэрлэл, борлуулалт）、гадаад салбарын өргөтгөл</td></tr>
+<tr><th>Япон дахь төв оффис</th><td>Төв оффис нь зөвхөн Монголд. Япон улсад төв оффис байхгүй.</td></tr>
+</table>
+<p class="hq-note">※Япон улсын бүх салбар нь Монголын төв оффисын шууд салбар юм. Салбарын мэдээллийг тухайн салбараас лавлана уу.</p>
+</div>
+</section>
+<section class="wrap section" id="locations">
+<div class="section-title"><div class="eyebrow">FIND YOUR BAGEL</div><h2>Монгол дахь салбарууд</h2><p>Улаанбаатар хотын төвөөс эхлээд орон нутгийн салбарууд.<br>Ойрхон салбараа сонгон үзээрэй.</p></div>
+<div class="loc-stat">
+<div><b>12</b><span>Салбар</span></div>
+<div><b>6</b><span>Аймаг / хот</span></div>
+<div><b>1998</b><span>Үүссэн он</span></div>
+</div>
+<div class="region-tabs" id="regionTabs">
+<button class="is-active" data-region="all">Бүгд</button>
+<button data-region="ub">Улаанбаатар</button>
+<button data-region="central">Төв бүс</button>
+<button data-region="north">Хойд бүс</button>
+<button data-region="west">Баруун бүс</button>
+<button data-region="east">Зүүн бүс</button>
+</div>
+<div class="pref-region" data-region="ub"><h3><span>ULAANBAATAR</span>Улаанбаатар хот</h3><div class="pref-grid">
+<article class="pref-card"><div class="pref-name">Сүхбаатар дүүрэг</div><div class="shop-name">Төв оффис & Салбар</div><div class="shop-area">Сүхбаатарын талбай орчим</div><span class="badge">Төв оффис</span><a href="#contact">Мэдээлэл ↗</a></article>
+<article class="pref-card"><div class="pref-name">Хан-Уул дүүрэг</div><div class="shop-name">Зайсан салбар</div><div class="shop-area">Зайсангийн гудамж</div><span class="badge">Шууд салбар</span><a href="#contact">Мэдээлэл ↗</a></article>
+<article class="pref-card"><div class="pref-name">Баянзүрх дүүрэг</div><div class="shop-name">Их тойруу салбар</div><div class="shop-area">Их тойруу орчим</div><span class="badge">Шууд салбар</span><a href="#contact">Мэдээлэл ↗</a></article>
+<article class="pref-card"><div class="pref-name">Чингэлтэй дүүрэг</div><div class="shop-name">Баруун 4 зам салбар</div><div class="shop-area">Баруун 4 замын орчим</div><span class="badge">Шууд салбар</span><a href="#contact">Мэдээлэл ↗</a></article>
+</div></div>
+<div class="pref-region" data-region="central"><h3><span>CENTRAL</span>Төв бүс</h3><div class="pref-grid">
+<article class="pref-card"><div class="pref-name">Төв аймаг</div><div class="shop-name">Зуунмод салбар</div><div class="shop-area">Зуунмод хот</div><span class="badge">Шууд салбар</span><a href="#contact">Мэдээлэл ↗</a></article>
+<article class="pref-card"><div class="pref-name">Дархан-Уул</div><div class="shop-name">Дархан салбар</div><div class="shop-area">Дархан хот</div><span class="badge">Шууд салбар</span><a href="#contact">Мэдээлэл ↗</a></article>
+</div></div>
+<div class="pref-region" data-region="north"><h3><span>NORTH</span>Хойд бүс</h3><div class="pref-grid">
+<article class="pref-card"><div class="pref-name">Сэлэнгэ аймаг</div><div class="shop-name">Сүхбаатар салбар</div><div class="shop-area">Сүхбаатар хот</div><span class="badge">Шууд салбар</span><a href="#contact">Мэдээлэл ↗</a></article>
+<article class="pref-card"><div class="pref-name">Орхон аймаг</div><div class="shop-name">Эрдэнэт салбар</div><div class="shop-area">Эрдэнэт хот</div><span class="badge">Шууд салбар</span><a href="#contact">Мэдээлэл ↗</a></article>
+</div></div>
+<div class="pref-region" data-region="west"><h3><span>WEST</span>Баруун бүс</h3><div class="pref-grid">
+<article class="pref-card"><div class="pref-name">Ховд аймаг</div><div class="shop-name">Ховд салбар</div><div class="shop-area">Ховд хот</div><span class="badge">Шууд салбар</span><a href="#contact">Мэдээлэл ↗</a></article>
+<article class="pref-card"><div class="pref-name">Увс аймаг</div><div class="shop-name">Улаангом салбар</div><div class="shop-area">Улаангом хот</div><span class="badge">Шууд салбар</span><a href="#contact">Мэдээлэл ↗</a></article>
+</div></div>
+<div class="pref-region" data-region="east"><h3><span>EAST</span>Зүүн бүс</h3><div class="pref-grid">
+<article class="pref-card"><div class="pref-name">Дорнод аймаг</div><div class="shop-name">Чойбалсан салбар</div><div class="shop-area">Чойбалсан хот</div><span class="badge">Шууд салбар</span><a href="#contact">Мэдээлэл ↗</a></article>
+<article class="pref-card"><div class="pref-name">Хэнтий аймаг</div><div class="shop-name">Өндөрхаан салбар</div><div class="shop-area">Өндөрхаан хот</div><span class="badge">Шууд салбар</span><a href="#contact">Мэдээлэл ↗</a></article>
+</div></div>
+</section>
+<section class="news section" id="news"><div class="wrap"><div class="section-title"><div class="eyebrow">LATEST UPDATES</div><h2>Мэдээ</h2><p>Брэндийн мэдээлэл.</p></div>
+<div class="news-list"><a href="#menu"><time>2026.10.01</time><span class="news-tag">PRODUCT</span><strong>Шримптэй Фубилай бүтээгдэхүүнийг танилцуулж байна.</strong><span>↗</span></a><a href="#global"><time>2026.09.01</time><span class="news-tag">BRAND</span><strong>Улаанбаатар хотод төвтэй брэндийн тухай.</strong><span>↗</span></a><a href="#locations"><time>2026.08.20</time><span class="news-tag">SHOP</span><strong>Дархан салбар шинээр нээгдлээ.</strong><span>↗</span></a></div></div></section>
+<section class="wrap section" id="online"><div class="online-box" style="background:#fffaf2;border:1px solid #e4d5c0;padding:35px;display:flex;justify-content:space-between;align-items:center;gap:24px"><div><div class="eyebrow">MONGOLIAN BAGEL ONLINE</div><h2 style="font:500 clamp(28px,4vw,40px)/1.5 var(--site-font-heading);margin:12px 0">Гэртээ ч бэйгл амт.</h2><p style="font-size:13px;line-height:2;color:#6f6256">Дуртай бэйглээ гэртээ, хайртай хүмүүстээ хүргээрэй. Онлайн дэлгүүрт сонгодог болон улирлын багц байна.</p></div><a class="btn" href="shop.html" style="background:var(--site-primary);color:#fff6e9;border-radius:30px;padding:14px 22px;font-size:12px;font-weight:700">Онлайн дэлгүүр　↗</a></div></section>
+<section class="wrap section" id="contact">
+<div class="section-title"><div class="eyebrow">CONTACT</div><h2>Холбоо барих</h2><p>Брэндийн талаарх асуултыг доорх цонхоор илгээнэ үү.<br>Салбарын ажиллах цаг, бүтээгдэхүүний мэдээллийг тухайн салбараас лавлана уу.</p></div>
+<div class="contact">
+<div class="contact-grid">
+<div class="contact-card">
+<span class="role">HEAD OFFICE</span>
+<h3>Төв оффис</h3>
+<p>Брэндийн удирдлага, гадаад салбарын асуулт.</p>
+<dl>
+<dt>Байршил</dt><dd>Mongolian Bagel Head Office<br>Ulaanbaatar, Mongolia</dd>
+<dt>И-мэйл</dt><dd><a class="inline-link" href="mailto:info@mongolianbagel.mn">info@mongolianbagel.mn</a></dd>
+<dt>Ажиллах цаг</dt><dd>Даваа–Баасан 10:00–18:00（УБ цагаар）</dd>
+</dl>
+</div>
+<div class="contact-card">
+<span class="role">JAPAN BRAND DESK</span>
+<h3>Япон дахь брэндийн цонх</h3>
+<p>Япон дахь брэндийн мэдээлэл, онлайн дэлгүүрийн асуулт.</p>
+<dl>
+<dt>И-мэйл</dt><dd><a class="inline-link" href="mailto:contact@mongolianbagel.jp">contact@mongolianbagel.jp</a></dd>
+<dt>Ажиллах цаг</dt><dd>Ажлын өдөр 10:00–17:00（Японы цагаар）</dd>
+<dt>Тэмдэглэл</dt><dd>Төв оффис Монголд. Япон улсад төв оффис байхгүй.</dd>
+</dl>
+</div>
+<div class="contact-card">
+<span class="role">SHOP INQUIRY</span>
+<h3>Салбартай холбоо барих</h3>
+<p>Салбарын ажиллах цаг, бүтээгдэхүүний нөөц, захиалгыг тухайн салбараас лавлана уу.</p>
+<dl>
+<dt>Салбарын жагсаалт</dt><dd><a class="inline-link" href="#locations">Монгол дахь салбарууд</a></dd>
+<dt>Утас（төлөөлөгч）</dt><dd>+976 7000 0000（ажлын өдөр 10:00–17:00）</dd>
+<dt>Тэмдэглэл</dt><dd>Салбарын утасны дугаарыг тухайн салбараас лавлана уу.</dd>
+</dl>
+</div>
+</div>
+<div class="sns-row"><a href="#contact">Instagram</a><a href="#contact">X（Twitter）</a><a href="#contact">Facebook</a><a href="#contact">YouTube</a></div>
+<p class="contact-note">※Энэ сайт нь брэндийн дүр төрхийг танилцуулах зорилготой жишээ юм. И-мэйл, утасны дугаар нь жишээ бөгөөд бодит хаяг биш.<br>※Төв оффис нь зөвхөн Монгол улс, Улаанбаатар хотод байрладаг. Япон улсад төв оффис байхгүй.<br>※Хамгийн сүүлийн салбар — Япон улсын Шиманэ аймаг дахь «Мацуэ · Старбакс хамтарсан салбар».</p>
+</div>
+</section>
+<section class="wrap section faq" id="faq"><div class="section-title"><div class="eyebrow">HELP & INFORMATION</div><h2>Түгээмэл асуулт</h2></div>
+<details><summary>Шримптэй Фубилайг хаанаас авч болох вэ？</summary><p>Шримпыг талханд хийсэн онцлох «Шримптэй Фубилай» нь Япон улсын 47 аймгийн шууд салбаруудад худалдаалагдана. Борлуулалтын цагийг тухайн салбараас лавлана уу.</p></details>
+<details><summary>Төв оффис хаана байрладаг вэ？</summary><p>Төв оффис нь зөвхөн Монгол улс, Улаанбаатар хотод байрладаг. Япон улсад төв оффис байхгүй. Япон улсын бүх салбар нь Монголын төв оффисын шууд салбар юм.</p></details>
+<details><summary>Холбоо барих хаяг？</summary><p>Брэндийн асуултыг «Холбоо барих» хэсгийн цонхоор илгээнэ үү. Салбарын асуултыг тухайн салбараас лавлана уу.</p></details>
+<details><summary>Онлайнаар захиалж болох уу？</summary><p>Онлайн дэлгүүрт сонгодог бэйгл, улирлын багц байна. Хүргэлтийн бүс, нөөцийг захиалгын хуудаснаас үзнэ үү.</p></details>
+<details><summary>Харшил（аллерги）-ын мэдээлэл хаанаас？</summary><p>Орц, аллергений мэдээллийг бүтээгдэхүүн тус бүрээр салбар болон онлайн дэлгүүрээс үзнэ үү.</p></details>
+</section>
+</main>
+<footer class="footer"><div class="wrap footinner">
+<a class="logo" href="index.html"><span class="logo-symbol">🥯</span><span>Монголиан Бэйгл<small>MONGOLIAN BAGEL</small></span></a>
+<div class="footcontact">
+<strong>Mongolian Bagel Head Office</strong><br>
+Ulaanbaatar, Mongolia<br>
+Email: <a href="mailto:info@mongolianbagel.mn">info@mongolianbagel.mn</a><br>
+Japan Brand Desk: <a href="mailto:contact@mongolianbagel.jp">contact@mongolianbagel.jp</a>
+</div>
+<div class="footlinks"><a href="index.html">Нүүр</a><a href="#menu">Бүтээгдэхүүн</a><a href="#story">Брэнд</a><a href="#global">Төв оффис</a><a href="#locations">Салбарууд</a><a href="#news">Мэдээ</a><a href="#contact">Холбоо барих</a><a href="#faq">Асуулт</a><a href="shop.html">Онлайн дэлгүүр</a><a href="index.html" hreflang="ja" lang="ja">日本語</a></div>
+<span class="copyright">© 1998–2026 MONGOLIAN BAGEL · Төв оффис: Улаанбаатар, Монгол улс · Япон улсад төв оффис байхгүй</span>
+</div></footer>
+</div>
+<script>
+(function(){
+  var tabs=document.getElementById('regionTabs');
+  if(!tabs)return;
+  tabs.addEventListener('click',function(e){
+    var btn=e.target.closest('button');
+    if(!btn)return;
+    var region=btn.dataset.region;
+    tabs.querySelectorAll('button').forEach(function(b){b.classList.toggle('is-active',b===btn);});
+    document.querySelectorAll('.pref-region').forEach(function(sec){
+      var show=(region==='all'||sec.dataset.region===region);
+      sec.classList.toggle('is-hidden',!show);
+    });
+  });
+})();
+</script>
+</body></html>
