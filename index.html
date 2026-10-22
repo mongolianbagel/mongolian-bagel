@@ -6,12 +6,14 @@
 <meta name="theme-color" content="#1a1512">
 <title>モンゴリアンベーグル｜モンゴル発・全国47都道府県のベーグル</title>
 <meta name="description" content="モンゴル・ウランバートルに本社を置くベーカリーブランド、モンゴリアンベーグル。フビライパン、チンギスパン、バトゥパンと、全国47都道府県の店舗情報をご紹介します。">
+<!-- OGP設定 -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="モンゴリアンベーグル｜モンゴル発・全国47都道府県のベーグル">
 <meta property="og:description" content="エビフライをパンに挟んだ「フビライパン」など、モンゴル発のベーカリーブランド。全国47都道府県で展開中。">
 <meta property="og:url" content="https://mongolianbagel.github.io/mongolian-bagel/">
 <meta property="og:image" content="https://mongolianbagel.github.io/mongolian-bagel/fubilai.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<!-- ファビコン -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d4af37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M16.5 8c1.5 0 2.5 1.5 2.5 3.5s-1 3.5-2.5 3.5c-1 0-2-.5-2.5-1.5H10c-.5 1-1.5 1.5-2.5 1.5C6 15 5 13.5 5 11.5S6 8 7.5 8c1 0 2 .5 2.5 1.5h4c.5-1 1.5-1.5 2.5-1.5z'/><path d='M7 9.5c-1.5-.5-2.5-1.5-2-3s2-1.5 2.5 0'/><path d='M17 9.5c1.5-.5 2.5-1.5 2-3s-2-1.5-2.5 0'/></svg>">
 <style>
 :root {
@@ -109,6 +111,30 @@ img{display:block; max-width:100%;}
 .news-item time{font-size:12px; color:var(--text-muted);}
 .news-item .tag{font-size:10px; color:var(--accent); border:1px solid var(--accent); padding:3px 6px; border-radius:4px; text-align:center; white-space:nowrap;}
 .news-item strong{font-size:14px; font-weight:normal;}
+
+/* ニュース折りたたみ用 */
+.news-list .news-item:nth-child(n+6) {
+  display: none;
+}
+.news-list.show-all .news-item:nth-child(n+6) {
+  display: grid;
+}
+.news-toggle-btn {
+  display: block;
+  margin: 30px auto 0;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.news-toggle-btn:hover {
+  background: var(--accent);
+  color: var(--bg-dark);
+}
 
 /* こだわり */
 .commit-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:30px;}
@@ -425,7 +451,7 @@ img{display:block; max-width:100%;}
 </div>
 
 <script>
-// 商品データの読み込み（管理画面のデータを優先）
+// 商品データの読み込み
 const DEFAULT_PRODUCTS = [
   { id: "fubilai", name: "フビライパン", price: 480, img: "fubilai.jpg", desc: "エビフライをパンに挟んだ看板商品。" },
   { id: "chingis", name: "チンギスパン", price: 580, img: "chingis.jpg", desc: "ジンギスカンをパンに挟んだ一品。" },
@@ -442,7 +468,8 @@ try {
 // お知らせデータの読み込み
 const DEFAULT_NEWS = [
   { date: "2026.10.15", tag: "PRODUCT", title: "新商品「チンギスパン」「バトゥパン」を追加しました。" },
-  { date: "2026.09.15", tag: "SHOP", title: "島根県に出店し、全国47都道府県への展開が完了しました。" }
+  { date: "2026.09.15", tag: "SHOP", title: "島根県に出店し、全国47都道府県への展開が完了しました。" },
+  { date: "2026.09.01", tag: "BRAND", title: "モンゴル・ウランバートルに本社を置くベーグルブランドについて。" }
 ];
 let NEWS = [];
 try {
@@ -494,6 +521,18 @@ NEWS.forEach(n => {
     </div>
   `;
 });
+
+// お知らせが5件を超える場合、「もっと見る」ボタンを追加
+if(NEWS.length > 5) {
+  const btn = document.createElement('button');
+  btn.className = 'news-toggle-btn';
+  btn.textContent = 'もっと見る';
+  btn.onclick = function() {
+    newsList.classList.toggle('show-all');
+    this.textContent = newsList.classList.contains('show-all') ? '閉じる' : 'もっと見る';
+  };
+  newsList.after(btn);
+}
 
 // モーダル
 function openModal(id) {
