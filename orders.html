@@ -20,38 +20,58 @@ a:hover{background:var(--site-primary);color:#fff}
 .empty{text-align:center;padding:40px;color:var(--muted);border:1px dashed var(--line);}
 .item-list{list-style:none;padding:0;margin:0;font-size:12px;line-height:1.6}
 .btn-clear{background:none;border:0;color:#a92e28;text-decoration:underline;cursor:pointer;font-size:12px;margin-top:20px;}
+.btn-csv{background:var(--site-primary);color:#fff;border:none;padding:10px 20px;border-radius:20px;cursor:pointer;font-size:12px;font-weight:bold;margin-bottom:20px;}
+.btn-csv:hover{opacity:0.8;}
 
-/* ログイン画面用 */
-#loginScreen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;text-align:center;}
-#loginScreen h2{font-size:20px;color:var(--site-primary);margin-bottom:20px;}
+/* ダッシュボード */
+.dashboard{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:30px;}
+.dash-card{background:#fffaf2;border:1px solid var(--line);padding:20px;border-radius:8px;text-align:center;}
+.dash-card h3{font-size:12px;color:var(--muted);margin:0 0 8px;}
+.dash-card .val{font-size:24px;font-weight:bold;color:var(--site-primary);}
+
+/* ログイン画面 */
+#loginScreen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;}
 #loginScreen input{padding:12px;font-size:16px;border:1px solid var(--line);border-radius:8px;width:100%;max-width:300px;margin-bottom:16px;font-family:inherit;}
 #loginScreen button{padding:12px 40px;background:var(--site-primary);color:#fff;border:none;border-radius:30px;font-size:16px;font-weight:bold;cursor:pointer;font-family:inherit;}
-#loginScreen button:hover{opacity:0.8;}
 #loginScreen .error{color:#a92e28;font-size:12px;margin-top:10px;display:none;}
 #mainContent{display:none;}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <!-- ログイン画面 -->
   <div id="loginScreen">
-    <h2>管理者ログイン</h2>
-    <p style="font-size:12px;color:var(--muted);margin-bottom:20px;">注文管理画面を表示するにはパスワードを入力してください。</p>
-    <input type="password" id="passwordInput" placeholder="パスワードを入力">
+    <h2 style="color:var(--site-primary);">管理者ログイン</h2>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:20px;">パスワードを入力してください。</p>
+    <input type="password" id="passwordInput" placeholder="パスワード">
     <button id="loginBtn">ログイン</button>
-    <div class="error" id="errorMsg">パスワードが正しくありません。</div>
+    <div class="error" id="errorMsg">パスワードが違います。</div>
   </div>
 
-  <!-- 管理者画面（ログイン後に表示） -->
   <div id="mainContent">
     <div class="header">
-      <h1>注文管理（管理者用）</h1>
+      <h1>注文管理・売上ダッシュボード</h1>
       <div>
         <a href="shop.html">ショップに戻る</a>
-        <button class="btn-clear" id="logoutBtn" style="margin-left:10px;border:1px solid #a92e28;color:#a92e28;padding:8px 16px;border-radius:20px;text-decoration:none;">ログアウト</button>
+        <button class="btn-clear" id="logoutBtn" style="margin-left:10px;border:1px solid #a92e28;color:#a92e28;padding:8px 16px;border-radius:20px;">ログアウト</button>
       </div>
     </div>
-    <p style="font-size:12px;color:var(--muted)">※この画面はデモ用です。このブラウザ（同じ端末）で注文されたデータのみが表示されます。</p>
+    
+    <div class="dashboard">
+      <div class="dash-card">
+        <h3>総売上</h3>
+        <div class="val" id="totalSales">¥0</div>
+      </div>
+      <div class="dash-card">
+        <h3>注文数</h3>
+        <div class="val" id="totalOrders">0</div>
+      </div>
+      <div class="dash-card">
+        <h3>平均注文単価</h3>
+        <div class="val" id="avgOrder">¥0</div>
+      </div>
+    </div>
+
+    <button class="btn-csv" id="downloadCsv">CSVダウンロード</button>
     <div id="orderList"></div>
     <button class="btn-clear" id="clearBtn">注文履歴をすべて削除する</button>
   </div>
@@ -59,85 +79,91 @@ a:hover{background:var(--site-primary);color:#fff}
 
 <script>
 (function(){
-  var ORDERS_KEY = "mongolian-bagel-orders-v1";
-  
-  // ここでパスワードを変更できます！
-  var PASSWORD = "yhota20100328"; 
+  const ORDERS_KEY = "mongolian-bagel-orders-v1";
+  const PASSWORD = "admin1234"; 
+  let ordersData = [];
 
-  var loginScreen = document.getElementById("loginScreen");
-  var mainContent = document.getElementById("mainContent");
-  var passwordInput = document.getElementById("passwordInput");
-  var loginBtn = document.getElementById("loginBtn");
-  var errorMsg = document.getElementById("errorMsg");
-  var orderList = document.getElementById("orderList");
+  const loginScreen = document.getElementById("loginScreen");
+  const mainContent = document.getElementById("mainContent");
 
-  // すでにログイン済みかチェック（sessionStorageを使用）
   if(sessionStorage.getItem("adminAuth") === "true"){
     showMain();
   }
 
-  loginBtn.addEventListener("click", function(){
-    if(passwordInput.value === PASSWORD){
+  document.getElementById("loginBtn").onclick = () => {
+    if(document.getElementById("passwordInput").value === PASSWORD){
       sessionStorage.setItem("adminAuth", "true");
       showMain();
     } else {
-      errorMsg.style.display = "block";
-      passwordInput.value = "";
+      document.getElementById("errorMsg").style.display = "block";
     }
-  });
+  };
 
-  passwordInput.addEventListener("keypress", function(e){
-    if(e.key === "Enter") loginBtn.click();
-  });
-
-  document.getElementById("logoutBtn").addEventListener("click", function(){
+  document.getElementById("logoutBtn").onclick = () => {
     sessionStorage.removeItem("adminAuth");
     location.reload();
-  });
+  };
 
   function showMain(){
     loginScreen.style.display = "none";
     mainContent.style.display = "block";
-    renderOrders();
+    loadAndRender();
   }
 
-  function loadOrders(){
-    try { return JSON.parse(localStorage.getItem(ORDERS_KEY)) || []; } catch(e){ return []; }
-  }
+  function loadAndRender(){
+    try { ordersData = JSON.parse(localStorage.getItem(ORDERS_KEY)) || []; } catch(e){ ordersData = []; }
+    
+    // ダッシュボード計算
+    let totalSales = 0;
+    ordersData.forEach(o => totalSales += o.total);
+    document.getElementById("totalSales").textContent = "¥" + totalSales.toLocaleString();
+    document.getElementById("totalOrders").textContent = ordersData.length;
+    document.getElementById("avgOrder").textContent = ordersData.length ? "¥" + Math.floor(totalSales / ordersData.length).toLocaleString() : "¥0";
 
-  function renderOrders(){
-    var orders = loadOrders();
-    if(orders.length === 0){
-      orderList.innerHTML = '<div class="empty">まだ注文データがありません。<br>ショップからテスト注文をしてみてください。</div>';
+    // リスト描画
+    if(ordersData.length === 0){
+      document.getElementById("orderList").innerHTML = '<div class="empty">注文データがありません。</div>';
       return;
     }
-    orders.reverse();
-    var html = '<table class="admin-table"><thead><tr><th>注文ID / 日時</th><th>お客様情報</th><th>注文商品</th><th>合計金額</th></tr></thead><tbody>';
+
+    const reversed = [...ordersData].reverse();
+    let html = '<table class="admin-table"><thead><tr><th>注文ID / 日時</th><th>お客様情報 / ギフト</th><th>注文商品</th><th>合計金額</th></tr></thead><tbody>';
     
-    orders.forEach(function(o){
-      var itemsHtml = '<ul class="item-list">';
-      o.items.forEach(function(i){
-        itemsHtml += '<li>' + i.name + ' × ' + i.qty + '（¥' + i.price.toLocaleString() + '）</li>';
-      });
+    reversed.forEach(o => {
+      let itemsHtml = '<ul class="item-list">';
+      o.items.forEach(i => itemsHtml += `<li>${i.name} × ${i.qty}（¥${i.price.toLocaleString()}）</li>`);
       itemsHtml += '</ul>';
-      
-      html += '<tr>' +
-        '<td style="white-space:nowrap"><b>' + o.id + '</b><br>' + o.date + '</td>' +
-        '<td><b>' + o.name + ' 様</b><br>' + o.email + '<br>' + o.tel + '<br>〒' + o.zip + '<br>' + o.address + '<br>支払: ' + o.pay + '</td>' +
-        '<td>' + itemsHtml + '</td>' +
-        '<td style="font-weight:bold;color:var(--site-primary);font-size:15px;">¥' + o.total.toLocaleString() + '</td>' +
-      '</tr>';
+
+      html += `<tr>
+        <td style="white-space:nowrap"><b>${o.id}</b><br>${o.date}</td>
+        <td><b>${o.name} 様</b><br>${o.email}<br>${o.tel}<br>〒${o.zip}<br>${o.address}<br><span style="color:#a92e28">ギフト: ${o.gift||'なし'} ${o.msg?'(Msg: '+o.msg+')':''}</span></td>
+        <td>${itemsHtml}</td>
+        <td style="font-weight:bold;color:var(--site-primary);font-size:15px;">¥${o.total.toLocaleString()}</td>
+      </tr>`;
     });
-    html += '</tbody></table>';
-    orderList.innerHTML = html;
+    document.getElementById("orderList").innerHTML = html + '</tbody></table>';
   }
 
-  document.getElementById("clearBtn").addEventListener("click", function(){
+  document.getElementById("downloadCsv").onclick = () => {
+    if(ordersData.length === 0) return alert("データがありません");
+    let csv = "注文ID,日時,名前,メール,電話,住所,ギフト,メッセージ,商品詳細,合計金額\n";
+    ordersData.forEach(o => {
+      const itemsStr = o.items.map(i => `${i.name}x${i.qty}`).join(' / ');
+      csv += `"${o.id}","${o.date}","${o.name}","${o.email}","${o.tel}","${o.address}","${o.gift||''}","${o.msg||''}","${itemsStr}",${o.total}\n`;
+    });
+    const blob = new Blob([new Uint8Array([0xEF, 0xBB, 0xBF]), csv], { type: 'text/csv;charset=utf-8;' }); // BOM付きでExcel文字化け防止
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `orders_${new Date().toISOString().slice(0,10)}.csv`;
+    link.click();
+  };
+
+  document.getElementById("clearBtn").onclick = () => {
     if(confirm("本当にすべての注文履歴を削除しますか？")){
       localStorage.removeItem(ORDERS_KEY);
-      renderOrders();
+      loadAndRender();
     }
-  });
+  };
 })();
 </script>
 </body></html>
