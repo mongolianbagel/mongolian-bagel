@@ -6,6 +6,18 @@
 <meta name="theme-color" content="#f8f2e8">
 <title>モンゴリアンベーグル｜モンゴル発・全国47都道府県のベーグル</title>
 <meta name="description" content="モンゴル・ウランバートルに本社を置くベーカリーブランド、モンゴリアンベーグル。フビライパン、チンギスパン、バトゥパンと、全国47都道府県の店舗情報をご紹介します。">
+
+<!-- OGP・SNSシェア設定 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="モンゴリアンベーグル｜モンゴル発・全国47都道府県のベーグル">
+<meta property="og:description" content="エビフライをパンに挟んだ「フビライパン」など、モンゴル発のベーカリーブランド。全国47都道府県で展開中。">
+<meta property="og:url" content="https://mongolianbagel.github.io/mongolian-bagel/">
+<meta property="og:image" content="https://mongolianbagel.github.io/mongolian-bagel/fubilai.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- ファビコン（羊のSVGアイコン） -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2376251f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M16.5 8c1.5 0 2.5 1.5 2.5 3.5s-1 3.5-2.5 3.5c-1 0-2-.5-2.5-1.5H10c-.5 1-1.5 1.5-2.5 1.5C6 15 5 13.5 5 11.5S6 8 7.5 8c1 0 2 .5 2.5 1.5h4c.5-1 1.5-1.5 2.5-1.5z'/><path d='M7 9.5c-1.5-.5-2.5-1.5-2-3s2-1.5 2.5 0'/><path d='M17 9.5c1.5-.5 2.5-1.5 2-3s-2-1.5-2.5 0'/></svg>">
+
 <style>
 :root{--site-primary:#76251f;--site-secondary:#e8d3b5;--site-background:#f8f2e8;--site-on-primary:#fff8ef;--site-on-secondary:#34251e;--site-on-background:#34251e;--site-font-body:"Yu Gothic","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;--site-font-heading:"Yu Mincho","Hiragino Mincho ProN",serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--site-background);color:var(--site-on-background);font-family:var(--site-font-body)}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}.root{background:var(--site-background);min-height:100vh}.wrap{width:min(1200px,100% - 48px);margin:auto}
@@ -14,7 +26,7 @@
 .breadcrumb a{text-decoration:underline;text-underline-offset:2px}
 .header{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:17px 0}
 .logo{display:flex;align-items:center;gap:12px;color:var(--site-primary);font-weight:900;font-size:clamp(17px,2vw,25px);letter-spacing:.02em}
-.logo-symbol{border:2px solid var(--site-primary);border-radius:50%;width:44px;height:44px;display:grid;place-items:center;font-size:24px}
+.logo-symbol{border:2px solid var(--site-primary);border-radius:50%;width:44px;height:44px;display:grid;place-items:center;background:#fff8ed;padding:5px}
 .logo small{display:block;font:700 9px Georgia,serif;letter-spacing:.2em;margin-top:2px}
 .nav{display:flex;gap:clamp(10px,2vw,26px);align-items:center;font-size:12px;font-weight:700}
 .nav a:hover{color:#a64a38}
@@ -39,9 +51,9 @@
 .hero-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#50301f 0%,#50301fcf 22%,#50301f20 46%,transparent 66%);z-index:3;pointer-events:none}
 .hero-slide{position:absolute;inset:0;opacity:0;animation:slideCycle 18s linear infinite;will-change:opacity}
 .hero-slide .zoom-layer{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.08);will-change:transform}
-.hero-slide.s1 .zoom-layer{background-image:url(fubilai.jpg)}
-.hero-slide.s2 .zoom-layer{background-image:url(chingis.jpg)}
-.hero-slide.s3 .zoom-layer{background-image:url(batu.jpg)}
+.hero-slide.s1 .zoom-layer{background-image:url(fubilai.jpeg)}
+.hero-slide.s2 .zoom-layer{background-image:url(chingis.jpeg)}
+.hero-slide.s3 .zoom-layer{background-image:url(batu.jpeg)}
 .hero-slide.s1{animation-delay:0s}
 .hero-slide.s2{animation-delay:6s}
 .hero-slide.s3{animation-delay:12s}
@@ -123,7 +135,7 @@ animation:crumbs 18s linear infinite;opacity:.9}
 .pref-card:hover{border-color:var(--site-primary);transform:translateY(-2px);box-shadow:0 6px 14px #76251f14}
 .pref-card .pref-name{font-size:11px;color:#a65b43;font-weight:800;letter-spacing:.06em}
 .pref-card .shop-name{font:500 15px/1.4 var(--site-font-heading);color:var(--site-on-background)}
-.pref-card .shop-area{font-size:11px;color:#77695b}
+.pref-card .shop-area{font-size:11px;color:#77695b;line-height:1.5}
 .pref-card .badge{align-self:flex-start;background:#efe1cc;color:#77513a;font-size:9px;font-weight:700;padding:3px 7px;margin-top:4px;letter-spacing:.05em}
 .pref-card a{margin-top:auto;color:var(--site-primary);font-size:10px;font-weight:700;border-top:1px solid #e3d3bd;padding-top:8px;margin-top:8px}
 .pref-region.is-hidden{display:none}
@@ -157,7 +169,7 @@ animation:crumbs 18s linear infinite;opacity:.9}
 .loc-cta .btn{background:var(--site-primary);color:#fff6e9;border-radius:30px;padding:13px 22px;font-size:12px;font-weight:700;white-space:nowrap}
 .footer{background:var(--site-primary);color:#fff3e5;padding:34px 0 26px}
 .footinner{display:flex;align-items:flex-start;justify-content:space-between;gap:28px;flex-wrap:wrap}
-.footinner .logo{color:#fff3e5}.footinner .logo-symbol{border-color:#fff3e5}
+.footinner .logo{color:#fff3e5}.footinner .logo-symbol{border-color:#fff3e5;background:transparent}
 .footlinks{display:flex;gap:20px;font-size:11px;flex-wrap:wrap}
 .footcontact{font-size:11px;line-height:1.9;opacity:.92}
 .footcontact a{text-decoration:underline;text-underline-offset:2px}
@@ -198,7 +210,7 @@ animation:crumbs 18s linear infinite;opacity:.9}
 <body><div class="root">
 <div class="topnote">焼きたての香りと、ちょっと大胆なおいしさ。｜全国47都道府県で展開中 ｜ <a href="mongolian_bagel-mn.html" hreflang="mn" lang="mn" style="text-decoration:underline">Монгол хэл</a></div>
 <div class="breadcrumb"><div class="wrap">ホーム ＞ モンゴリアンベーグル</div></div>
-<header class="wrap header"><a class="logo" href="index.html"><span class="logo-symbol">🥯</span><span>モンゴリアンベーグル<small>MONGOLIAN BAGEL</small></span></a><nav class="nav"><a href="index.html">ホーム</a><a href="#menu">商品一覧</a><a href="#story">ブランド</a><a href="#global">モンゴル本社</a><a href="#locations">全国の店舗</a><a href="#news">ニュース</a><a href="#contact">お問い合わせ</a><a href="#faq">よくある質問</a><a class="langswitch" href="mongolian_bagel-mn.html" hreflang="mn" lang="mn">Монгол хэл ↗</a><a class="shopbtn" href="shop.html">オンラインショップ ↗</a></nav></header>
+<header class="wrap header"><a class="logo" href="index.html"><span class="logo-symbol"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--site-primary);display:block;"><path d="M16.5 8c1.5 0 2.5 1.5 2.5 3.5s-1 3.5-2.5 3.5c-1 0-2-.5-2.5-1.5H10c-.5 1-1.5 1.5-2.5 1.5C6 15 5 13.5 5 11.5S6 8 7.5 8c1 0 2 .5 2.5 1.5h4c.5-1 1.5-1.5 2.5-1.5z"/><path d="M7 9.5c-1.5-.5-2.5-1.5-2-3s2-1.5 2.5 0"/><path d="M17 9.5c1.5-.5 2.5-1.5 2-3s-2-1.5-2.5 0"/><circle cx="9.5" cy="11.5" r="0.5" fill="currentColor" stroke="none"/><circle cx="14.5" cy="11.5" r="0.5" fill="currentColor" stroke="none"/><path d="M11.5 13.5h1"/></svg></span><span>モンゴリアンベーグル<small>MONGOLIAN BAGEL</small></span></a><nav class="nav"><a href="index.html">ホーム</a><a href="#menu">商品一覧</a><a href="#story">ブランド</a><a href="#global">モンゴル本社</a><a href="#locations">全国の店舗</a><a href="#news">ニュース</a><a href="#contact">お問い合わせ</a><a href="#faq">よくある質問</a><a class="langswitch" href="mongolian_bagel-mn.html" hreflang="mn" lang="mn">Монгол хэл ↗</a><a class="shopbtn" href="shop.html">オンラインショップ ↗</a></nav></header>
 <main id="home">
 <section class="hero">
   <div class="hero-visual" aria-hidden="true">
@@ -217,11 +229,11 @@ animation:crumbs 18s linear infinite;opacity:.9}
 </section>
 <div class="strip">BAGELS WITH A LITTLE ADVENTURE　 •　 FRESHLY BAKED DAILY　 •　</div>
 <section class="wrap section" id="menu"><div class="columns">
-<div class="shop-photo"><img src="fubilai.jpg" alt="フビライパンのイメージ"><span class="photo-caption">⌖　全国47都道府県で展開中<br>お近くの店舗で、焼きたてをお楽しみください。</span></div>
+<div class="shop-photo"><img src="fubilai.jpeg" alt="フビライパンのイメージ"><span class="photo-caption">⌖　全国47都道府県で展開中<br>お近くの店舗で、焼きたてをお楽しみください。</span></div>
 <div class="menu-panel"><div class="panel-head"><h3>メニュー</h3><span>OUR FAVORITES　›</span></div><div class="mini-menu">
-<article class="item"><img src="fubilai.jpg" alt="フビライパン"><h4>フビライパン</h4><p>エビフライをパンに挟んだ看板商品</p><strong>¥480</strong><div class="img-note">※画像はイメージです</div></article>
-<article class="item"><img src="chingis.jpg" alt="チンギスパン"><h4>チンギスパン</h4><p>ジンギスカンをパンに挟んだ食べ応え十分の一品</p><strong>¥580</strong><div class="img-note">※画像はイメージです</div></article>
-<article class="item"><img src="batu.jpg" alt="バトゥパン"><h4>バトゥパン</h4><p>チャチャルガンのジャムを塗った、甘酸っぱいスイーツ系</p><strong>¥380</strong><div class="img-note">※画像はイメージです</div></article>
+<article class="item"><img src="fubilai.jpeg" alt="フビライパン"><h4>フビライパン</h4><p>エビフライをパンに挟んだ看板商品</p><strong>¥480</strong><div class="img-note">※画像はイメージです</div></article>
+<article class="item"><img src="chingis.jpeg" alt="チンギスパン"><h4>チンギスパン</h4><p>ジンギスカンをパンに挟んだ食べ応え十分の一品</p><strong>¥580</strong><div class="img-note">※画像はイメージです</div></article>
+<article class="item"><img src="batu.jpeg" alt="バトゥパン"><h4>バトゥパン</h4><p>チャチャルガンのジャムを塗った、甘酸っぱいスイーツ系</p><strong>¥380</strong><div class="img-note">※画像はイメージです</div></article>
 <article class="item"><img src="https://images.unsplash.com/photo-1585478259715-876acc5be8eb?q=80&w=800&auto=format&fit=crop" alt="プレーンベーグル"><h4>プレーンベーグル</h4><p>小麦の風味を楽しむ定番</p><strong>¥220</strong><div class="img-note">※画像はイメージです</div></article>
 </div></div>
 <div class="commit-panel"><div class="panel-head"><h3>こだわり</h3><span>OUR STORY</span></div><h3>モンゴルの大地のように、<br>力強く、やさしい味を。</h3><p>素材にこだわった、もちもちのベーグル。そこに大胆な具材を組み合わせ、食べる人に元気を届けるベーグル専門店です。エビフライをパンに挟んだ「フビライパン」、ジンギスカンを挟んだ「チンギスパン」、チャチャルガンのジャムを塗った「バトゥパン」。どれも、ここでしか味わえない自慢の一品です。</p><a class="outline-btn" href="#story">こだわりを読む　›</a><img class="commit-img" src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=1000&auto=format&fit=crop" alt="ベーグルが並ぶショーケースのイメージ"><div class="img-note">※画像はイメージです</div></div>
@@ -245,6 +257,8 @@ animation:crumbs 18s linear infinite;opacity:.9}
 <p class="hq-note">※日本国内の各店舗はモンゴル本社の直営店です。店舗ごとの情報は各店舗までお問い合わせください。</p>
 </div>
 </section>
+
+<!-- 店舗一覧（詳細情報を追加） -->
 <section class="wrap section" id="locations">
 <div class="section-title"><div class="eyebrow">FIND YOUR BAGEL</div><h2>全国の店舗</h2><p>北海道から沖縄まで、47都道府県すべてに店舗があります。<br>地方を選んで、お近くのモンゴリアンベーグルを探してみてください。</p></div>
 <div class="loc-stat">
@@ -264,67 +278,67 @@ animation:crumbs 18s linear infinite;opacity:.9}
 <button data-region="kyushu">九州・沖縄</button>
 </div>
 <div class="pref-region" data-region="hokkaido"><h3><span>HOKKAIDO</span>北海道</h3><div class="pref-grid">
-<article class="pref-card"><div class="pref-name">北海道</div><div class="shop-name">札幌・大通店</div><div class="shop-area">札幌市中央区・大通エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">北海道</div><div class="shop-name">札幌・大通店</div><div class="shop-area">札幌市中央区大通西3-1-1<br>営業時間 10:00〜20:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
 </div></div>
 <div class="pref-region" data-region="tohoku"><h3><span>TOHOKU</span>東北</h3><div class="pref-grid">
-<article class="pref-card"><div class="pref-name">青森県</div><div class="shop-name">青森・弘前店</div><div class="shop-area">弘前市・駅前エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">岩手県</div><div class="shop-name">盛岡・駅前店</div><div class="shop-area">盛岡市・駅前エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">宮城県</div><div class="shop-name">仙台駅前店</div><div class="shop-area">仙台市青葉区・駅前エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">秋田県</div><div class="shop-name">秋田・川反店</div><div class="shop-area">秋田市・川反エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">山形県</div><div class="shop-name">山形・七日町店</div><div class="shop-area">山形市・七日町エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">福島県</div><div class="shop-name">福島・郡山店</div><div class="shop-area">郡山市・駅前エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">青森県</div><div class="shop-name">青森・弘前店</div><div class="shop-area">弘前市駅前町1-2<br>営業時間 10:00〜19:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">岩手県</div><div class="shop-name">盛岡・駅前店</div><div class="shop-area">盛岡市盛岡駅前通1-1<br>営業時間 10:00〜20:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">宮城県</div><div class="shop-name">仙台駅前店</div><div class="shop-area">仙台市青葉区中央1-1-1<br>営業時間 10:00〜21:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">秋田県</div><div class="shop-name">秋田・川反店</div><div class="shop-area">秋田市大町1-2-3<br>営業時間 10:00〜19:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">山形県</div><div class="shop-name">山形・七日町店</div><div class="shop-area">山形市七日町1-1<br>営業時間 10:00〜19:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">福島県</div><div class="shop-name">福島・郡山店</div><div class="shop-area">郡山市駅前1-1-1<br>営業時間 10:00〜20:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
 </div></div>
 <div class="pref-region" data-region="kanto"><h3><span>KANTO</span>関東</h3><div class="pref-grid">
-<article class="pref-card"><div class="pref-name">茨城県</div><div class="shop-name">水戸・駅前店</div><div class="shop-area">水戸市・駅前エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">栃木県</div><div class="shop-name">宇都宮・中心街店</div><div class="shop-area">宇都宮市・中心街エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">群馬県</div><div class="shop-name">高崎・駅前店</div><div class="shop-area">高崎市・駅前エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">埼玉県</div><div class="shop-name">大宮・駅前店</div><div class="shop-area">さいたま市大宮区・駅前エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">千葉県</div><div class="shop-name">千葉・中央店</div><div class="shop-area">千葉市中央区・中央エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">東京都</div><div class="shop-name">東京・丸の内店</div><div class="shop-area">千代田区・丸の内エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">神奈川県</div><div class="shop-name">横浜・みなとみらい店</div><div class="shop-area">横浜市西区・みなとみらいエリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">茨城県</div><div class="shop-name">水戸・駅前店</div><div class="shop-area">水戸市宮町1-1<br>営業時間 10:00〜20:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">栃木県</div><div class="shop-name">宇都宮・中心街店</div><div class="shop-area">宇都宮市馬場通り1-1<br>営業時間 10:00〜19:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">群馬県</div><div class="shop-name">高崎・駅前店</div><div class="shop-area">高崎市八島町1-1<br>営業時間 10:00〜20:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">埼玉県</div><div class="shop-name">大宮・駅前店</div><div class="shop-area">さいたま市大宮区桜木町1-1<br>営業時間 10:00〜21:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">千葉県</div><div class="shop-name">千葉・中央店</div><div class="shop-area">千葉市中央区富士見1-1<br>営業時間 10:00〜20:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">東京都</div><div class="shop-name">東京・丸の内店</div><div class="shop-area">千代田区丸の内1-1-1<br>営業時間 8:00〜21:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">神奈川県</div><div class="shop-name">横浜・みなとみらい店</div><div class="shop-area">横浜市西区みなとみらい1-1<br>営業時間 10:00〜20:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
 </div></div>
 <div class="pref-region" data-region="chubu"><h3><span>CHUBU</span>中部</h3><div class="pref-grid">
-<article class="pref-card"><div class="pref-name">新潟県</div><div class="shop-name">新潟・万代店</div><div class="shop-area">新潟市中央区・万代エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">富山県</div><div class="shop-name">富山・駅前店</div><div class="shop-area">富山市・駅前エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">石川県</div><div class="shop-name">アル・プラザ鹿島店</div><div class="shop-area">鹿島郡中能登町・アル・プラザ鹿島内</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">福井県</div><div class="shop-name">福井・駅前店</div><div class="shop-area">福井市・駅前エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">山梨県</div><div class="shop-name">甲府・駅前店</div><div class="shop-area">甲府市・駅前エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">長野県</div><div class="shop-name">長野・善光寺店</div><div class="shop-area">長野市・善光寺エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">岐阜県</div><div class="shop-name">岐阜・柳ヶ瀬店</div><div class="shop-area">岐阜市・柳ヶ瀬エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">静岡県</div><div class="shop-name">静岡・呉服町店</div><div class="shop-area">静岡市葵区・呉服町エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">愛知県</div><div class="shop-name">名古屋・栄店</div><div class="shop-area">名古屋市中区・栄エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">新潟県</div><div class="shop-name">新潟・万代店</div><div class="shop-area">新潟市中央区万代1-1<br>営業時間 10:00〜20:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">富山県</div><div class="shop-name">富山・駅前店</div><div class="shop-area">富山市新富町1-1<br>営業時間 10:00〜19:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">石川県</div><div class="shop-name">アル・プラザ鹿島店</div><div class="shop-area">鹿島郡中能登町井田に部50番地<br>営業時間 9:00〜20:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">福井県</div><div class="shop-name">福井・駅前店</div><div class="shop-area">福井市中央1-1<br>営業時間 10:00〜19:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">山梨県</div><div class="shop-name">甲府・駅前店</div><div class="shop-area">甲府市丸の内1-1<br>営業時間 10:00〜19:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">長野県</div><div class="shop-name">長野・善光寺店</div><div class="shop-area">長野市元善町1-1<br>営業時間 9:00〜18:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">岐阜県</div><div class="shop-name">岐阜・柳ヶ瀬店</div><div class="shop-area">岐阜市柳ケ瀬通1-1<br>営業時間 10:00〜19:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">静岡県</div><div class="shop-name">静岡・呉服町店</div><div class="shop-area">静岡市葵区呉服町1-1<br>営業時間 10:00〜20:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">愛知県</div><div class="shop-name">名古屋・栄店</div><div class="shop-area">名古屋市中区栄1-1<br>営業時間 10:00〜21:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
 </div></div>
 <div class="pref-region" data-region="kinki"><h3><span>KINKI</span>近畿</h3><div class="pref-grid">
-<article class="pref-card"><div class="pref-name">三重県</div><div class="shop-name">津・駅前店</div><div class="shop-area">津市・駅前エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">滋賀県</div><div class="shop-name">大津・駅前店</div><div class="shop-area">大津市・駅前エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">京都府</div><div class="shop-name">京都・四条店</div><div class="shop-area">京都市下京区・四条エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">大阪府</div><div class="shop-name">大阪・梅田店</div><div class="shop-area">大阪市北区・梅田エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">兵庫県</div><div class="shop-name">神戸・三宮店</div><div class="shop-area">神戸市中央区・三宮エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">奈良県</div><div class="shop-name">奈良・近鉄奈良店</div><div class="shop-area">奈良市・近鉄奈良エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">和歌山県</div><div class="shop-name">和歌山・駅前店</div><div class="shop-area">和歌山市・駅前エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">三重県</div><div class="shop-name">津・駅前店</div><div class="shop-area">津市羽所町1-1<br>営業時間 10:00〜19:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">滋賀県</div><div class="shop-name">大津・駅前店</div><div class="shop-area">大津市春日町1-1<br>営業時間 10:00〜19:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">京都府</div><div class="shop-name">京都・四条店</div><div class="shop-area">京都市下京区四条通1-1<br>営業時間 10:00〜20:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">大阪府</div><div class="shop-name">大阪・梅田店</div><div class="shop-area">大阪市北区梅田1-1-1<br>営業時間 8:00〜21:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">兵庫県</div><div class="shop-name">神戸・三宮店</div><div class="shop-area">神戸市中央区三宮町1-1<br>営業時間 10:00〜20:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">奈良県</div><div class="shop-name">奈良・近鉄奈良店</div><div class="shop-area">奈良市東向中町1-1<br>営業時間 10:00〜19:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">和歌山県</div><div class="shop-name">和歌山・駅前店</div><div class="shop-area">和歌山市友田町1-1<br>営業時間 10:00〜19:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
 </div></div>
 <div class="pref-region" data-region="chugoku"><h3><span>CHUGOKU</span>中国</h3><div class="pref-grid">
-<article class="pref-card"><div class="pref-name">鳥取県</div><div class="shop-name">鳥取・駅前店</div><div class="shop-area">鳥取市・駅前エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">島根県</div><div class="shop-name">松江・スターバックス併設店</div><div class="shop-area">松江市・スターバックス併設エリア</div><span class="badge">直営店・最新店舗</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">岡山県</div><div class="shop-name">岡山・駅前店</div><div class="shop-area">岡山市北区・駅前エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">広島県</div><div class="shop-name">広島・本通店</div><div class="shop-area">広島市中区・本通エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">山口県</div><div class="shop-name">山口・駅前店</div><div class="shop-area">山口市・駅前エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">鳥取県</div><div class="shop-name">鳥取・駅前店</div><div class="shop-area">鳥取市東品治町1-1<br>営業時間 10:00〜19:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">島根県</div><div class="shop-name">松江・スターバックス併設店</div><div class="shop-area">松江市朝日町1-1<br>営業時間 8:00〜21:00</div><span class="badge">直営店・最新店舗</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">岡山県</div><div class="shop-name">岡山・駅前店</div><div class="shop-area">岡山市北区駅前町1-1<br>営業時間 10:00〜20:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">広島県</div><div class="shop-name">広島・本通店</div><div class="shop-area">広島市中区本通1-1<br>営業時間 10:00〜20:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">山口県</div><div class="shop-name">山口・駅前店</div><div class="shop-area">山口市惣太夫町1-1<br>営業時間 10:00〜19:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
 </div></div>
 <div class="pref-region" data-region="shikoku"><h3><span>SHIKOKU</span>四国</h3><div class="pref-grid">
-<article class="pref-card"><div class="pref-name">徳島県</div><div class="shop-name">徳島・駅前店</div><div class="shop-area">徳島市・駅前エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">香川県</div><div class="shop-name">高松・丸亀町店</div><div class="shop-area">高松市・丸亀町エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">愛媛県</div><div class="shop-name">松山・大街道店</div><div class="shop-area">松山市・大街道エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">高知県</div><div class="shop-name">高知・はりまや橋店</div><div class="shop-area">高知市・はりまや橋エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">徳島県</div><div class="shop-name">徳島・駅前店</div><div class="shop-area">徳島市寺島本町西1-1<br>営業時間 10:00〜19:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">香川県</div><div class="shop-name">高松・丸亀町店</div><div class="shop-area">高松市丸亀町1-1<br>営業時間 10:00〜20:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">愛媛県</div><div class="shop-name">松山・大街道店</div><div class="shop-area">松山市大街道1-1<br>営業時間 10:00〜20:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">高知県</div><div class="shop-name">高知・はりまや橋店</div><div class="shop-area">高知市はりまや町1-1<br>営業時間 10:00〜19:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
 </div></div>
 <div class="pref-region" data-region="kyushu"><h3><span>KYUSHU / OKINAWA</span>九州・沖縄</h3><div class="pref-grid">
-<article class="pref-card"><div class="pref-name">福岡県</div><div class="shop-name">福岡・天神店</div><div class="shop-area">福岡市中央区・天神エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">佐賀県</div><div class="shop-name">佐賀・駅前店</div><div class="shop-area">佐賀市・駅前エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">長崎県</div><div class="shop-name">長崎・浜町店</div><div class="shop-area">長崎市・浜町エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">熊本県</div><div class="shop-name">熊本・下通店</div><div class="shop-area">熊本市中央区・下通エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">大分県</div><div class="shop-name">大分・駅前店</div><div class="shop-area">大分市・駅前エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">宮崎県</div><div class="shop-name">宮崎・橘通店</div><div class="shop-area">宮崎市・橘通エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">鹿児島県</div><div class="shop-name">鹿児島・天文館店</div><div class="shop-area">鹿児島市・天文館エリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
-<article class="pref-card"><div class="pref-name">沖縄県</div><div class="shop-name">那覇・国際通り店</div><div class="shop-area">那覇市・国際通りエリア</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">福岡県</div><div class="shop-name">福岡・天神店</div><div class="shop-area">福岡市中央区天神1-1<br>営業時間 10:00〜21:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">佐賀県</div><div class="shop-name">佐賀・駅前店</div><div class="shop-area">佐賀市駅前中央1-1<br>営業時間 10:00〜19:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">長崎県</div><div class="shop-name">長崎・浜町店</div><div class="shop-area">長崎市浜町1-1<br>営業時間 10:00〜20:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">熊本県</div><div class="shop-name">熊本・下通店</div><div class="shop-area">熊本市中央区下通1-1<br>営業時間 10:00〜20:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">大分県</div><div class="shop-name">大分・駅前店</div><div class="shop-area">大分市要町1-1<br>営業時間 10:00〜20:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">宮崎県</div><div class="shop-name">宮崎・橘通店</div><div class="shop-area">宮崎市橘通西1-1<br>営業時間 10:00〜20:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">鹿児島県</div><div class="shop-name">鹿児島・天文館店</div><div class="shop-area">鹿児島市千日町1-1<br>営業時間 10:00〜20:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
+<article class="pref-card"><div class="pref-name">沖縄県</div><div class="shop-name">那覇・国際通り店</div><div class="shop-area">那覇市牧志1-1<br>営業時間 10:00〜21:00</div><span class="badge">直営店</span><a href="#contact">店舗案内 ↗</a></article>
 </div></div>
 <div class="pickup">
 <article><time>2026.10.01</time><h3>朝焼き限定「モーニングベーグル」</h3><p>開店から午前10時まで、焼きたてのプレーンベーグルを特別価格でご提供。数に限りがございます。</p></article>
@@ -395,7 +409,7 @@ animation:crumbs 18s linear infinite;opacity:.9}
 </section>
 </main>
 <footer class="footer"><div class="wrap footinner">
-<a class="logo" href="index.html"><span class="logo-symbol">🥯</span><span>モンゴリアンベーグル<small>MONGOLIAN BAGEL</small></span></a>
+<a class="logo" href="index.html"><span class="logo-symbol"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--site-primary);display:block;"><path d="M16.5 8c1.5 0 2.5 1.5 2.5 3.5s-1 3.5-2.5 3.5c-1 0-2-.5-2.5-1.5H10c-.5 1-1.5 1.5-2.5 1.5C6 15 5 13.5 5 11.5S6 8 7.5 8c1 0 2 .5 2.5 1.5h4c.5-1 1.5-1.5 2.5-1.5z"/><path d="M7 9.5c-1.5-.5-2.5-1.5-2-3s2-1.5 2.5 0"/><path d="M17 9.5c1.5-.5 2.5-1.5 2-3s-2-1.5-2.5 0"/><circle cx="9.5" cy="11.5" r="0.5" fill="currentColor" stroke="none"/><circle cx="14.5" cy="11.5" r="0.5" fill="currentColor" stroke="none"/><path d="M11.5 13.5h1"/></svg></span><span>モンゴリアンベーグル<small>MONGOLIAN BAGEL</small></span></a>
 <div class="footcontact">
 <strong>Mongolian Bagel Head Office</strong><br>
 CEO: Batbayar Təmülən<br>
