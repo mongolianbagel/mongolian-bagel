@@ -140,6 +140,8 @@
     <a href="index.html">ホーム</a>
     <a href="#products">商品一覧</a>
     <a href="legal.html" style="font-size:10px;">特定商取引法</a>
+    <!-- 管理者用リンクを追加しました -->
+    <a href="orders.html" style="margin:0;border:1px solid var(--line);padding:6px 10px;border-radius:20px;font-size:10px;">管理者用</a>
     <button class="cartbtn" id="openCart" type="button">🛒 カート <span class="count" id="cartCount">0</span></button>
   </nav>
 </header>
@@ -252,12 +254,12 @@
 (function(){
   "use strict";
   
-  // 商品データ
+  // ★ 商品データ（プレーンベーグルの画像を batu.jpg に変更して確実に表示）
   const PRODUCTS = [
     { id: "fubilai", cat: "signature", name: "フビライパン", price: 480, img: "fubilai.jpg", tag: "看板商品", desc: "エビフライをパンに挟んだ看板商品。サクサクのエビフライと、もちもちのベーグル生地の組み合わせ。" },
     { id: "chingis", cat: "signature", name: "チンギスパン", price: 580, img: "chingis.jpg", tag: "新商品", desc: "ジンギスカンをパンに挟んだ、食べ応え十分の一品。モンゴルの伝統的な味わいをパンで楽しめます。" },
     { id: "batu", cat: "sweet", name: "バトゥパン", price: 380, img: "batu.jpg", tag: "新商品", desc: "チャチャルガンのジャムを塗った、甘酸っぱいスイーツ系パン。朝食にもおやつにもぴったり。" },
-    { id: "plain", cat: "classic", name: "プレーンベーグル", price: 220, img: "https://images.unsplash.com/photo-1585478259715-876acc5be8eb?q=80&w=800&auto=format&fit=crop", tag: "", desc: "小麦の風味を楽しむ定番。毎朝食べたい、シンプルで力強い味わい。" }
+    { id: "plain", cat: "classic", name: "プレーンベーグル", price: 220, img: "batu.jpg", tag: "", desc: "小麦の風味を楽しむ定番。毎朝食べたい、シンプルで力強い味わい。" }
   ];
 
   const STORAGE_KEY = "mongolian-bagel-cart-v2";
@@ -309,10 +311,7 @@
   function addToCart(id, isSub = false) {
     const p = getProduct(id);
     if(!p) return;
-    
-    // 定期購入なら価格を10%OFFに（見た目上）
     const actualId = isSub ? id + "_sub" : id;
-    
     cart[actualId] = (cart[actualId] || 0) + 1;
     saveCart();
     renderCart();
@@ -419,7 +418,6 @@
       e.stopPropagation();
       addToCart(e.target.dataset.id);
     } else if(e.target.closest(".product")) {
-      // 商品詳細モーダルを開く
       const id = e.target.closest(".product").dataset.id;
       openProductModal(id);
     }
@@ -480,7 +478,6 @@
     e.preventDefault();
     const t = computeTotals();
     
-    // 注文データの保存
     const orderData = {
       id: 'ORD-' + Date.now(),
       date: new Date().toLocaleString('ja-JP'),
