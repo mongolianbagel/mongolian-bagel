@@ -11,7 +11,7 @@ body{background:var(--bg-dark); color:var(--text-main); font-family:"Helvetica N
 .wrap{max-width:1000px; margin:auto;}
 .header{display:flex; justify-content:space-between; border-bottom:2px solid var(--accent); padding-bottom:15px; margin-bottom:30px; align-items:center;}
 h1{color:var(--accent); font-size:24px;}
-.nav-btn{color:var(--accent); border:1px solid var(--accent); padding:8px 16px; border-radius:20px; text-decoration:none; font-size:12px; margin-left:10px;}
+.nav-btn{color:var(--accent); border:1px solid var(--accent); padding:8px 16px; border-radius:20px; text-decoration:none; font-size:12px; margin-left:10px; background:none; cursor:pointer; font-family:inherit;}
 .panel{background:var(--bg-light); padding:25px; border-radius:10px; margin-bottom:30px; border-top:3px solid var(--accent);}
 .panel h2{font-size:18px; color:var(--accent); margin-bottom:15px;}
 .form-group{display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-bottom:15px;}
@@ -19,16 +19,15 @@ h1{color:var(--accent); font-size:24px;}
 .field input, .field textarea, .field select{width:100%; padding:10px; background:transparent; border:1px solid var(--border); border-radius:6px; color:#fff; font-family:inherit;}
 .btn{background:var(--accent); color:var(--bg-dark); border:none; padding:12px 24px; border-radius:30px; font-weight:bold; cursor:pointer; margin-top:10px;}
 .btn:hover{opacity:0.8;}
-
-/* テーブル */
 table{width:100%; border-collapse:collapse; font-size:13px;}
 th, td{border-bottom:1px solid var(--border); padding:12px; text-align:left;}
 th{color:var(--accent);}
+.btn-edit{background:transparent; color:var(--accent); border:1px solid var(--accent); padding:5px 10px; border-radius:15px; cursor:pointer; font-size:11px; margin-right:5px;}
 .btn-del{background:transparent; color:red; border:1px solid red; padding:5px 10px; border-radius:15px; cursor:pointer; font-size:11px;}
-
-/* ログイン */
 #loginScreen{display:flex; flex-direction:column; align-items:center; justify-content:center; height:80vh;}
 #loginScreen input{padding:12px; width:300px; margin-bottom:15px; border-radius:6px; border:1px solid var(--border); background:transparent; color:#fff;}
+#editModal{position:fixed; inset:0; background:rgba(0,0,0,0.8); display:none; align-items:center; justify-content:center; z-index:100;}
+#editModal .modal-box{background:var(--bg-light); padding:30px; border-radius:10px; width:500px; max-width:90%;}
 </style>
 </head>
 <body>
@@ -46,7 +45,7 @@ th{color:var(--accent);}
         <a href="index.html" class="nav-btn">サイトを見る</a>
         <a href="shop.html" class="nav-btn">ショップ</a>
         <a href="orders.html" class="nav-btn">注文管理</a>
-        <button class="nav-btn" onclick="logout()" style="cursor:pointer; background:none;">ログアウト</button>
+        <button class="nav-btn" onclick="logout()">ログアウト</button>
       </div>
     </div>
 
@@ -54,18 +53,18 @@ th{color:var(--accent);}
     <div class="panel">
       <h2>新商品の追加</h2>
       <div class="form-group">
-        <div class="field"><label>商品名 (必須)</label><input id="p-name"></div>
-        <div class="field"><label>価格 (半角数字)</label><input id="p-price" type="number"></div>
+        <div class="field"><label>商品名</label><input id="p-name"></div>
+        <div class="field"><label>価格</label><input id="p-price" type="number"></div>
       </div>
       <div class="form-group">
         <div class="field"><label>画像URL (例: fubilai.jpg)</label><input id="p-img"></div>
-        <div class="field"><label>タグ (例: 新商品 / 空欄可)</label><input id="p-tag"></div>
+        <div class="field"><label>タグ (空欄可)</label><input id="p-tag"></div>
       </div>
       <div class="field"><label>商品説明</label><textarea id="p-desc" rows="2"></textarea></div>
       <button class="btn" onclick="addProduct()">商品を追加する</button>
     </div>
 
-    <!-- 商品一覧 -->
+    <!-- 商品一覧（編集削除） -->
     <div class="panel">
       <h2>現在の商品一覧</h2>
       <table>
@@ -74,25 +73,35 @@ th{color:var(--accent);}
       </table>
     </div>
 
+    <!-- レビュー管理 -->
+    <div class="panel">
+      <h2>お客様レビューの管理</h2>
+      <div id="reviewList"></div>
+    </div>
+
     <!-- お知らせ追加 -->
     <div class="panel">
       <h2>お知らせの追加</h2>
       <div class="form-group">
-        <div class="field"><label>日付 (例: 2026.11.01)</label><input id="n-date"></div>
-        <div class="field"><label>タグ (例: NEWS)</label><input id="n-tag"></div>
+        <div class="field"><label>日付</label><input id="n-date"></div>
+        <div class="field"><label>タグ</label><input id="n-tag"></div>
       </div>
       <div class="field"><label>タイトル</label><input id="n-title"></div>
       <button class="btn" onclick="addNews()">お知らせを追加する</button>
     </div>
+  </div>
+</div>
 
-    <!-- お知らせ一覧 -->
-    <div class="panel">
-      <h2>お知らせ一覧</h2>
-      <table>
-        <thead><tr><th>日付</th><th>タグ</th><th>タイトル</th><th>操作</th></tr></thead>
-        <tbody id="newsList"></tbody>
-      </table>
-    </div>
+<!-- 編集モーダル -->
+<div id="editModal">
+  <div class="modal-box">
+    <h2 style="color:var(--accent); margin-bottom:15px;">商品を編集</h2>
+    <input type="hidden" id="edit-id">
+    <div class="field" style="margin-bottom:10px;"><label>商品名</label><input id="edit-name" style="width:100%; padding:10px; background:transparent; border:1px solid var(--border); color:#fff;"></div>
+    <div class="field" style="margin-bottom:10px;"><label>価格</label><input id="edit-price" type="number" style="width:100%; padding:10px; background:transparent; border:1px solid var(--border); color:#fff;"></div>
+    <div class="field" style="margin-bottom:20px;"><label>説明</label><textarea id="edit-desc" rows="3" style="width:100%; padding:10px; background:transparent; border:1px solid var(--border); color:#fff;"></textarea></div>
+    <button class="btn" onclick="saveEdit()">保存する</button>
+    <button class="btn" style="background:transparent; color:var(--text-muted); border:1px solid var(--border); margin-left:10px;" onclick="document.getElementById('editModal').style.display='none'">キャンセル</button>
   </div>
 </div>
 
@@ -104,12 +113,7 @@ const DEFAULT_PRODUCTS = [
   { id: "batu", name: "バトゥパン", price: 380, img: "batu.jpg", tag: "新商品", desc: "チャチャルガンのジャムを塗ったスイーツ系。" },
   { id: "plain", name: "プレーンベーグル", price: 220, img: "batu.jpg", tag: "", desc: "小麦の風味を楽しむ定番。" }
 ];
-const DEFAULT_NEWS = [
-  { date: "2026.10.15", tag: "PRODUCT", title: "新商品「チンギスパン」「バトゥパン」を追加しました。" },
-  { date: "2026.09.15", tag: "SHOP", title: "島根県に出店し、全国47都道府県への展開が完了しました。" }
-];
 
-// ログイン
 if(sessionStorage.getItem('adminAuth') === 'true') {
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('mainScreen').style.display = 'block';
@@ -121,34 +125,16 @@ document.getElementById('loginBtn').onclick = () => {
     document.getElementById('loginScreen').style.display = 'none';
     document.getElementById('mainScreen').style.display = 'block';
     render();
-  } else {
-    alert('パスワードが違います');
-  }
+  } else { alert('パスワードが違います'); }
 };
-function logout() {
-  sessionStorage.removeItem('adminAuth');
-  location.reload();
-}
+function logout() { sessionStorage.removeItem('adminAuth'); location.reload(); }
 
-// データ取得
 function getProducts() {
   let data = localStorage.getItem('mb_products');
-  if(!data) {
-    localStorage.setItem('mb_products', JSON.stringify(DEFAULT_PRODUCTS));
-    return DEFAULT_PRODUCTS;
-  }
-  return JSON.parse(data);
-}
-function getNews() {
-  let data = localStorage.getItem('mb_news');
-  if(!data) {
-    localStorage.setItem('mb_news', JSON.stringify(DEFAULT_NEWS));
-    return DEFAULT_NEWS;
-  }
+  if(!data) { localStorage.setItem('mb_products', JSON.stringify(DEFAULT_PRODUCTS)); return DEFAULT_PRODUCTS; }
   return JSON.parse(data);
 }
 
-// 描画
 function render() {
   const pList = document.getElementById('productList');
   pList.innerHTML = getProducts().map(p => `
@@ -156,44 +142,46 @@ function render() {
       <td><img src="${p.img}" width="40" height="40" style="object-fit:cover; border-radius:4px;"></td>
       <td>${p.name}</td>
       <td>¥${p.price}</td>
-      <td><button class="btn-del" onclick="deleteProduct('${p.id}')">削除</button></td>
+      <td>
+        <button class="btn-edit" onclick="openEdit('${p.id}')">編集</button>
+        <button class="btn-del" onclick="deleteProduct('${p.id}')">削除</button>
+      </td>
     </tr>
   `).join('');
 
-  const nList = document.getElementById('newsList');
-  nList.innerHTML = getNews().map((n, index) => `
-    <tr>
-      <td>${n.date}</td>
-      <td>${n.tag}</td>
-      <td>${n.title}</td>
-      <td><button class="btn-del" onclick="deleteNews(${index})">削除</button></td>
-    </tr>
-  `).join('');
+  // レビュー表示
+  const reviews = JSON.parse(localStorage.getItem('mb_reviews')) || {};
+  const rList = document.getElementById('reviewList');
+  let rHtml = '';
+  Object.keys(reviews).forEach(pid => {
+    reviews[pid].forEach((r, idx) => {
+      rHtml += `
+        <div style="border-bottom:1px solid var(--border); padding:10px 0; font-size:13px;">
+          <b>${pid}</b> - 星${r.star} : ${r.text} <span style="color:var(--text-muted);">(${r.date})</span>
+          <button class="btn-del" style="float:right;" onclick="deleteReview('${pid}', ${idx})">削除</button>
+        </div>
+      `;
+    });
+  });
+  rList.innerHTML = rHtml || '<p style="color:var(--text-muted);">まだレビューはありません。</p>';
 }
 
-// 商品追加
 function addProduct() {
   const name = document.getElementById('p-name').value;
   const price = document.getElementById('p-price').value;
   const img = document.getElementById('p-img').value;
   const tag = document.getElementById('p-tag').value;
   const desc = document.getElementById('p-desc').value;
-  
   if(!name || !price) return alert("商品名と価格は必須です");
 
   const products = getProducts();
-  const newProduct = {
+  products.push({
     id: 'custom_' + Date.now(),
-    name: name,
-    price: Number(price),
-    img: img || "batu.jpg",
-    tag: tag,
-    desc: desc
-  };
-  products.push(newProduct);
+    name: name, price: Number(price),
+    img: img || "batu.jpg", tag: tag, desc: desc
+  });
   localStorage.setItem('mb_products', JSON.stringify(products));
   
-  // フォームをリセット
   document.getElementById('p-name').value = '';
   document.getElementById('p-price').value = '';
   document.getElementById('p-img').value = '';
@@ -203,39 +191,64 @@ function addProduct() {
   alert("商品を追加しました！");
 }
 
-// 商品削除
 function deleteProduct(id) {
   if(!confirm("本当に削除しますか？")) return;
-  let products = getProducts();
-  products = products.filter(p => p.id !== id);
+  let products = getProducts().filter(p => p.id !== id);
   localStorage.setItem('mb_products', JSON.stringify(products));
   render();
 }
 
-// お知らせ追加
+// ★ 商品編集
+function openEdit(id) {
+  const p = getProducts().find(x => x.id === id);
+  document.getElementById('edit-id').value = p.id;
+  document.getElementById('edit-name').value = p.name;
+  document.getElementById('edit-price').value = p.price;
+  document.getElementById('edit-desc').value = p.desc || '';
+  document.getElementById('editModal').style.display = 'flex';
+}
+
+function saveEdit() {
+  const id = document.getElementById('edit-id').value;
+  const name = document.getElementById('edit-name').value;
+  const price = document.getElementById('edit-price').value;
+  const desc = document.getElementById('edit-desc').value;
+
+  let products = getProducts();
+  const idx = products.findIndex(x => x.id === id);
+  if(idx > -1) {
+    products[idx].name = name;
+    products[idx].price = Number(price);
+    products[idx].desc = desc;
+    localStorage.setItem('mb_products', JSON.stringify(products));
+    document.getElementById('editModal').style.display = 'none';
+    render();
+    alert("商品を更新しました！");
+  }
+}
+
+// お知らせ
 function addNews() {
   const date = document.getElementById('n-date').value;
   const tag = document.getElementById('n-tag').value;
   const title = document.getElementById('n-title').value;
   if(!date || !title) return alert("日付とタイトルは必須です");
 
-  const news = getNews();
+  let news = JSON.parse(localStorage.getItem('mb_news')) || [];
   news.unshift({ date: date, tag: tag || "NEWS", title: title });
   localStorage.setItem('mb_news', JSON.stringify(news));
   
   document.getElementById('n-date').value = '';
   document.getElementById('n-tag').value = '';
   document.getElementById('n-title').value = '';
-  render();
   alert("お知らせを追加しました！");
 }
 
-// お知らせ削除
-function deleteNews(index) {
-  if(!confirm("本当に削除しますか？")) return;
-  let news = getNews();
-  news.splice(index, 1);
-  localStorage.setItem('mb_news', JSON.stringify(news));
+function deleteReview(pid, index) {
+  if(!confirm("このレビューを削除しますか？")) return;
+  let reviews = JSON.parse(localStorage.getItem('mb_reviews')) || {};
+  reviews[pid].splice(index, 1);
+  localStorage.setItem('mb_reviews', JSON.stringify(reviews));
   render();
 }
 </script>
