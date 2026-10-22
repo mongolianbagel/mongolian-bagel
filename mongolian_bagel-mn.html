@@ -6,6 +6,16 @@
 <meta name="theme-color" content="#f8f2e8">
 <title>Монголиан Бэйгл｜Монголын анхны бэйгл брэнд</title>
 <meta name="description" content="Улаанбаатар хотод төвтэй Монголиан Бэйгл брэнд. Алдарт Шримптэй Фубилай, Чингис пан, Бату пан бүтээгдэхүүн болон Монгол дахь салбаруудын мэдээлэл.">
+<!-- OGP・SNSシェア設定 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Монголиан Бэйгл｜Монголын анхны бэйгл брэнд">
+<meta property="og:description" content="Шримптэй Фубилай, Чингис пан, Бату пан зэрэг Монголын онцлог бүтээгдэхүүнүүд.">
+<meta property="og:url" content="https://mongolianbagel.github.io/mongolian-bagel/mongolian_bagel-mn.html">
+<meta property="og:image" content="https://mongolianbagel.github.io/mongolian-bagel/fubilai.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<!-- ファビコン -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2376251f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M16.5 8c1.5 0 2.5 1.5 2.5 3.5s-1 3.5-2.5 3.5c-1 0-2-.5-2.5-1.5H10c-.5 1-1.5 1.5-2.5 1.5C6 15 5 13.5 5 11.5S6 8 7.5 8c1 0 2 .5 2.5 1.5h4c.5-1 1.5-1.5 2.5-1.5z'/><path d='M7 9.5c-1.5-.5-2.5-1.5-2-3s2-1.5 2.5 0'/><path d='M17 9.5c1.5-.5 2.5-1.5 2-3s-2-1.5-2.5 0'/></svg>">
+
 <style>
 :root{--site-primary:#76251f;--site-secondary:#e8d3b5;--site-background:#f8f2e8;--site-on-primary:#fff8ef;--site-on-secondary:#34251e;--site-on-background:#34251e;--site-font-body:"Yu Gothic","Hiragino Kaku Gothic ProN",Meiryo,"Noto Sans Mongolian",sans-serif;--site-font-heading:"Yu Mincho","Hiragino Mincho ProN",serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--site-background);color:var(--site-on-background);font-family:var(--site-font-body)}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}.root{background:var(--site-background);min-height:100vh}.wrap{width:min(1200px,100% - 48px);margin:auto}
@@ -14,7 +24,7 @@
 .breadcrumb a{text-decoration:underline;text-underline-offset:2px}
 .header{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:17px 0}
 .logo{display:flex;align-items:center;gap:12px;color:var(--site-primary);font-weight:900;font-size:clamp(17px,2vw,25px);letter-spacing:.02em}
-.logo-symbol{border:2px solid var(--site-primary);border-radius:50%;width:44px;height:44px;display:grid;place-items:center;font-size:24px}
+.logo-symbol{border:2px solid var(--site-primary);border-radius:50%;width:44px;height:44px;display:grid;place-items:center;background:#fff8ed;padding:5px}
 .logo small{display:block;font:700 9px Georgia,serif;letter-spacing:.2em;margin-top:2px}
 .nav{display:flex;gap:clamp(10px,2vw,24px);align-items:center;font-size:12px;font-weight:700}
 .nav a:hover{color:#a64a38}
@@ -36,9 +46,9 @@
 .hero-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#50301f 0%,#50301fcf 22%,#50301f20 46%,transparent 66%);z-index:3;pointer-events:none}
 .hero-slide{position:absolute;inset:0;opacity:0;animation:slideCycle 18s linear infinite;will-change:opacity}
 .hero-slide .zoom-layer{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.08);will-change:transform}
-.hero-slide.s1 .zoom-layer{background-image:url(fubilai.jpg)}
-.hero-slide.s2 .zoom-layer{background-image:url(chingis.jpg)}
-.hero-slide.s3 .zoom-layer{background-image:url(batu.jpg)}
+.hero-slide.s1 .zoom-layer{background-image:url(fubilai.jpeg)}
+.hero-slide.s2 .zoom-layer{background-image:url(chingis.jpeg)}
+.hero-slide.s3 .zoom-layer{background-image:url(batu.jpeg)}
 .hero-slide.s1{animation-delay:0s}
 .hero-slide.s2{animation-delay:6s}
 .hero-slide.s3{animation-delay:12s}
@@ -145,7 +155,7 @@ animation:crumbs 18s linear infinite;opacity:.9}
 .faq details p{font-size:12px;line-height:1.9;color:#6f6256;padding:8px 0 0}
 .footer{background:var(--site-primary);color:#fff3e5;padding:34px 0 26px}
 .footinner{display:flex;align-items:flex-start;justify-content:space-between;gap:28px;flex-wrap:wrap}
-.footinner .logo{color:#fff3e5}.footinner .logo-symbol{border-color:#fff3e5}
+.footinner .logo{color:#fff3e5}.footinner .logo-symbol{border-color:#fff3e5;background:transparent}
 .footlinks{display:flex;gap:20px;font-size:11px;flex-wrap:wrap}
 .footcontact{font-size:11px;line-height:1.9;opacity:.92}
 .footcontact a{text-decoration:underline;text-underline-offset:2px}
@@ -181,7 +191,7 @@ animation:crumbs 18s linear infinite;opacity:.9}
 <body><div class="root">
 <div class="topnote">Шинэхэн бэйгл, зоригтой амт.｜Улаанбаатар төвтэй｜ <a href="index.html" hreflang="ja" lang="ja" style="text-decoration:underline">日本語</a></div>
 <div class="breadcrumb"><div class="wrap">Нүүр ＞ Монголиан Бэйгл</div></div>
-<header class="wrap header"><a class="logo" href="index.html"><span class="logo-symbol">🥯</span><span>Монголиан Бэйгл<small>MONGOLIAN BAGEL</small></span></a><nav class="nav"><a href="index.html">Нүүр</a><a href="#menu">Бүтээгдэхүүн</a><a href="#story">Брэнд</a><a href="#global">Төв оффис</a><a href="#locations">Салбарууд</a><a href="#news">Мэдээ</a><a href="#contact">Холбоо барих</a><a href="#faq">Асуулт</a><a class="langswitch" href="index.html" hreflang="ja" lang="ja">日本語 ↗</a><a class="shopbtn" href="shop.html">Онлайн дэлгүүр ↗</a></nav></header>
+<header class="wrap header"><a class="logo" href="index.html"><span class="logo-symbol"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--site-primary);display:block;"><path d="M16.5 8c1.5 0 2.5 1.5 2.5 3.5s-1 3.5-2.5 3.5c-1 0-2-.5-2.5-1.5H10c-.5 1-1.5 1.5-2.5 1.5C6 15 5 13.5 5 11.5S6 8 7.5 8c1 0 2 .5 2.5 1.5h4c.5-1 1.5-1.5 2.5-1.5z"/><path d="M7 9.5c-1.5-.5-2.5-1.5-2-3s2-1.5 2.5 0"/><path d="M17 9.5c1.5-.5 2.5-1.5 2-3s-2-1.5-2.5 0"/><circle cx="9.5" cy="11.5" r="0.5" fill="currentColor" stroke="none"/><circle cx="14.5" cy="11.5" r="0.5" fill="currentColor" stroke="none"/><path d="M11.5 13.5h1"/></svg></span><span>Монголиан Бэйгл<small>MONGOLIAN BAGEL</small></span></a><nav class="nav"><a href="index.html">Нүүр</a><a href="#menu">Бүтээгдэхүүн</a><a href="#story">Брэнд</a><a href="#global">Төв оффис</a><a href="#locations">Салбарууд</a><a href="#news">Мэдээ</a><a href="#contact">Холбоо барих</a><a href="#faq">Асуулт</a><a class="langswitch" href="index.html" hreflang="ja" lang="ja">日本語 ↗</a><a class="shopbtn" href="shop.html">Онлайн дэлгүүр ↗</a></nav></header>
 <main id="home">
 <section class="hero">
   <div class="hero-visual" aria-hidden="true">
@@ -195,16 +205,16 @@ animation:crumbs 18s linear infinite;opacity:.9}
     <p>Манай брэндийн онцлох бүтээгдэхүүн<br><span style="font-size:1.15em;font-weight:bold">Шримптэй Фубилай</span><br>Шаржигнасан шримпыг талханд хийсэн, Монголиан Бэйглийн бахархалт амттан.</p>
     <span class="brush">Нэг амсаад, дасахад хэцүү!</span>
   </div>
-  <div class="hero-price"><small>ОНЦЛОХ</small><span>Шримптэй Фубилай</span><strong>₮12,800</strong></div>
+  <div class="hero-price"><small>ОНЦЛОХ</small><span>Шримптэй Фубилай</span><strong>12,800₮</strong></div>
 </section>
 <div class="strip">BAGELS WITH A LITTLE ADVENTURE　 •　 FRESHLY BAKED DAILY　 •　</div>
 <section class="wrap section" id="menu"><div class="columns">
-<div class="shop-photo"><img src="fubilai.jpg" alt="Монголиан Бэйгл"><span class="photo-caption">⌖　Улаанбаатар хотод<br>Шинэхэн бэйглээ хүргэж байна.</span></div>
+<div class="shop-photo"><img src="fubilai.jpeg" alt="Монголиан Бэйгл"><span class="photo-caption">⌖　Улаанбаатар хотод<br>Шинэхэн бэйглээ хүргэж байна.</span></div>
 <div class="menu-panel"><div class="panel-head"><h3>Меню</h3><span>OUR FAVORITES　›</span></div><div class="mini-menu">
-<article class="item"><img src="fubilai.jpg" alt="Шримптэй Фубилай"><h4>Шримптэй Фубилай</h4><p>Шримпыг талханд хийсэн онцлох</p><strong>₮12,800</strong><div class="img-note">※Зураг нь жишээ юм</div></article>
-<article class="item"><img src="chingis.jpg" alt="Чингис пан"><h4>Чингис пан</h4><p>Хонины махыг талханд хийсэн</p><strong>₮14,800</strong><div class="img-note">※Зураг нь жишээ юм</div></article>
-<article class="item"><img src="batu.jpg" alt="Бату пан"><h4>Бату пан</h4><p>Чацарганы чанамалтай</p><strong>₮9,800</strong><div class="img-note">※Зураг нь жишээ юм</div></article>
-<article class="item"><img src="https://images.unsplash.com/photo-1585478259715-876acc5be8eb?q=80&w=800&auto=format&fit=crop" alt="Энгийн бэйгл"><h4>Энгийн бэйгл</h4><p>Улаан буудайн амт</p><strong>₮5,800</strong><div class="img-note">※Зураг нь жишээ юм</div></article>
+<article class="item"><img src="fubilai.jpeg" alt="Шримптэй Фубилай"><h4>Шримптэй Фубилай</h4><p>Шримпыг талханд хийсэн онцлох</p><strong>12,800₮</strong><div class="img-note">※Зураг нь жишээ юм</div></article>
+<article class="item"><img src="chingis.jpeg" alt="Чингис пан"><h4>Чингис пан</h4><p>Хонины махыг талханд хийсэн</p><strong>14,800₮</strong><div class="img-note">※Зураг нь жишээ юм</div></article>
+<article class="item"><img src="batu.jpeg" alt="Бату пан"><h4>Бату пан</h4><p>Чацарганы чанамалтай</p><strong>9,800₮</strong><div class="img-note">※Зураг нь жишээ юм</div></article>
+<article class="item"><img src="https://images.unsplash.com/photo-1585478259715-876acc5be8eb?q=80&w=800&auto=format&fit=crop" alt="Энгийн бэйгл"><h4>Энгийн бэйгл</h4><p>Улаан буудайн амт</p><strong>5,800₮</strong><div class="img-note">※Зураг нь жишээ юм</div></article>
 </div></div>
 <div class="commit-panel"><div class="panel-head"><h3>Манай зарчим</h3><span>OUR STORY</span></div><h3>Монголын тал нутгийн адил<br>хүчтэй, зөөлөн амт.</h3><p>Сайн чанарын орцтой, чанга бариу бэйгл. Дээр нь зоригтой орцыг хослуулж, хүмүүст эрч хүч өгдөг бэйгл мэргэжлийн дэлгүүр. Шримпыг талханд хийсэн «Шримптэй Фубилай», хонины махыг хийсэн «Чингис пан», чацарганы чанамалтай «Бату пан» бол зөвхөн энд л байх онцгой амттан.</p><a class="outline-btn" href="#story">Дэлгэрэнгүй　›</a><img class="commit-img" src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=1000&auto=format&fit=crop" alt="Бэйглүүд"><div class="img-note">※Зураг нь жишээ юм</div></div>
 </div></section>
@@ -318,7 +328,7 @@ animation:crumbs 18s linear infinite;opacity:.9}
 </section>
 </main>
 <footer class="footer"><div class="wrap footinner">
-<a class="logo" href="index.html"><span class="logo-symbol">🥯</span><span>Монголиан Бэйгл<small>MONGOLIAN BAGEL</small></span></a>
+<a class="logo" href="index.html"><span class="logo-symbol"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--site-primary);display:block;"><path d="M16.5 8c1.5 0 2.5 1.5 2.5 3.5s-1 3.5-2.5 3.5c-1 0-2-.5-2.5-1.5H10c-.5 1-1.5 1.5-2.5 1.5C6 15 5 13.5 5 11.5S6 8 7.5 8c1 0 2 .5 2.5 1.5h4c.5-1 1.5-1.5 2.5-1.5z"/><path d="M7 9.5c-1.5-.5-2.5-1.5-2-3s2-1.5 2.5 0"/><path d="M17 9.5c1.5-.5 2.5-1.5 2-3s-2-1.5-2.5 0"/><circle cx="9.5" cy="11.5" r="0.5" fill="currentColor" stroke="none"/><circle cx="14.5" cy="11.5" r="0.5" fill="currentColor" stroke="none"/><path d="M11.5 13.5h1"/></svg></span><span>Монголиан Бэйгл<small>MONGOLIAN BAGEL</small></span></a>
 <div class="footcontact">
 <strong>Mongolian Bagel Head Office</strong><br>
 CEO: Batbayar Təmülən<br>
