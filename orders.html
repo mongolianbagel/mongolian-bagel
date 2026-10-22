@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f8f2e8">
+<title>注文管理｜モンゴリアンベーグル</title>
+<style>
+:root{--site-primary:#76251f;--site-background:#f8f2e8;--site-on-background:#34251e;--line:#e4d5c0;--muted:#77695b}
+*{box-sizing:border-box}body{margin:0;background:var(--site-background);color:var(--site-on-background);font-family:"Yu Gothic",sans-serif;padding:40px 20px}
+.wrap{max-width:1000px;margin:auto}
+.header{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--site-primary);padding-bottom:16px;margin-bottom:24px}
+h1{font-size:24px;color:var(--site-primary);margin:0}
+a{color:var(--site-primary);text-decoration:none;font-size:14px;font-weight:bold;border:1px solid var(--site-primary);padding:8px 16px;border-radius:20px}
+a:hover{background:var(--site-primary);color:#fff}
+.admin-table{width:100%;border-collapse:collapse;font-size:13px;background:#fffaf2;}
+.admin-table th,.admin-table td{border:1px solid var(--line);padding:12px;text-align:left;vertical-align:top;}
+.admin-table th{background:#f3e7d5;color:var(--site-primary);white-space:nowrap;}
+.admin-table tr:hover{background:#faf5ec;}
+.empty{text-align:center;padding:40px;color:var(--muted);border:1px dashed var(--line);}
+.item-list{list-style:none;padding:0;margin:0;font-size:12px;line-height:1.6}
+.btn-clear{background:none;border:0;color:#a92e28;text-decoration:underline;cursor:pointer;font-size:12px;margin-top:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <h1>注文管理（管理者用）</h1>
+    <a href="shop.html">ショップに戻る</a>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">※この画面はデモ用です。このブラウザ（同じ端末）で注文されたデータのみが表示されます。</p>
+  
+  <div id="orderList"></div>
+
+  <button class="btn-clear" id="clearBtn">注文履歴をすべて削除する</button>
+</div>
+
+<script>
+(function(){
+  var ORDERS_KEY = "mongolian-bagel-orders-v1";
+  var list = document.getElementById("orderList");
+
+  function loadOrders(){
+    try { return JSON.parse(localStorage.getItem(ORDERS_KEY)) || []; } catch(e){ return []; }
+  }
+
+  function render(){
+    var orders = loadOrders();
+    if(orders.length === 0){
+      list.innerHTML = '<div class="empty">まだ注文データがありません。<br>ショップからテスト注文をしてみてください。</div>';
+      return;
+    }
+
+    // 新しい順に並び替え
+    orders.reverse();
+
+    var html = '<table class="admin-table"><thead><tr>' +
+      '<th>注文ID / 日時</th><th>お客様情報</th><th>注文商品</th><th>合計金額</th>' +
+      '</tr></thead><tbody>';
+
+    orders.forEach(function(o){
+      var itemsHtml = '<ul class="item-list">';
+      o.items.forEach(function(i){
+        itemsHtml += '<li>' + i.name + ' × ' + i.qty + '（¥' + i.price.toLocaleString() + '）</li>';
+      });
+      itemsHtml += '</ul>';
+
+      html += '<tr>' +
+        '<td style="white-space:nowrap"><b>' + o.id + '</b><br>' + o.date + '</td>' +
+        '<td><b>' + o.name + ' 様</b><br>' + o.email + '<br>' + o.tel + '<br>〒' + o.zip + '<br>' + o.address + '<br>支払: ' + o.pay + '</td>' +
+        '<td>' + itemsHtml + '</td>' +
+        '<td style="font-weight:bold;color:var(--site-primary);font-size:15px;">¥' + o.total.toLocaleString() + '</td>' +
+      '</tr>';
+    });
+    html += '</tbody></table>';
+    list.innerHTML = html;
+  }
+
+  document.getElementById("clearBtn").addEventListener("click", function(){
+    if(confirm("本当にすべての注文履歴を削除しますか？")){
+      localStorage.removeItem(ORDERS_KEY);
+      render();
+    }
+  });
+
+  render();
+})();
+</script>
+</body></html>
