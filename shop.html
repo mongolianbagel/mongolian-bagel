@@ -6,13 +6,23 @@
 <meta name="theme-color" content="#f8f2e8">
 <title>オンラインショップ｜モンゴリアンベーグル</title>
 <meta name="description" content="モンゴリアンベーグルのオンラインショップ。フビライパンやチンギスパン、バトゥパンなど定番商品や季節限定セットをご自宅へお届けします。">
+<!-- OGP・SNSシェア設定 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="オンラインショップ｜モンゴリアンベーグル">
+<meta property="og:description" content="フビライパンやチンギスパンなど、モンゴル発のベーカリーブランドの商品をお届けします。">
+<meta property="og:url" content="https://mongolianbagel.github.io/mongolian-bagel/shop.html">
+<meta property="og:image" content="https://mongolianbagel.github.io/mongolian-bagel/fubilai.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<!-- ファビコン -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2376251f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M16.5 8c1.5 0 2.5 1.5 2.5 3.5s-1 3.5-2.5 3.5c-1 0-2-.5-2.5-1.5H10c-.5 1-1.5 1.5-2.5 1.5C6 15 5 13.5 5 11.5S6 8 7.5 8c1 0 2 .5 2.5 1.5h4c.5-1 1.5-1.5 2.5-1.5z'/><path d='M7 9.5c-1.5-.5-2.5-1.5-2-3s2-1.5 2.5 0'/><path d='M17 9.5c1.5-.5 2.5-1.5 2-3s-2-1.5-2.5 0'/></svg>">
+
 <style>
 :root{--site-primary:#76251f;--site-secondary:#e8d3b5;--site-background:#f8f2e8;--site-on-background:#34251e;--site-font-body:"Yu Gothic","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;--site-font-heading:"Yu Mincho","Hiragino Mincho ProN",serif;--line:#e4d5c0;--muted:#77695b}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--site-background);color:var(--site-on-background);font-family:var(--site-font-body)}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}.wrap{width:min(1200px,100% - 48px);margin:auto}
 .topnote{background:var(--site-primary);color:#fff6e9;text-align:center;font-size:11px;letter-spacing:.1em;padding:9px 12px}
 .header{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:17px 0}
 .logo{display:flex;align-items:center;gap:12px;color:var(--site-primary);font-weight:900;font-size:clamp(17px,2vw,25px);letter-spacing:.02em}
-.logo-symbol{border:2px solid var(--site-primary);border-radius:50%;width:44px;height:44px;display:grid;place-items:center;font-size:24px}
+.logo-symbol{border:2px solid var(--site-primary);border-radius:50%;width:44px;height:44px;display:grid;place-items:center;background:#fff8ed;padding:5px}
 .logo small{display:block;font:700 9px Georgia,serif;letter-spacing:.2em;margin-top:2px}
 .nav{display:flex;gap:clamp(10px,2vw,24px);align-items:center;font-size:12px;font-weight:700}
 .nav a:hover{color:#a64a38}
@@ -22,7 +32,7 @@
 .breadcrumb a{text-decoration:underline;text-underline-offset:2px}
 
 .shop-hero{background:#50301f;color:#fff8ee;padding:54px 0;position:relative;overflow:hidden}
-.shop-hero:before{content:"";position:absolute;inset:0;background:url(fubilai.jpg) center/cover;opacity:.35}
+.shop-hero:before{content:"";position:absolute;inset:0;background:url(fubilai.jpeg) center/cover;opacity:.35}
 .shop-hero .wrap{position:relative;z-index:2}
 .shop-hero h1{font:500 clamp(30px,4.6vw,52px)/1.3 var(--site-font-heading);margin:12px 0 10px}
 .shop-hero p{font-size:13px;line-height:2;max-width:560px;margin:0}
@@ -99,10 +109,17 @@
 .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:#34251e;color:#fff6e9;padding:12px 20px;font-size:12px;border-radius:30px;opacity:0;pointer-events:none;transition:.25s;z-index:70;box-shadow:0 10px 24px #00000033}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 
+/* 管理者用注文確認 */
+.admin-link{font-size:11px;color:var(--muted);text-decoration:underline;margin-top:20px;display:inline-block}
+.admin-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:20px;background:#fffaf2;}
+.admin-table th,.admin-table td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top;}
+.admin-table th{background:#f3e7d5;color:var(--site-primary);}
+.admin-table tr:hover{background:#faf5ec;}
+
 .footer{background:var(--site-primary);color:#fff3e5;padding:30px 0 24px;margin-top:40px}
 .footinner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:11px}
 .footinner .logo{color:#fff3e5}
-.footinner .logo-symbol{border-color:#fff3e5}
+.footinner .logo-symbol{border-color:#fff3e5;background:transparent}
 .footlinks{display:flex;gap:18px;flex-wrap:wrap}
 .copyright{font-size:10px;opacity:.85;width:100%;border-top:1px solid #ffffff33;padding-top:12px;margin-top:8px}
 
@@ -121,12 +138,13 @@
 <div class="topnote">全国配送対応｜¥5,000以上で送料無料｜モンゴリアンベーグル オンラインショップ</div>
 <div class="breadcrumb"><div class="wrap"><a href="index.html">ホーム</a> ＞ オンラインショップ</div></div>
 <header class="wrap header">
-  <a class="logo" href="index.html"><span class="logo-symbol">🥯</span><span>モンゴリアンベーグル<small>MONGOLIAN BAGEL</small></span></a>
+  <a class="logo" href="index.html"><span class="logo-symbol"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--site-primary);display:block;"><path d="M16.5 8c1.5 0 2.5 1.5 2.5 3.5s-1 3.5-2.5 3.5c-1 0-2-.5-2.5-1.5H10c-.5 1-1.5 1.5-2.5 1.5C6 15 5 13.5 5 11.5S6 8 7.5 8c1 0 2 .5 2.5 1.5h4c.5-1 1.5-1.5 2.5-1.5z"/><path d="M7 9.5c-1.5-.5-2.5-1.5-2-3s2-1.5 2.5 0"/><path d="M17 9.5c1.5-.5 2.5-1.5 2-3s-2-1.5-2.5 0"/><circle cx="9.5" cy="11.5" r="0.5" fill="currentColor" stroke="none"/><circle cx="14.5" cy="11.5" r="0.5" fill="currentColor" stroke="none"/><path d="M11.5 13.5h1"/></svg></span><span>モンゴリアンベーグル<small>MONGOLIAN BAGEL</small></span></a>
   <nav class="nav">
     <a href="index.html">ホーム</a>
     <a href="#products">商品一覧</a>
     <a href="#guide">ご利用ガイド</a>
     <a href="#faq">FAQ</a>
+    <a href="orders.html" class="admin-link" style="margin:0;border:1px solid var(--line);padding:6px 10px;border-radius:20px;text-decoration:none;">管理者用</a>
     <button class="cartbtn" id="openCart" type="button">🛒 カート <span class="count" id="cartCount">0</span></button>
   </nav>
 </header>
@@ -155,7 +173,7 @@
   <div class="grid" id="productGrid">
 
     <article class="product" data-category="signature" data-id="fubilai" data-name="フビライパン" data-price="480">
-      <div class="thumb"><span class="tag">看板商品</span><img src="fubilai.jpg" alt="フビライパン"></div>
+      <div class="thumb"><span class="tag">看板商品</span><img src="fubilai.jpeg" alt="フビライパン"></div>
       <div class="body">
         <h3>フビライパン</h3>
         <p class="desc">エビフライをパンに挟んだ看板商品。サクサクのエビフライと、もちもちのベーグル生地の組み合わせ。</p>
@@ -165,7 +183,7 @@
     </article>
 
     <article class="product" data-category="signature" data-id="chingis" data-name="チンギスパン" data-price="580">
-      <div class="thumb"><span class="tag">新商品</span><img src="chingis.jpg" alt="チンギスパン"></div>
+      <div class="thumb"><span class="tag">新商品</span><img src="chingis.jpeg" alt="チンギスパン"></div>
       <div class="body">
         <h3>チンギスパン</h3>
         <p class="desc">ジンギスカンをパンに挟んだ、食べ応え十分の一品。モンゴルの伝統的な味わいをパンで楽しめます。</p>
@@ -175,7 +193,7 @@
     </article>
 
     <article class="product" data-category="sweet" data-id="batu" data-name="バトゥパン" data-price="380">
-      <div class="thumb"><span class="tag">新商品</span><img src="batu.jpg" alt="バトゥパン"></div>
+      <div class="thumb"><span class="tag">新商品</span><img src="batu.jpeg" alt="バトゥパン"></div>
       <div class="body">
         <h3>バトゥパン</h3>
         <p class="desc">チャチャルガンのジャムを塗った、甘酸っぱいスイーツ系パン。朝食にもおやつにもぴったり。</p>
@@ -245,7 +263,7 @@
 </section>
 
 <footer class="footer"><div class="wrap footinner">
-  <a class="logo" href="index.html"><span class="logo-symbol">🥯</span><span>モンゴリアンベーグル<small>MONGOLIAN BAGEL</small></span></a>
+  <a class="logo" href="index.html"><span class="logo-symbol"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--site-primary);display:block;"><path d="M16.5 8c1.5 0 2.5 1.5 2.5 3.5s-1 3.5-2.5 3.5c-1 0-2-.5-2.5-1.5H10c-.5 1-1.5 1.5-2.5 1.5C6 15 5 13.5 5 11.5S6 8 7.5 8c1 0 2 .5 2.5 1.5h4c.5-1 1.5-1.5 2.5-1.5z"/><path d="M7 9.5c-1.5-.5-2.5-1.5-2-3s2-1.5 2.5 0"/><path d="M17 9.5c1.5-.5 2.5-1.5 2-3s-2-1.5-2.5 0"/><circle cx="9.5" cy="11.5" r="0.5" fill="currentColor" stroke="none"/><circle cx="14.5" cy="11.5" r="0.5" fill="currentColor" stroke="none"/><path d="M11.5 13.5h1"/></svg></span><span>モンゴリアンベーグル<small>MONGOLIAN BAGEL</small></span></a>
   <div class="footlinks"><a href="index.html">ホーム</a><a href="shop.html">オンラインショップ</a><a href="index.html#contact">お問い合わせ</a><a href="mongolian_bagel-mn.html">Монгол хэл</a></div>
   <span class="copyright">© 1998–2026 MONGOLIAN BAGEL · Head Office: Ulaanbaatar, Mongolia</span>
 </div></footer>
@@ -278,7 +296,7 @@
       <div class="field"><label for="f-pay">お支払い方法</label><select id="f-pay" name="pay"><option>クレジットカード</option><option>コンビニ決済</option><option>代金引換</option></select></div>
       <div class="form-total"><span>合計</span><b id="modalTotal">¥0</b></div>
       <button class="checkout" type="submit">注文を確定する</button>
-      <p class="form-note">※本フォームはデモです。入力内容は送信されません。実際の運用時は決済サービス（Stripe / Shopify / BASE など）と接続してください。</p>
+      <p class="form-note">※本フォームはデモです。入力内容はお使いのブラウザに保存されます。実際の運用時は決済サービスと接続してください。</p>
     </form>
   </div>
 </div>
@@ -289,6 +307,7 @@
 (function(){
   "use strict";
   var STORAGE_KEY = "mongolian-bagel-cart-v1";
+  var ORDERS_KEY = "mongolian-bagel-orders-v1";
   var SHIPPING_FEE = 800;
   var FREE_SHIPPING_THRESHOLD = 5000;
 
@@ -452,6 +471,37 @@
     e.preventDefault();
     var t = computeTotals();
     var name = document.getElementById("f-name").value.trim();
+    var email = document.getElementById("f-email").value.trim();
+    var tel = document.getElementById("f-tel").value.trim();
+    var zip = document.getElementById("f-zip").value.trim();
+    var addr = document.getElementById("f-addr").value.trim();
+    var pay = document.getElementById("f-pay").value;
+
+    // 注文データの保存
+    var orderData = {
+      id: 'ORD-' + Date.now(),
+      date: new Date().toLocaleString('ja-JP'),
+      name: name,
+      email: email,
+      tel: tel,
+      zip: zip,
+      address: addr,
+      pay: pay,
+      items: [],
+      total: t.total
+    };
+    Object.keys(cart).forEach(function(id){
+      var el = getProduct(id);
+      if(el) {
+        orderData.items.push({ name: el.dataset.name, qty: cart[id], price: parseInt(el.dataset.price, 10) });
+      }
+    });
+
+    var orders = [];
+    try { orders = JSON.parse(localStorage.getItem(ORDERS_KEY)) || []; } catch(err){}
+    orders.push(orderData);
+    localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
+
     showToast(name + " 様、ご注文ありがとうございました（デモ）");
     checkoutModal.classList.remove("open");
     cart = {};
