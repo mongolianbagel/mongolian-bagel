@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f8f2e8">
 <title>オンラインショップ｜モンゴリアンベーグル</title>
-<meta name="description" content="モンゴリアンベーグルのオンラインショップ。フビライパンや定番ベーグル、季節限定セットをご自宅へお届けします。">
+<meta name="description" content="モンゴリアンベーグルのオンラインショップ。フビライパンやチンギスパン、バトゥパンなど定番商品や季節限定セットをご自宅へお届けします。">
 <style>
 :root{--site-primary:#76251f;--site-secondary:#e8d3b5;--site-background:#f8f2e8;--site-on-background:#34251e;--site-font-body:"Yu Gothic","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;--site-font-heading:"Yu Mincho","Hiragino Mincho ProN",serif;--line:#e4d5c0;--muted:#77695b}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--site-background);color:var(--site-on-background);font-family:var(--site-font-body)}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}.wrap{width:min(1200px,100% - 48px);margin:auto}
@@ -22,7 +22,7 @@
 .breadcrumb a{text-decoration:underline;text-underline-offset:2px}
 
 .shop-hero{background:#50301f;color:#fff8ee;padding:54px 0;position:relative;overflow:hidden}
-.shop-hero:before{content:"";position:absolute;inset:0;background:url(https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=1600&auto=format&fit=crop) center/cover;opacity:.35}
+.shop-hero:before{content:"";position:absolute;inset:0;background:url(images/fubilai.jpg) center/cover;opacity:.35}
 .shop-hero .wrap{position:relative;z-index:2}
 .shop-hero h1{font:500 clamp(30px,4.6vw,52px)/1.3 var(--site-font-heading);margin:12px 0 10px}
 .shop-hero p{font-size:13px;line-height:2;max-width:560px;margin:0}
@@ -54,6 +54,7 @@
 .product .add:hover{background:var(--site-primary);color:#fff6e9}
 .product .add.is-added{background:var(--site-primary);color:#fff6e9}
 .product.is-hidden{display:none}
+.img-note{font-size:9px;color:#9e7255;margin-top:4px}
 
 /* カートドロワー */
 .overlay{position:fixed;inset:0;background:#2a1a12aa;backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:.25s;z-index:40}
@@ -134,7 +135,7 @@
   <div class="wrap">
     <div class="eyebrow">MONGOLIAN BAGEL ONLINE SHOP</div>
     <h1>おうちでも、<br>ベーグル時間。</h1>
-    <p>焼きたてのベーグルを冷凍便で全国へ。エビフライをパンに挟んだ看板商品「フビライパン」をはじめ、定番ベーグルや季節限定セットをお選びいただけます。</p>
+    <p>焼きたてのベーグルを冷凍便で全国へ。エビフライをパンに挟んだ看板商品「フビライパン」、ジンギスカンを挟んだ「チンギスパン」、チャチャルガンのジャムを塗った「バトゥパン」をお選びいただけます。</p>
   </div>
 </section>
 
@@ -142,7 +143,7 @@
   <div class="section-title">
     <div class="eyebrow">ALL PRODUCTS</div>
     <h2>商品一覧</h2>
-    <p>すべて冷凍便でお届けします。解凍後、トースターで軽く温めると焼きたての食感がよみがえります。</p>
+    <p>すべて冷凍便でお届けします。解凍後、トースターで軽く温めると焼きたての食感がよみがえります。<br><span style="font-size:10px">※画像はイメージです。</span></p>
   </div>
   <div class="filters" id="filters">
     <button class="is-active" data-filter="all">すべて</button>
@@ -154,11 +155,32 @@
   <div class="grid" id="productGrid">
 
     <article class="product" data-category="signature" data-id="fubilai" data-name="フビライパン" data-price="480">
-      <div class="thumb"><span class="tag">看板商品</span><img src="https://images.unsplash.com/photo-1585445490387-f47934b73b54?q=80&w=800&auto=format&fit=crop" alt="フビライパン"></div>
+      <div class="thumb"><span class="tag">看板商品</span><img src="images/fubilai.jpg" alt="フビライパン"></div>
       <div class="body">
         <h3>フビライパン</h3>
         <p class="desc">エビフライをパンに挟んだ看板商品。サクサクのエビフライと、もちもちのベーグル生地の組み合わせ。</p>
         <div class="price-row"><div><span class="price">¥480</span><span class="unit">／1個</span></div><button class="add" type="button">カートに追加</button></div>
+        <div class="img-note">※画像はイメージです</div>
+      </div>
+    </article>
+
+    <article class="product" data-category="signature" data-id="chingis" data-name="チンギスパン" data-price="580">
+      <div class="thumb"><span class="tag">新商品</span><img src="images/chingis.jpg" alt="チンギスパン"></div>
+      <div class="body">
+        <h3>チンギスパン</h3>
+        <p class="desc">ジンギスカンをパンに挟んだ、食べ応え十分の一品。モンゴルの伝統的な味わいをパンで楽しめます。</p>
+        <div class="price-row"><div><span class="price">¥580</span><span class="unit">／1個</span></div><button class="add" type="button">カートに追加</button></div>
+        <div class="img-note">※画像はイメージです</div>
+      </div>
+    </article>
+
+    <article class="product" data-category="sweet" data-id="batu" data-name="バトゥパン" data-price="380">
+      <div class="thumb"><span class="tag">新商品</span><img src="images/batu.jpg" alt="バトゥパン"></div>
+      <div class="body">
+        <h3>バトゥパン</h3>
+        <p class="desc">チャチャルガンのジャムを塗った、甘酸っぱいスイーツ系パン。朝食にもおやつにもぴったり。</p>
+        <div class="price-row"><div><span class="price">¥380</span><span class="unit">／1個</span></div><button class="add" type="button">カートに追加</button></div>
+        <div class="img-note">※画像はイメージです</div>
       </div>
     </article>
 
@@ -168,15 +190,7 @@
         <h3>プレーンベーグル</h3>
         <p class="desc">小麦の風味を楽しむ定番。毎朝食べたい、シンプルで力強い味わい。</p>
         <div class="price-row"><div><span class="price">¥220</span><span class="unit">／1個</span></div><button class="add" type="button">カートに追加</button></div>
-      </div>
-    </article>
-
-    <article class="product" data-category="sweet" data-id="blueberry" data-name="ブルーベリーベーグル" data-price="260">
-      <div class="thumb"><img src="https://images.unsplash.com/photo-1598373182133-52452f7691ef?q=80&w=800&auto=format&fit=crop" alt="ブルーベリーベーグル"></div>
-      <div class="body">
-        <h3>ブルーベリーベーグル</h3>
-        <p class="desc">甘酸っぱいブルーベリーを練り込んだ、朝にもおやつにも合うひと品。</p>
-        <div class="price-row"><div><span class="price">¥260</span><span class="unit">／1個</span></div><button class="add" type="button">カートに追加</button></div>
+        <div class="img-note">※画像はイメージです</div>
       </div>
     </article>
 
@@ -186,15 +200,7 @@
         <h3>ごまベーグル</h3>
         <p class="desc">香ばしいごまをたっぷり。焼くと香りが広がる、食事にも合うベーグル。</p>
         <div class="price-row"><div><span class="price">¥240</span><span class="unit">／1個</span></div><button class="add" type="button">カートに追加</button></div>
-      </div>
-    </article>
-
-    <article class="product" data-category="signature" data-id="fubilai-set" data-name="フビライパン 3個セット" data-price="1380">
-      <div class="thumb"><span class="tag">お得</span><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800&auto=format&fit=crop" alt="フビライパン 3個セット"></div>
-      <div class="body">
-        <h3>フビライパン 3個セット</h3>
-        <p class="desc">看板商品を3個まとめて。家族や友人との食卓にもおすすめのセット。</p>
-        <div class="price-row"><div><span class="price">¥1,380</span><span class="unit">／3個</span></div><button class="add" type="button">カートに追加</button></div>
+        <div class="img-note">※画像はイメージです</div>
       </div>
     </article>
 
@@ -204,6 +210,7 @@
         <h3>定番ベーグル詰め合わせ 6個</h3>
         <p class="desc">プレーン・ごま・ブルーベリーなど定番を6個詰め合わせ。初めての方にも。</p>
         <div class="price-row"><div><span class="price">¥1,280</span><span class="unit">／6個</span></div><button class="add" type="button">カートに追加</button></div>
+        <div class="img-note">※画像はイメージです</div>
       </div>
     </article>
 
@@ -213,15 +220,7 @@
         <h3>ギフトボックス 8個入</h3>
         <p class="desc">大切な人への贈り物に。定番と季節のベーグルを8個詰め合わせたギフトボックス。</p>
         <div class="price-row"><div><span class="price">¥2,480</span><span class="unit">／8個</span></div><button class="add" type="button">カートに追加</button></div>
-      </div>
-    </article>
-
-    <article class="product" data-category="sweet" data-id="maple" data-name="メープルくるみベーグル" data-price="300">
-      <div class="thumb"><img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=800&auto=format&fit=crop" alt="メープルくるみベーグル"></div>
-      <div class="body">
-        <h3>メープルくるみベーグル</h3>
-        <p class="desc">メープルの甘さとくるみの食感。秋冬限定の季節ベーグル。</p>
-        <div class="price-row"><div><span class="price">¥300</span><span class="unit">／1個</span></div><button class="add" type="button">カートに追加</button></div>
+        <div class="img-note">※画像はイメージです</div>
       </div>
     </article>
 
